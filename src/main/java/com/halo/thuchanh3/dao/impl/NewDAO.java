@@ -6,6 +6,8 @@
 package com.halo.thuchanh3.dao.impl;
 
 import com.halo.thuchanh3.dao.INewDAO;
+import com.halo.thuchanh3.mapper.CategoryMapper;
+import com.halo.thuchanh3.mapper.NewMapper;
 import com.halo.thuchanh3.model.CategoryModel;
 import com.halo.thuchanh3.model.NewsModel;
 import java.sql.Connection;
@@ -22,62 +24,28 @@ import java.util.logging.Logger;
  *
  * @author DucTien
  */
-public class NewDAO implements INewDAO {
-
-    public Connection getConnection() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/newservlet12month2018";
-            String user = "root";
-            String paswd = "Ductien1997";
-            Connection con = DriverManager.getConnection(url, user, paswd);
-            return con;
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
 
     @Override
     public List<NewsModel> findByCategoryId(Long categoryId) {
         List<NewsModel> results = new ArrayList<>();
         String sqlQuery = "select * from news where categoryid = ?";
         //open connection
-        Connection connection = this.getConnection();
-        PreparedStatement statement = null;
-        ResultSet rs = null;
-        if (connection != null) {
-            try {
-                statement = connection.prepareStatement(sqlQuery);
-                statement.setLong(1, categoryId);
-                rs = statement.executeQuery();
-                while (rs.next()) {
-                    NewsModel news = new NewsModel();
-                    news.setId(rs.getLong("id"));
-                    news.setTitle(rs.getString("title"));
-                    news.setCategoryId(rs.getLong("categoryid"));
-                    results.add(news);
-                }
-                return results;
-            } catch (SQLException ex) {
-                Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
-                return null;
-            } finally {
-                try {
-                    //Close connection
-                    connection.close();
-                    if (statement != null) {
-                        statement.close();
-                    }
-                    if (rs != null) {
-                        rs.close();
-                    }
-                } catch (SQLException ex) {
-                    return null;
-                }
-            }
-        }
-        return results;
+        return this.query(sqlQuery, new NewMapper(), categoryId);
     }
 
+    @Override
+    public void update(String sql, Object... parameters) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Long insert(String sql, Object... parameters) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int count(String sql, Object... parameters) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

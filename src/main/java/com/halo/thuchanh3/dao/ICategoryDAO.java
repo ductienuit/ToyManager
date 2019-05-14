@@ -6,13 +6,14 @@
 package com.halo.thuchanh3.dao;
 
 import com.halo.thuchanh3.model.CategoryModel;
+import com.halo.thuchanh3.model.NewsModel;
 import java.util.List;
 
 /**
  *
  * @author DucTien
  */
-public interface ICategoryDAO {
+public interface ICategoryDAO extends GenericDAO<CategoryModel> {
 
     List<CategoryModel> findAll();
 }

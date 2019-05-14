@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.dao;
+package com.halo.thuchanh3.mapper;
 
-import com.halo.thuchanh3.model.NewsModel;
-import java.util.List;
+import java.sql.ResultSet;
 
 /**
  *
  * @author DucTien
  */
-public interface INewDAO extends GenericDAO<NewsModel> {
+public interface RowMapper<T> {
 
-    List<NewsModel> findByCategoryId(Long categoryId);
+    T mapRow(ResultSet rs);
 }
