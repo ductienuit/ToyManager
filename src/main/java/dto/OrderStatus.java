@@ -7,7 +7,6 @@ package dto;
 
 import dto.common.IDTO;
 import dto.common.IName;
-import java.math.BigInteger;
 
 /**
  *
@@ -15,11 +14,15 @@ import java.math.BigInteger;
  */
 public class OrderStatus implements IDTO, IName {
 
-    // TODO Order Status enum
-    private BigInteger id;
+    public static OrderStatus PENDING = new OrderStatus(0, "Đang chờ");
+    public static OrderStatus SHIPPING = new OrderStatus(1, "Đang giao");
+    public static OrderStatus SHIPPED = new OrderStatus(2, "Đã giao");
+    public static OrderStatus CANCELLED = new OrderStatus(3, "Đã hủy");
+
+    private Integer id;
     private String name;
 
-    public OrderStatus(BigInteger id, String name) {
+    public OrderStatus(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -50,7 +53,7 @@ public class OrderStatus implements IDTO, IName {
      * @return the value of id
      */
     @Override
-    public BigInteger getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -60,7 +63,7 @@ public class OrderStatus implements IDTO, IName {
      * @param id new value of id
      */
     @Override
-    public void setId(BigInteger id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
