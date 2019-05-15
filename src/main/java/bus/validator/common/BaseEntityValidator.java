@@ -22,7 +22,7 @@ public abstract class BaseEntityValidator<T extends IDTO> extends BaseObjectVali
         super(type);
     }
 
-    public abstract Iterable<ValidationPair> GetValidators(T entity);
+    public abstract ValidationPairs GetValidators(T entity);
 
     @Override
     public ValidationResult convert(Object convertingValue, ObjectWrapper<T> convertedValue) {
@@ -45,13 +45,6 @@ public abstract class BaseEntityValidator<T extends IDTO> extends BaseObjectVali
             return result;
         }
 
-        for (ValidationPair pair : GetValidators(value)) {
-            result = pair.getValidationResult();
-            if (!result.isIsValid()) {
-                return result;
-            }
-        }
-
-        return result;
+        return GetValidators(value).getValidationResult();
     }
 }
