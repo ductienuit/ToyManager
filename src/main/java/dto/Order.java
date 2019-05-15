@@ -22,20 +22,20 @@ public class Order implements IDTO {
     private String customerAddress;
     private String customerName;
     private Timestamp orderDate;
-    private Timestamp modifiedDate;
+    private Timestamp lastModifiedDate;
     private Timestamp paymentDate;
     private BigInteger statusID;
     private BigDecimal totalPrice;
     private OrderStatus Status;
 
-    public Order(BigInteger id, String customerEmail, String customerPhoneNumber, String customerAddress, String customerName, Timestamp orderDate, Timestamp modifiedDate, Timestamp paymentDate, BigInteger statusID, BigDecimal totalPrice) {
+    public Order(BigInteger id, String customerEmail, String customerPhoneNumber, String customerAddress, String customerName, Timestamp orderDate, Timestamp lastModifiedDate, Timestamp paymentDate, BigInteger statusID, BigDecimal totalPrice) {
         this.id = id;
         this.customerEmail = customerEmail;
         this.customerPhoneNumber = customerPhoneNumber;
         this.customerAddress = customerAddress;
         this.customerName = customerName;
         this.orderDate = orderDate;
-        this.modifiedDate = modifiedDate;
+        this.lastModifiedDate = lastModifiedDate;
         this.paymentDate = paymentDate;
         this.statusID = statusID;
         this.totalPrice = totalPrice;
@@ -96,21 +96,21 @@ public class Order implements IDTO {
     }
 
     /**
-     * Get the value of modifiedDate
+     * Get the value of lastModifiedDate
      *
-     * @return the value of modifiedDate
+     * @return the value of lastModifiedDate
      */
-    public Timestamp getModifiedDate() {
-        return modifiedDate;
+    public Timestamp getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
     /**
-     * Set the value of modifiedDate
+     * Set the value of lastModifiedDate
      *
-     * @param modifiedDate new value of modifiedDate
+     * @param lastModifiedDate new value of lastModifiedDate
      */
-    public void setModifiedDate(Timestamp modifiedDate) {
-        this.modifiedDate = modifiedDate;
+    public void setLastModifiedDate(Timestamp lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     /**

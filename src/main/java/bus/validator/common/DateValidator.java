@@ -20,6 +20,10 @@ public class DateValidator extends BaseRangeValidator<Date> {
         this(Date.from(Instant.MIN), Date.from(Instant.MAX));
     }
 
+    public DateValidator(String displayName) {
+        this(displayName, Date.from(Instant.MIN), Date.from(Instant.MAX));
+    }
+
     public DateValidator(Date minValue, Date maxValue) {
         super(minValue, maxValue, Date.class);
     }
