@@ -5,6 +5,7 @@
  */
 package com.halo.thuchanh3.web;
 
+import com.halo.thuchanh3.model.NewsModel;
 import com.halo.thuchanh3.service.ICategoryService;
 import com.halo.thuchanh3.service.INewService;
 import java.io.IOException;
@@ -34,9 +35,19 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Long categoryId = 1L;
+        //request.setAttribute("news", newsService.findByCategoryId(categoryId));
+
         //request.setAttribute("categories", categoryService.findAll());
+        String title = "Bài viết 5";
+        String content = "Đồ chơi cho trẻ con, đẹp khỏe ....";
         Long categoryId = 1L;
-        request.setAttribute("news", newsService.findByCategoryId(categoryId));
+        NewsModel news = new NewsModel();
+        news.setTitle(title);
+        news.setContent(content);
+        news.setCategoryId(categoryId);
+        newsService.save(news);
+
         RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
         rd.forward(request, response);
     }

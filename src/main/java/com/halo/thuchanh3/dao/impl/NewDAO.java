@@ -6,15 +6,13 @@
 package com.halo.thuchanh3.dao.impl;
 
 import com.halo.thuchanh3.dao.INewDAO;
-import com.halo.thuchanh3.mapper.CategoryMapper;
 import com.halo.thuchanh3.mapper.NewMapper;
-import com.halo.thuchanh3.model.CategoryModel;
 import com.halo.thuchanh3.model.NewsModel;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,17 +33,8 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
     }
 
     @Override
-    public void update(String sql, Object... parameters) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Long insert(String sql, Object... parameters) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int count(String sql, Object... parameters) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Long save(NewsModel newsModel) {
+        String sql = "INSERT INTO news(title, content, categoryid) VALUES(?, ?, ?)";
+        return this.insert(sql, newsModel.getTitle(), newsModel.getContent(), newsModel.getCategoryId());
     }
 }

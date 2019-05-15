@@ -24,5 +24,12 @@ public class NewService implements INewService {
     public List<NewsModel> findByCategoryId(Long categoryId) {
         return news.findByCategoryId(categoryId);
     }
-    
+
+    @Override
+    public NewsModel save(NewsModel newsModel) {
+        Long id = news.save(newsModel);
+        System.out.print(id);
+        return null;
+    }
+
 }

@@ -52,8 +52,18 @@ public class NewsModel extends AbstractModel {
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
     private String title;
     private String thumbnail;
+    private String content;
+
     private Long categoryId;
     private int status;
     private Long roleId;

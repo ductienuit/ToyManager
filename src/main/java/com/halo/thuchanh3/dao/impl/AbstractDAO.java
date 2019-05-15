@@ -13,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -78,20 +80,108 @@ public abstract class AbstractDAO<T> implements GenericDAO<T> {
         for (int i = 0; i < parameters.length; i++) {
             Object parameter = parameters[i];
             int index = i + 1;
-            if (parameter instanceof Long) {
-                try {
+            try {
+                if (parameter instanceof Long) {
                     statement.setLong(index, (Long) parameter);
-                } catch (SQLException ex) {
-                    Logger.getLogger(AbstractDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (parameter instanceof String) {
-                try {
+                } else if (parameter instanceof String) {
                     statement.setString(index, (String) parameter);
+                } else if (parameter instanceof Integer) {
+                    statement.setInt(index, (Integer) parameter);
+                } else if (parameter instanceof Timestamp) {
+                    statement.setTimestamp(index, (Timestamp) parameter);
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AbstractDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    @Override
+    public void update(String sql, Object... parameters) {
+        Connection connection = this.getConnection();
+        PreparedStatement statement = null;
+        if (connection != null) {
+            try {
+                connection.setAutoCommit(false);
+                statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                //setParameter(statement, parameters);
+                setParameter(statement, parameters);
+
+                statement.executeUpdate();
+
+                connection.commit();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                try {
+                    connection.rollback();
+                } catch (SQLException ex1) {
+                    ex1.printStackTrace();
+                }
+            } finally {
+                try {
+                    //Close connection
+                    connection.close();
+                    if (statement != null) {
+                        statement.close();
+                    }
                 } catch (SQLException ex) {
-                    Logger.getLogger(AbstractDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
             }
         }
+    }
+
+    @Override
+    public Long insert(String sql, Object... parameters) {
+        Connection connection = this.getConnection();
+        PreparedStatement statement = null;
+        ResultSet results = null;
+        Long id = null;
+        if (connection != null) {
+            try {
+                connection.setAutoCommit(false);
+                statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                //setParameter(statement, parameters);
+                this.setParameter(statement, parameters);
+
+                statement.executeUpdate();
+
+                results = statement.getGeneratedKeys();
+                if (results.next()) {
+                    id = results.getLong(1);
+                }
+                connection.commit();
+                return id;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                try {
+                    connection.rollback();
+                } catch (SQLException ex1) {
+                    ex1.printStackTrace();
+                }
+                return null;
+            } finally {
+                try {
+                    //Close connection
+                    connection.close();
+                    if (statement != null) {
+                        statement.close();
+                    }
+                    if (results != null) {
+                        results.close();
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public int count(String sql, Object... parameters) {
+        return 0;
     }
 }
