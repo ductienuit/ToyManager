@@ -23,6 +23,7 @@ public class NewMapper implements RowMapper<NewsModel> {
         try {
             news.setId(rs.getLong("id"));
             news.setTitle(rs.getString("title"));
+            news.setContent(rs.getString("content"));
         } catch (SQLException e) {
             return null;
         }

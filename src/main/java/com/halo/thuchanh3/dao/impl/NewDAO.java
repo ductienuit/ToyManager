@@ -37,4 +37,11 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
         String sql = "INSERT INTO news(title, content, categoryid) VALUES(?, ?, ?)";
         return this.insert(sql, newsModel.getTitle(), newsModel.getContent(), newsModel.getCategoryId());
     }
+
+    @Override
+    public NewsModel findOne(Long id) {
+        String sql = "select * from news where id = ?";
+        List<NewsModel> news = query(sql, new NewMapper(), id);
+        return news.isEmpty() ? null : news.get(0);
+    }
 }

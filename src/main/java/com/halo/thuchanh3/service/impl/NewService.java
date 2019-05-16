@@ -18,18 +18,18 @@ import javax.inject.Inject;
 public class NewService implements INewService {
 
     @Inject
-    private INewDAO news;
+    private INewDAO newsDao;
 
     @Override
     public List<NewsModel> findByCategoryId(Long categoryId) {
-        return news.findByCategoryId(categoryId);
+        return newsDao.findByCategoryId(categoryId);
     }
 
     @Override
     public NewsModel save(NewsModel newsModel) {
-        Long id = news.save(newsModel);
+        Long id = newsDao.save(newsModel);
         System.out.print(id);
-        return null;
+        return newsDao.findOne(id);
     }
 
 }

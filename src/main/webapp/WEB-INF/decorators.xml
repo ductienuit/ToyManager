@@ -5,6 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <decorators defaultdir="/decorators">
+    <!--    api ko co giao dien-->
     <excludes>
         <pattern>/api*</pattern>
     </excludes>
