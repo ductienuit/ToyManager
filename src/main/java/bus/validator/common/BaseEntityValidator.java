@@ -22,7 +22,7 @@ public abstract class BaseEntityValidator<T extends IDTO> extends BaseObjectVali
         super(type);
     }
 
-    public abstract ValidationPairs GetValidators(T entity);
+    public abstract ValidationPairs GetValidators(final T entity);
 
     @Override
     public ValidationResult convert(Object convertingValue, ObjectWrapper<T> convertedValue) {
