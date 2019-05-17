@@ -44,4 +44,17 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
         List<NewsModel> news = query(sql, new NewMapper(), id);
         return news.isEmpty() ? null : news.get(0);
     }
+
+    @Override
+    public void update(NewsModel updateNews) {
+        StringBuilder sql = new StringBuilder("UPDATE news SET title=?, thumbnail=?,");
+        sql.append("shortdecriptions = ?,content = ?,categoryid = ?,");
+        sql.append("createddate = ?,createdby = ?,modifieddate = ?,modifiedby = ? WHERE id = ?");
+        String mysql = sql.toString();
+        this.update(mysql, updateNews.getTitle(), updateNews.getThumbnail(),
+                updateNews.getShortDescriptions(), updateNews.getContent(), updateNews.getCategoryId(),
+                updateNews.getCreatedDate(), updateNews.getCreatedBy(),
+                updateNews.getModifiedDate(), updateNews.getModifiedBy(),
+                updateNews.getId());
+    }
 }

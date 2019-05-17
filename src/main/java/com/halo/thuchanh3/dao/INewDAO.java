@@ -19,4 +19,6 @@ public interface INewDAO extends GenericDAO<NewsModel> {
     Long save(NewsModel newsModel);
 
     public NewsModel findOne(Long id);
+
+    public void update(NewsModel updateNews);
 }

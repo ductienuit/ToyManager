@@ -5,6 +5,7 @@
  */
 package com.halo.thuchanh3.admin.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.halo.thuchanh3.model.NewsModel;
 import com.halo.thuchanh3.service.INewService;
 import com.halo.thuchanh3.utils.HttpUtils;
@@ -32,23 +33,35 @@ public class NewAPI extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Request tieng viet
+        ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         NewsModel newsModel = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
         newsModel = newService.save(newsModel);
         System.out.print(newsModel);
+        mapper.writeValue(response.getOutputStream(), newsModel);
     }
 
     //Update database
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        //Request tieng viet
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        NewsModel updateModel = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
+        updateModel = newService.update(updateModel);
+        mapper.writeValue(response.getOutputStream(), updateModel);
     }
 
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    private void saveOrUpdate() {
 
     }
+//
+//    @Override
+//    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//
+//    }
 }

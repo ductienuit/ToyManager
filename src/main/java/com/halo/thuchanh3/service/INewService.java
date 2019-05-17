@@ -17,4 +17,6 @@ public interface INewService {
     List<NewsModel> findByCategoryId(Long categoryId);
 
     NewsModel save(NewsModel newsModel);
+
+    public NewsModel update(NewsModel newsModel);
 }
