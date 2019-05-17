@@ -27,8 +27,14 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
 
     @Override
     public Long save(NewsModel newsModel) {
-        String sql = "INSERT INTO news(title, content, categoryid) VALUES(?, ?, ?)";
-        return this.insert(sql, newsModel.getTitle(), newsModel.getContent(), newsModel.getCategoryId());
+        //String sql = "INSERT INTO news(title, content, categoryid) VALUES(?, ?, ?)";
+        StringBuilder sql = new StringBuilder("INSERT INTO news(title, content,");
+        sql.append("thumbnail,shortdecriptions, categoryid, createddate, createdby)");
+        sql.append(" VALUES(?,?, ?, ?,?,?,?)");
+        return this.insert(sql.toString(),
+                newsModel.getTitle(), newsModel.getContent(), newsModel.getThumbnail(),
+                newsModel.getShortDescriptions(), newsModel.getCategoryId(), newsModel.getCreatedDate(),
+                newsModel.getCreatedBy());
     }
 
     @Override
