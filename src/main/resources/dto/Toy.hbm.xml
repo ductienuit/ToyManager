@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 17, 2019 3:14:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="toymanager" name="dto.Toy" optimistic-lock="version" table="toy">
+    <id name="id" type="long">
+      <column name="Id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="dto.Category" fetch="select" name="category">
+      <column name="CategoryId" not-null="true"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column name="Name" not-null="true"/>
+    </property>
+    <property name="price" type="long">
+      <column name="Price" not-null="true" precision="10" scale="0"/>
+    </property>
+    <property name="gender" type="byte">
+      <column name="Gender" not-null="true"/>
+    </property>
+    <property name="imageUri" type="string">
+      <column name="ImageURI" not-null="true"/>
+    </property>
+    <property name="description" type="string">
+      <column name="Description" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="orderDetails" table="orderdetail">
+      <key>
+        <column name="ToyId" not-null="true"/>
+      </key>
+      <one-to-many class="dto.OrderDetail"/>
+    </set>
+  </class>
+</hibernate-mapping>

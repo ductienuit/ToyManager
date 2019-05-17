@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 17, 2019 3:14:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="toymanager" name="dto.Order" optimistic-lock="version" table="order">
+    <id name="id" type="long">
+      <column name="Id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="dto.OrderStatus" fetch="select" name="orderstatus">
+      <column name="OrderStatusId" not-null="true"/>
+    </many-to-one>
+    <property name="customerEmail" type="string">
+      <column name="CustomerEmail" not-null="true"/>
+    </property>
+    <property name="customerPhoneNumber" type="string">
+      <column length="10" name="CustomerPhoneNumber" not-null="true"/>
+    </property>
+    <property name="customerAddress" type="string">
+      <column name="CustomerAddress" not-null="true"/>
+    </property>
+    <property name="customerName" type="string">
+      <column name="CustomerName" not-null="true"/>
+    </property>
+    <property name="orderDate" type="timestamp">
+      <column length="26" name="OrderDate" not-null="true"/>
+    </property>
+    <property name="paymentDate" type="timestamp">
+      <column length="26" name="PaymentDate"/>
+    </property>
+    <property name="lastModifiedDate" type="timestamp">
+      <column length="26" name="LastModifiedDate" not-null="true"/>
+    </property>
+    <property name="totalPrice" type="long">
+      <column name="TotalPrice" not-null="true" precision="10" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="orderDetails" table="orderdetail">
+      <key>
+        <column name="OrderId" not-null="true"/>
+      </key>
+      <one-to-many class="dto.OrderDetail"/>
+    </set>
+  </class>
+</hibernate-mapping>
