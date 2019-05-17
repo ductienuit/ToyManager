@@ -21,6 +21,10 @@
         <servlet-name>NewAPI</servlet-name>
         <servlet-class>com.halo.thuchanh3.admin.api.NewAPI</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewsController</servlet-name>
+        <servlet-class>com.halo.thuchanh3.admin.NewsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/HomeController</url-pattern>
@@ -36,6 +40,10 @@
     <servlet-mapping>
         <servlet-name>NewAPI</servlet-name>
         <url-pattern>/NewAPI</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewsController</servlet-name>
+        <url-pattern>/NewsController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

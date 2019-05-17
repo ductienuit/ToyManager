@@ -62,4 +62,12 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
         String sql = "delete from news where id = ? ";
         this.update(sql, id);
     }
+
+    @Override
+    public List<NewsModel> findAll() {
+        List<NewsModel> results = new ArrayList<>();
+        String sqlQuery = "select * from news";
+        //open connection
+        return this.query(sqlQuery, new NewMapper());
+    }
 }

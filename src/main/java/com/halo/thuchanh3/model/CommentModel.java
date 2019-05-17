@@ -9,7 +9,7 @@ package com.halo.thuchanh3.model;
  *
  * @author DucTien
  */
-public class CommentModel extends AbstractModel {
+public class CommentModel extends AbstractModel<CommentModel> {
 
     private Long userId;
     private Long newsId;

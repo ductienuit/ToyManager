@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author DucTien
  */
-public class NewsModel extends AbstractModel {
+public class NewsModel extends AbstractModel<NewsModel> {
 
     public String getTitle() {
         return title;

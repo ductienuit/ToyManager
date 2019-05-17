@@ -21,4 +21,6 @@ public interface INewService {
     public NewsModel update(NewsModel newsModel);
 
     public void delete(long[] ids);
+
+    List<NewsModel> findAll();
 }
