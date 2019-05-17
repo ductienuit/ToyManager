@@ -68,6 +68,15 @@ public class NewsModel extends AbstractModel {
     public void setShortDescriptions(String shortDescriptions) {
         this.shortDescriptions = shortDescriptions;
     }
+    private long[] ids;
+
+    public long[] getIds() {
+        return ids;
+    }
+
+    public void setIds(long[] ids) {
+        this.ids = ids;
+    }
     private String title;
     private String thumbnail;
     private String content;
@@ -75,4 +84,5 @@ public class NewsModel extends AbstractModel {
     private Long categoryId;
     private int status;
     private Long roleId;
+
 }

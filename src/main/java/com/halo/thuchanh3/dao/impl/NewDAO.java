@@ -8,15 +8,8 @@ package com.halo.thuchanh3.dao.impl;
 import com.halo.thuchanh3.dao.INewDAO;
 import com.halo.thuchanh3.mapper.NewMapper;
 import com.halo.thuchanh3.model.NewsModel;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -56,5 +49,11 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
                 updateNews.getCreatedDate(), updateNews.getCreatedBy(),
                 updateNews.getModifiedDate(), updateNews.getModifiedBy(),
                 updateNews.getId());
+    }
+
+    @Override
+    public void delete(long id) {
+        String sql = "delete from news where id = ? ";
+        this.update(sql, id);
     }
 }

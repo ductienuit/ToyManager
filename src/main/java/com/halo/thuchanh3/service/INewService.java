@@ -19,4 +19,6 @@ public interface INewService {
     NewsModel save(NewsModel newsModel);
 
     public NewsModel update(NewsModel newsModel);
+
+    public void delete(long[] ids);
 }
