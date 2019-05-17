@@ -54,6 +54,16 @@ public class AbstractModel {
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
+
+    public long[] getIds() {
+        return ids;
+    }
+
+    public void setIds(long[] ids) {
+        this.ids = ids;
+    }
+    //Dùng để xóa một lúc nhiều id
+    private long[] ids;
     private Timestamp createdDate;
     private Timestamp modifiedDate;
     private String createdBy;
