@@ -17,27 +17,30 @@
     <div class="container">
         <div class="login-form">
             <div class="main-div">
-                <div class="panel">
-                    <h2>Đăng nhập</h2>
-                    <p>Please enter your email and password</p>
-                </div>
-                <form id="Login">
-
-                    <div class="form-group">
-
-
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Tên đăng nhập">
-
+                <form action="<c:url value='/dang-nhap?action=login'/>" id="formSubmit" method="post">
+                    <div class="panel">
+                        <h2>Đăng nhập</h2>
+                        <p>Please enter your email and password</p>
                     </div>
+                    <form id="Login">
 
-                    <div class="form-group">
+                        <div class="form-group">
 
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu">
 
-                    </div>
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Tên đăng nhập" name="userName">
 
-                    <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
 
+                        <div class="form-group">
+
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu" name="password">
+                        </div>
+                        <input type="hidden" value="login" name="userName"/>
+                        <input type="hidden" value="" id="maxPageItem" name="password"/>
+
+                        <button type="submit" class="btn btn-primary">Login</button>
+
+                    </form>
                 </form>
             </div>
             <p class="botto-text"> Designed by Toy Manager</p>

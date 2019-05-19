@@ -6,8 +6,11 @@
 package com.halo.thuchanh3.web;
 
 import com.halo.thuchanh3.model.NewsModel;
+import com.halo.thuchanh3.model.UserModel;
 import com.halo.thuchanh3.service.ICategoryService;
 import com.halo.thuchanh3.service.INewService;
+import com.halo.thuchanh3.service.IUserService;
+import com.halo.thuchanh3.utils.FormUtil;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -32,6 +35,9 @@ public class HomeController extends HttpServlet {
     @Inject
     private INewService newsService;
 
+    @Inject
+    private IUserService userService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,11 +57,19 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action != null && action.equals("login")) {
+            UserModel model = FormUtil.toModel(UserModel.class, request);
+            model = userService.findByUserNameAndPasswordAndStatus(model.getUserName(), model.getPassword(), 1);
+            if (model != null) {
+                if (model.getRole().getCode().equals("USER")) {
+                    response.sendRedirect(request.getContextPath() + "/trang-chu");
+                } else if (model.getRole().getCode().equals("ADMIN")) {
+                    response.sendRedirect(request.getContextPath() + "/admin-home");
+                }
+            }
+        } else {
+            response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login");
+        }
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
