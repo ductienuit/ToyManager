@@ -5,6 +5,8 @@
  */
 package com.halo.thuchanh3.utils;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Duy trì trạng thái đăng nhập
  *
@@ -12,24 +14,24 @@ package com.halo.thuchanh3.utils;
  */
 public class SessionUtil {
 
-    public static SessionUtil mInstance;
+    public static SessionUtil sessionUtil = null;
 
-    SessionUtil getInstance() {
-        if (mInstance != null) {
-            mInstance = new SessionUtil();
+    public static SessionUtil getInstance() {
+        if (sessionUtil == null) {
+            sessionUtil = new SessionUtil();
         }
-        return this.mInstance;
+        return sessionUtil;
     }
 
-    public void putValue() {
-
+    public void putValue(HttpServletRequest request, String key, Object value) {
+        request.getSession().setAttribute(key, value);
     }
 
-    public Object getValue() {
-        return null;
+    public Object getValue(HttpServletRequest request, String key) {
+        return request.getSession().getAttribute(key);
     }
 
-    public void removeValue() {
-
+    public void removeValue(HttpServletRequest request, String key) {
+        request.getSession().removeAttribute(key);
     }
 }

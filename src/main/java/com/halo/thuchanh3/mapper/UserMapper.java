@@ -7,11 +7,11 @@ package com.halo.thuchanh3.mapper;
 
 import com.halo.thuchanh3.model.RoleModel;
 import com.halo.thuchanh3.model.UserModel;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
  * @author DucTien
  */
 public class UserMapper implements RowMapper<UserModel> {
@@ -26,10 +26,14 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setPassword(rs.getString("password"));
             user.setStatus(rs.getInt("status"));
             user.setRoleId(rs.getLong("roleid"));
-            RoleModel role = new RoleModel();
-            role.setCode(rs.getString("code"));
-            role.setNameRole(rs.getString("name"));
-            user.setRole(role);
+            try {
+                RoleModel role = new RoleModel();
+                role.setCode(rs.getString("code"));
+                role.setNameRole(rs.getString("name"));
+                user.setRole(role);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
             return user;
         } catch (SQLException e) {
             return null;

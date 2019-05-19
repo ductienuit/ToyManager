@@ -5,46 +5,46 @@
 --%>
 
 <%@include file="/common/taglib.jsp" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Đăng nhập</title>
-    </style>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Đăng nhập</title>
 </head>
 <body>
-    <div class="container">
-        <div class="login-form">
-            <div class="main-div">
-                <form action="<c:url value='/dang-nhap?action=login'/>" id="formSubmit" method="post">
-                    <div class="panel">
-                        <h2>Đăng nhập</h2>
-                        <p>Please enter your email and password</p>
+<div class="container">
+    <div class="login-form">
+        <div class="main-div">
+
+            <form action="<c:url value='/dang-nhap?action=login'/>" id="formSubmit" method="post">
+                <div class="panel">
+                    <h2>Đăng nhập</h2>
+                    <p>Please enter your email and password</p>
+                </div>
+                <div class="alert alert-danger" role="alert">
+                    Login fail
+                </div>
+                <form id="Login">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Tên đăng nhập"
+                               name="userName">
                     </div>
-                    <form id="Login">
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu"
+                               name="password">
+                    </div>
+                    <input type="hidden" value="login" name="userName"/>
+                    <input type="hidden" value="" id="maxPageItem" name="password"/>
 
-                        <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Login</button>
 
-
-                            <input type="text" class="form-control" id="inputEmail" placeholder="Tên đăng nhập" name="userName">
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu" name="password">
-                        </div>
-                        <input type="hidden" value="login" name="userName"/>
-                        <input type="hidden" value="" id="maxPageItem" name="password"/>
-
-                        <button type="submit" class="btn btn-primary">Login</button>
-
-                    </form>
                 </form>
-            </div>
-            <p class="botto-text"> Designed by Toy Manager</p>
+            </form>
         </div>
+        <p class="botto-text"> Designed by Toy Manager</p>
     </div>
+</div>
 </body>
 </html>

@@ -7,32 +7,30 @@ package com.halo.thuchanh3.dao.impl;
 
 import com.halo.thuchanh3.dao.GenericDAO;
 import com.halo.thuchanh3.mapper.RowMapper;
-import com.halo.thuchanh3.model.CategoryModel;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.sql.Types;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author DucTien
  */
 public abstract class AbstractDAO<T> implements GenericDAO<T> {
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
 
     public Connection getConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/newservlet12month2018";
-            String user = "root";
-            String paswd = "Ductien1997";
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String url = "jdbc:mysql://localhost:3306/newservlet12month2018";
+//            String user = "root";
+//            String paswd = "Ductien1997";
+            Class.forName(resourceBundle.getString("driverName"));
+            String url = resourceBundle.getString("url");
+            String user = resourceBundle.getString("user");
+            String paswd = resourceBundle.getString("password");
             Connection con = DriverManager.getConnection(url, user, paswd);
             return con;
         } catch (ClassNotFoundException | SQLException ex) {
