@@ -54,7 +54,12 @@ public class NewService implements INewService {
     }
 
     @Override
-    public List<NewsModel> findAll() {
-        return newsDao.findAll();
+    public List<NewsModel> findAll(Integer offset, Integer limit, String sortName, String sortBy) {
+        return newsDao.findAll(offset, limit, sortName, sortBy);
+    }
+
+    @Override
+    public int getTotalItem() {
+        return newsDao.getTotalItem();
     }
 }

@@ -22,5 +22,8 @@ public interface INewService {
 
     public void delete(long[] ids);
 
-    List<NewsModel> findAll();
+    List<NewsModel> findAll(Integer offset, Integer limit, String sortName, String sortBy);
+
+    int getTotalItem();
+
 }

@@ -185,6 +185,37 @@ public abstract class AbstractDAO<T> implements GenericDAO<T> {
 
     @Override
     public int count(String sql, Object... parameters) {
-        return 0;
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        int count = 0;
+        if (connection != null) {
+            try {
+                statement = connection.prepareStatement(sql);
+                setParameter(statement, parameters);
+                rs = statement.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt(1); //Lấy giá trị đầu tiên của bảng, vì câu SQL Count
+                }
+                return count;
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                return count;
+            } finally {
+                try {
+                    //Close connection
+                    connection.close();
+                    if (statement != null) {
+                        statement.close();
+                    }
+                    if (rs != null) {
+                        rs.close();
+                    }
+                } catch (SQLException ex) {
+                    return count;
+                }
+            }
+        }
+        return count;
     }
 }

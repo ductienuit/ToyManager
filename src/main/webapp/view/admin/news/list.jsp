@@ -93,13 +93,14 @@
         </div>
         <!-- /.main-content -->
         <script>
-            var totalPages = 5;
-            var currentPage = 1;
-            var limit = 2;
+            var totalPages = ${model.totalPage};
+            var currentPage = ${model.page};
+            var visiblePages = 3; //Số phân trang
+            var limit = 4;
             $(function () {
                 window.pagObj = $('#pagination').twbsPagination({
                     totalPages: totalPages,
-                    visiblePages: 10,
+                    visiblePages: visiblePages,
                     startPage: currentPage,
                     onPageClick: function (event, page) {
                         if (currentPage != page) {

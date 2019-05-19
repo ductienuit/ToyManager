@@ -24,5 +24,7 @@ public interface INewDAO extends GenericDAO<NewsModel> {
 
     public void delete(long id);
 
-    List<NewsModel> findAll();
+    List<NewsModel> findAll(Integer offset, Integer limit, String sortName, String sortBy);
+
+    public int getTotalItem();
 }

@@ -64,10 +64,23 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
     }
 
     @Override
-    public List<NewsModel> findAll() {
-        List<NewsModel> results = new ArrayList<>();
-        String sqlQuery = "select * from news";
+    public List<NewsModel> findAll(Integer offset, Integer limit, String sortName, String sortBy) {
+        //String sqlQuery = "select * from news limit ?,?";
+        StringBuilder sqlQuery = new StringBuilder("select * from news");
+        if (sortName != null && sortBy != null) {
+            sqlQuery.append(" order by ").append(sortName).append(" ").append(sortBy).append("");
+        }
+        if (offset != null && limit != null) {
+            sqlQuery.append(" limit ").append(offset).append(",").append(limit);
+        }
         //open connection
-        return this.query(sqlQuery, new NewMapper());
+        return this.query(sqlQuery.toString(), new NewMapper(), offset, limit);
+    }
+
+    @Override
+    public int getTotalItem() {
+        String sqlQuery = "select count(*) from news";
+        //open connection
+        return this.count(sqlQuery);
     }
 }
