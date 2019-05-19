@@ -7,7 +7,10 @@ package com.halo.thuchanh3.admin;
 
 import com.halo.thuchanh3.constant.SystemConstant;
 import com.halo.thuchanh3.model.NewsModel;
+import com.halo.thuchanh3.paging.PageRequest;
+import com.halo.thuchanh3.paging.Pageble;
 import com.halo.thuchanh3.service.INewService;
+import com.halo.thuchanh3.sort.Sorter;
 import com.halo.thuchanh3.utils.FormUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,10 +38,10 @@ public class NewsController extends HttpServlet {
         //Thay vì dùng request.getParameter từng giá trị thì mình dùng
         //FormUtil để mapping với model của mình
         NewsModel model = FormUtil.toModel(NewsModel.class, request);
+        Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
+        Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
 
-        Integer offset = (model.getPage() - 1) * model.getMaxPageItem();
-//        model.setLis
-        model.setListResult(newsService.findAll(offset, model.getMaxPageItem(), model.getSortName(), model.getSortBy()));
+        model.setListResult(newsService.findAll(pageble));
         model.setTotalItem(newsService.getTotalItem());
         model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
         request.setAttribute(SystemConstant.MODEL, model);

@@ -7,6 +7,7 @@ package com.halo.thuchanh3.service.impl;
 
 import com.halo.thuchanh3.dao.INewDAO;
 import com.halo.thuchanh3.model.NewsModel;
+import com.halo.thuchanh3.paging.Pageble;
 import com.halo.thuchanh3.service.INewService;
 import java.sql.Timestamp;
 import java.util.List;
@@ -54,8 +55,8 @@ public class NewService implements INewService {
     }
 
     @Override
-    public List<NewsModel> findAll(Integer offset, Integer limit, String sortName, String sortBy) {
-        return newsDao.findAll(offset, limit, sortName, sortBy);
+    public List<NewsModel> findAll(Pageble page) {
+        return newsDao.findAll(page);
     }
 
     @Override

@@ -8,6 +8,7 @@ package com.halo.thuchanh3.dao.impl;
 import com.halo.thuchanh3.dao.INewDAO;
 import com.halo.thuchanh3.mapper.NewMapper;
 import com.halo.thuchanh3.model.NewsModel;
+import com.halo.thuchanh3.paging.Pageble;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,17 +65,17 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
     }
 
     @Override
-    public List<NewsModel> findAll(Integer offset, Integer limit, String sortName, String sortBy) {
+    public List<NewsModel> findAll(Pageble page) {
         //String sqlQuery = "select * from news limit ?,?";
         StringBuilder sqlQuery = new StringBuilder("select * from news");
-        if (sortName != null && sortBy != null) {
-            sqlQuery.append(" order by ").append(sortName).append(" ").append(sortBy).append("");
+        if (page.getSort() != null) {
+            sqlQuery.append(" order by ").append(page.getSort().getSortName()).append(" ").append(page.getSort().getSortBy()).append("");
         }
-        if (offset != null && limit != null) {
-            sqlQuery.append(" limit ").append(offset).append(",").append(limit);
+        if (page.getOffset() != null && page.getLimit() != null) {
+            sqlQuery.append(" limit ").append(page.getOffset()).append(",").append(page.getLimit());
         }
         //open connection
-        return this.query(sqlQuery.toString(), new NewMapper(), offset, limit);
+        return this.query(sqlQuery.toString(), new NewMapper());
     }
 
     @Override
