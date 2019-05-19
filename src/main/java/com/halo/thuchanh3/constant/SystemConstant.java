@@ -6,10 +6,11 @@
 package com.halo.thuchanh3.constant;
 
 /**
- *
  * @author DucTien
  */
 public class SystemConstant {
 
     public static String MODEL = "model";
+    public static String ADMIN = "ADMIN";
+    public static String USER = "USER";
 }

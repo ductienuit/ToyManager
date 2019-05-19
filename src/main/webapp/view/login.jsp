@@ -22,9 +22,12 @@
                     <h2>Đăng nhập</h2>
                     <p>Please enter your email and password</p>
                 </div>
-                <div class="alert alert-danger" role="alert">
-                    Login fail
-                </div>
+                <c:if test="${not empty message}">
+                    <div class="alert alert-${alert}" role="alert">
+                            ${message}
+                    </div>
+                </c:if>
+
                 <form id="Login">
                     <div class="form-group">
 
