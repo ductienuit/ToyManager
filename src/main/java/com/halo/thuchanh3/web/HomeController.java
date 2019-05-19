@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * người dùng sẽ nhận (url nào) 2. Trả kết qu cho người dùng trong single pages
  * như kiểm tra tính đúng dữ liệu
  */
-@WebServlet(urlPatterns = {"/trang-chu"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
 public class HomeController extends HttpServlet {
 
     @Inject
@@ -35,21 +35,17 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Long categoryId = 1L;
-        //request.setAttribute("news", newsService.findByCategoryId(categoryId));
-
-        //request.setAttribute("categories", categoryService.findAll());
-        String title = "Bài viết 5";
-        String content = "Đồ chơi cho trẻ con, đẹp khỏe ....";
-        Long categoryId = 1L;
-        NewsModel news = new NewsModel();
-        news.setTitle(title);
-        news.setContent(content);
-        news.setCategoryId(categoryId);
-        newsService.save(news);
-
-        RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
-        rd.forward(request, response);
+        String action = request.getParameter("action");
+        if (action != null && action.equals("login")) {
+            RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
+            rd.forward(request, response);
+        } else if (action != null && action.equals("logout")) {
+            RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
+            rd.forward(request, response);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
+            rd.forward(request, response);
+        }
     }
 
     @Override
