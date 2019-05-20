@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
  * người dùng sẽ nhận (url nào) 2. Trả kết qu cho người dùng trong single pages
  * như kiểm tra tính đúng dữ liệu
  */
-@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat", "/toy"})
 public class HomeController extends HttpServlet {
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
     @Inject
@@ -43,6 +43,12 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
+
+//        TEST
+//        RequestDispatcher xxx = request.getRequestDispatcher("/view/toy/home.jsp");
+//        xxx.forward(request, response);
+
+
         if (action != null && action.equals("login")) {
             String message = request.getParameter("message");
             String alert = request.getParameter("alert");
