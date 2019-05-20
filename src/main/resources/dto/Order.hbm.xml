@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 17, 2019 3:14:44 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class catalog="toymanager" name="dto.Order" optimistic-lock="version" table="order">
     <id name="id" type="long">
@@ -9,6 +9,9 @@
     </id>
     <many-to-one class="dto.OrderStatus" fetch="select" name="orderstatus">
       <column name="OrderStatusId" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="dto.User" fetch="select" name="user">
+      <column name="UserId" not-null="true"/>
     </many-to-one>
     <property name="customerEmail" type="string">
       <column name="CustomerEmail" not-null="true"/>

@@ -1,8 +1,6 @@
 package dto;
-// Generated May 17, 2019 3:14:43 PM by Hibernate Tools 4.3.1
+// Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
 
-import dto.common.IDTO;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,9 +22,10 @@ import javax.persistence.TemporalType;
 @Table(name = "order",
        catalog = "toymanager"
 )
-public class Order implements Serializable, IDTO {
+public class Order implements java.io.Serializable {
     private long id;
     private OrderStatus orderstatus;
+    private User user;
     private String customerEmail;
     private String customerPhoneNumber;
     private String customerAddress;
@@ -43,6 +42,7 @@ public class Order implements Serializable, IDTO {
 
     public Order(long id,
                  OrderStatus orderstatus,
+                 User user,
                  String customerEmail,
                  String customerPhoneNumber,
                  String customerAddress,
@@ -53,6 +53,7 @@ public class Order implements Serializable, IDTO {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
         this.orderstatus = orderstatus;
+        this.user = user;
         this.customerEmail = customerEmail;
         this.customerPhoneNumber = customerPhoneNumber;
         this.customerAddress = customerAddress;
@@ -64,6 +65,7 @@ public class Order implements Serializable, IDTO {
 
     public Order(long id,
                  OrderStatus orderstatus,
+                 User user,
                  String customerEmail,
                  String customerPhoneNumber,
                  String customerAddress,
@@ -72,10 +74,11 @@ public class Order implements Serializable, IDTO {
                  Date paymentDate,
                  Date lastModifiedDate,
                  long totalPrice,
-                 Set<OrderDetail> orderDetails) {
+                 Set<OrderDetail> orderdetails) {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
         this.orderstatus = orderstatus;
+        this.user = user;
         this.customerEmail = customerEmail;
         this.customerPhoneNumber = customerPhoneNumber;
         this.customerAddress = customerAddress;
@@ -84,7 +87,7 @@ public class Order implements Serializable, IDTO {
         this.paymentDate = paymentDate;
         this.lastModifiedDate = lastModifiedDate;
         this.totalPrice = totalPrice;
-        this.orderDetails = orderDetails;
+        this.orderDetails = orderdetails;
     }
 
     @Id
@@ -108,6 +111,17 @@ public class Order implements Serializable, IDTO {
 
     public void setOrderstatus(OrderStatus orderstatus) {
         this.orderstatus = orderstatus;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UserId",
+                nullable = false)
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Column(name = "CustomerEmail",

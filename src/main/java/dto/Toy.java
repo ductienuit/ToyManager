@@ -1,9 +1,6 @@
 package dto;
-// Generated May 17, 2019 3:14:43 PM by Hibernate Tools 4.3.1
+// Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
 
-import dto.common.IDTO;
-import dto.common.IName;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -22,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "toy",
        catalog = "toymanager"
 )
-public class Toy implements Serializable, IDTO, IName {
+public class Toy implements java.io.Serializable {
     private long id;
     private Category category;
     private String name;
@@ -60,7 +57,7 @@ public class Toy implements Serializable, IDTO, IName {
                byte gender,
                String imageUri,
                String description,
-               Set<OrderDetail> orderDetails) {
+               Set<OrderDetail> orderdetails) {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
         this.category = category;
@@ -69,7 +66,7 @@ public class Toy implements Serializable, IDTO, IName {
         this.gender = gender;
         this.imageUri = imageUri;
         this.description = description;
-        this.orderDetails = orderDetails;
+        this.orderDetails = orderdetails;
     }
 
     @Id

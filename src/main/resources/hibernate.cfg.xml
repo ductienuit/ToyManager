@@ -46,11 +46,14 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/toymanager?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">tJVNX2662</property>
+    <mapping resource="dto/Role.hbm.xml"/>
     <mapping resource="dto/Category.hbm.xml"/>
     <mapping resource="dto/Toy.hbm.xml"/>
     <mapping resource="dto/Order.hbm.xml"/>
     <mapping resource="dto/Orderstatus.hbm.xml"/>
+    <mapping resource="dto/Userstatus.hbm.xml"/>
     <mapping resource="dto/Parameter.hbm.xml"/>
+    <mapping resource="dto/User.hbm.xml"/>
     <mapping resource="dto/Orderdetail.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
