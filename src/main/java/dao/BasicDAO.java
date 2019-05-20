@@ -86,12 +86,20 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
 
     @Override
     public Iterable<T> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        final ObjectWrapper<Iterable<T>> listWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            listWrapper.setObject(session
+                .createCriteria(type)
+                .list());
+        });
+
+        return listWrapper.getObject();
     }
 
     @Override
     public boolean hasAny() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return count() > 0;
     }
 
     @Override
