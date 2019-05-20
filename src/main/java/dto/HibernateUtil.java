@@ -19,26 +19,36 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * @author CMQ
  */
 public class HibernateUtil {
-    private static final SessionFactory SESSION_FACTORY;
+    private static SessionFactory SESSION_FACTORY;
 
     static {
-        try {
-            // configuration settings from hibernate.cfg.xml
-            Configuration configuration = new Configuration().configure();
-            StandardServiceRegistryBuilder serviceRegistryBuilder
-                                           = new StandardServiceRegistryBuilder();
-            serviceRegistryBuilder.applySettings(configuration.getProperties());
-            ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
 
-            SESSION_FACTORY = configuration.buildSessionFactory(serviceRegistry);
-        } catch (Throwable ex) {
-            // Log the exception.
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
     }
 
     public static SessionFactory getSESSION_FACTORY() {
+        if (SESSION_FACTORY == null) {
+            try {
+                // configuration settings from hibernate.cfg.xml
+                Configuration configuration = new Configuration().configure();
+                StandardServiceRegistryBuilder serviceRegistryBuilder
+                                               = new StandardServiceRegistryBuilder();
+                serviceRegistryBuilder
+                .applySettings(configuration
+                .getProperties());
+
+                ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
+
+                SESSION_FACTORY = configuration.buildSessionFactory(
+                serviceRegistry);
+            } catch (Throwable ex) {
+                // Log the exception.
+                System.err.println("Initial SessionFactory creation failed."
+                                   + ex);
+                throw new ExceptionInInitializerError(ex);
+            }
+        }
+
         return SESSION_FACTORY;
+
     }
 }
