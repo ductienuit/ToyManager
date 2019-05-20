@@ -20,9 +20,9 @@ import utils.ObjectWrapper;
  * @param <T>
  */
 public class BasicDAO<T extends IDTO> implements IDAO<T> {
-    private final Class type;
+    private final Class<T> type;
 
-    public BasicDAO(Class type) {
+    public BasicDAO(Class<T> type) {
         this.type = type;
     }
 
@@ -31,7 +31,7 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
      *
      * @return the value of type
      */
-    public Class getType() {
+    public Class<T> getType() {
         return type;
     }
 
