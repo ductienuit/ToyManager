@@ -1,6 +1,8 @@
 package dto;
 // Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
 
+import dto.common.IDTO;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +24,7 @@ import javax.persistence.TemporalType;
 @Table(name = "user",
        catalog = "toymanager"
 )
-public class User implements java.io.Serializable {
+public class User implements Serializable, IDTO {
     private long id;
     private Role role;
     private UserStatus userStatus;

@@ -1,6 +1,9 @@
 package dto;
 // Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
 
+import dto.common.IDTO;
+import dto.common.IName;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -17,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "category",
        catalog = "toymanager"
 )
-public class Category implements java.io.Serializable {
+public class Category implements Serializable, IDTO, IName {
     private long id;
     private String name;
     private Set<Toy> toys;

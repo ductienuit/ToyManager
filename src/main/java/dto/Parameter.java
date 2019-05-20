@@ -1,6 +1,8 @@
 package dto;
 // Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
 
+import dto.common.IDTO;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "parameter",
        catalog = "toymanager"
 )
-public class Parameter implements java.io.Serializable {
+public class Parameter implements Serializable, IDTO {
     private long id;
     private String shopName;
     private String shopAddress;
