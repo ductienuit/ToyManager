@@ -12,8 +12,12 @@ import bus.validator.common.StringValidator;
  * @author CMQ
  */
 public class OrderStatusNameValidator extends StringValidator {
-
     public OrderStatusNameValidator() {
-        super("Tên trạng thái", 256, LimitComparisonType.LessThanOrEqual, false, false, false);
+        super("Tên trạng thái",
+              255,
+              LimitComparisonType.LessThanOrEqual,
+              false,
+              false,
+              false);
     }
 }

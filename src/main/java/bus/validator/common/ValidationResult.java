@@ -10,9 +10,8 @@ package bus.validator.common;
  * @author CMQ
  */
 public class ValidationResult {
-
-    public static final ValidationResult VALID_RESULT = new ValidationResult(true);
-
+    public static final ValidationResult VALID_RESULT = new ValidationResult(
+        true);
     private Boolean isValid;
     private Object errorObject;
     private String message;
@@ -21,12 +20,15 @@ public class ValidationResult {
         this.isValid = isValid;
     }
 
-    public ValidationResult(Boolean isValid, String message) {
+    public ValidationResult(Boolean isValid,
+                            String message) {
         this.isValid = isValid;
         this.message = message;
     }
 
-    public ValidationResult(Boolean isValid, String message, Object errorObject) {
+    public ValidationResult(Boolean isValid,
+                            String message,
+                            Object errorObject) {
         this.isValid = isValid;
         this.message = message;
         this.errorObject = errorObject;
@@ -85,5 +87,4 @@ public class ValidationResult {
     public void setIsValid(Boolean isValid) {
         this.isValid = isValid;
     }
-
 }

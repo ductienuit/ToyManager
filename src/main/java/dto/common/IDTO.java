@@ -12,8 +12,7 @@ import java.math.BigInteger;
  * @author CMQ
  */
 public interface IDTO {
+    long getId();
 
-    BigInteger getId();
-
-    void setId(BigInteger id);
+    void setId(long id);
 }

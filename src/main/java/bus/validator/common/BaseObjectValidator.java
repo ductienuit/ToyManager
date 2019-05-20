@@ -5,16 +5,18 @@
  */
 package bus.validator.common;
 
+import utils.ObjectWrapper;
+
 /**
  *
  * @author CMQ
  * @param <T>
  */
 public abstract class BaseObjectValidator<T> extends NonNullValidator {
+    private final Class<T> type;
 
-    private Class<T> type;
-
-    public BaseObjectValidator(String displayName, Class<T> type) {
+    public BaseObjectValidator(String displayName,
+                               Class<T> type) {
         super(displayName);
         this.type = type;
     }
@@ -33,24 +35,27 @@ public abstract class BaseObjectValidator<T> extends NonNullValidator {
         return type;
     }
 
-    public abstract ValidationResult convert(Object convertingValue, ObjectWrapper<T> convertedValue);
+    public abstract ValidationResult convert(Object convertingValue,
+                                             ObjectWrapper<T> convertedValue);
 
     @Override
     public ValidationResult validateObject(Object value) {
         ValidationResult result = super.validateObject(value);
 
         if (result.isIsValid()) {
-            if (getType().isInstance(value)) {
+            if (getType()
+                .isInstance(value)) {
                 return validateObject((T) value);
             }
 
             ObjectWrapper<T> convertedValue = new ObjectWrapper<>();
-            result = convert(value, convertedValue);
+            result = convert(value,
+                             convertedValue);
 
             if (convertedValue.getObject() != null) {
                 return result.isIsValid()
-                        ? validateObject(convertedValue.getObject())
-                        : result;
+                       ? validateObject(convertedValue.getObject())
+                       : result;
             }
         }
 

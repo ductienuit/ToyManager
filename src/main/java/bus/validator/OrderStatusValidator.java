@@ -14,19 +14,20 @@ import dto.OrderStatus;
  * @author CMQ
  */
 public class OrderStatusValidator extends BaseEntityValidator<OrderStatus> {
-
     public OrderStatusValidator() {
-        super("Trạng thái đơn hàng", OrderStatus.class);
+        super("Trạng thái đơn hàng",
+              OrderStatus.class);
     }
 
     @Override
     public ValidationPairs GetValidators(final OrderStatus entity) {
         return new ValidationPairs() {
             {
-                add(new OrderStatusIdValidator(), entity.getId());
-                add(new OrderStatusNameValidator(), entity.getName());
+                add(new OrderStatusIdValidator(),
+                    entity.getId());
+                add(new OrderStatusNameValidator(),
+                    entity.getName());
             }
         };
     }
-
 }

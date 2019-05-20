@@ -14,20 +14,22 @@ import dto.OrderDetail;
  * @author CMQ
  */
 public class OrderDetailValidator extends BaseEntityValidator<OrderDetail> {
-
     public OrderDetailValidator() {
-        super("Chi tiết đơn hàng", OrderDetail.class);
+        super("Chi tiết đơn hàng",
+              OrderDetail.class);
     }
 
     @Override
     public ValidationPairs GetValidators(final OrderDetail entity) {
         return new ValidationPairs() {
             {
-                add(new OrderDetailIdValidator(), entity.getId());
-                add(new OrderDetailQuantityValidator(), entity.getQuantity());
-                add(new OrderDetailTotalPriceValidator(), entity.getTotalPrice());
+                add(new OrderDetailIdValidator(),
+                    entity.getId());
+                add(new OrderDetailQuantityValidator(),
+                    entity.getQuantity());
+                add(new OrderDetailTotalPriceValidator(),
+                    entity.getTotalPrice());
             }
         };
     }
-
 }

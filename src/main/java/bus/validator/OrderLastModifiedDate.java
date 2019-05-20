@@ -12,7 +12,6 @@ import bus.validator.common.DateValidator;
  * @author CMQ
  */
 public class OrderLastModifiedDate extends DateValidator {
-
     public OrderLastModifiedDate() {
         super("Ngày chỉnh sửa cuối");
     }

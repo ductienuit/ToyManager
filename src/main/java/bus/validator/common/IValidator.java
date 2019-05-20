@@ -10,6 +10,5 @@ package bus.validator.common;
  * @author CMQ
  */
 public interface IValidator {
-
     ValidationResult validateObject(Object value);
 }

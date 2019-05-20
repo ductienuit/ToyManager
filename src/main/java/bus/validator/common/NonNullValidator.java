@@ -13,7 +13,6 @@ import bus.validator.common.ValidationResult;
  * @author CMQ
  */
 public class NonNullValidator extends BaseValidator {
-
     public NonNullValidator() {
         super();
     }
@@ -26,12 +25,11 @@ public class NonNullValidator extends BaseValidator {
     public ValidationResult validateObject(Object value) {
         if (value == null) {
             return new ValidationResult(
-                    false,
-                    getDisplayName() + " không tồn tại."
+                false,
+                getDisplayName() + " không tồn tại."
             );
         }
 
         return ValidationResult.VALID_RESULT;
     }
-
 }

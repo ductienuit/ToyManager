@@ -5,15 +5,14 @@
  */
 package bus.validator;
 
-import bus.validator.common.PhoneValidator;
+import bus.validator.common.StringValidator;
 
 /**
  *
  * @author CMQ
  */
-public class OrderCustomerPhoneValidator extends PhoneValidator {
-
-    public OrderCustomerPhoneValidator() {
-        super("Số điện thoại khách hàng");
+public class UserFullNameValidator extends StringValidator {
+    public UserFullNameValidator() {
+        super("Tên khách hàng");
     }
 }

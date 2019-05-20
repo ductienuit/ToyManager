@@ -12,9 +12,7 @@ import bus.validator.common.DateValidator;
  * @author CMQ
  */
 public class OrderDateValidator extends DateValidator {
-
     public OrderDateValidator() {
         super("Ngày đặt hàng");
     }
-
 }

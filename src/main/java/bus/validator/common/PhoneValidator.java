@@ -12,13 +12,17 @@ import bus.validator.common.ValidationResult;
  * @author CMQ
  */
 public class PhoneValidator extends StringValidator {
-
     public PhoneValidator() {
         this("Số điện thoại");
     }
 
     public PhoneValidator(String displayName) {
-        super(displayName, 10, LimitComparisonType.Equal, false, false, false);
+        super(displayName,
+              10,
+              LimitComparisonType.Equal,
+              false,
+              false,
+              false);
     }
 
     @Override
@@ -30,12 +34,11 @@ public class PhoneValidator extends StringValidator {
                 Integer phone = Integer.parseUnsignedInt(value);
             } catch (NumberFormatException e) {
                 return new ValidationResult(
-                        false,
-                        getDisplayName() + " chỉ được chứa kí tự số.");
+                    false,
+                    getDisplayName() + " chỉ được chứa kí tự số.");
             }
         }
 
         return result;
     }
-
 }
