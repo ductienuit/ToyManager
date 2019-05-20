@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bus.validator.common;
+package utils;
 
 /**
  *
@@ -12,6 +12,13 @@ package bus.validator.common;
  */
 public class ObjectWrapper<T> {
     private T object;
+
+    public ObjectWrapper(T object) {
+        this.object = object;
+    }
+
+    public ObjectWrapper() {
+    }
 
     /**
      * Get the value of object

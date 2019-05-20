@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dto;
+package utils;
 
+import dto.Category;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -39,7 +38,7 @@ public class HibernateUtil {
 
                 SESSION_FACTORY = configuration.buildSessionFactory(
                     serviceRegistry);
-            } catch (Throwable ex) {
+            } catch (HibernateException ex) {
                 // Log the exception.
                 System.err.println("Initial SessionFactory creation failed."
                                        + ex);
@@ -50,28 +49,27 @@ public class HibernateUtil {
         return SESSION_FACTORY;
     }
 
-    public static void main(String[] args) {
+    public static void beginTransaction(ISession action) {
+        if (action == null) {
+            return;
+        }
+
         Session session = getSESSION_FACTORY()
             .openSession();
 
-        Transaction tx = null;
+        Transaction transaction = null;
 
         try {
-            tx = session.beginTransaction();
-            Category c = new Category();
-            c.setName("Category 1");
-            session.save(c);
-            tx.commit();
-
-            System.out.println("Completed!");
+            transaction = session.beginTransaction();
+            action.onTransactionBegan(session,
+                                      transaction);
         } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
+            if (transaction != null) {
+                transaction.rollback();
             }
-            System.out.println("Error!");
+            e.printStackTrace();
         } finally {
             session.close();
         }
-
     }
 }

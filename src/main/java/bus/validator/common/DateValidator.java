@@ -5,6 +5,7 @@
  */
 package bus.validator.common;
 
+import utils.ObjectWrapper;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.time.Instant;

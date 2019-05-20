@@ -5,13 +5,15 @@
  */
 package bus.validator.common;
 
+import utils.ObjectWrapper;
+
 /**
  *
  * @author CMQ
  * @param <T>
  */
 public abstract class BaseObjectValidator<T> extends NonNullValidator {
-    private Class<T> type;
+    private final Class<T> type;
 
     public BaseObjectValidator(String displayName,
                                Class<T> type) {

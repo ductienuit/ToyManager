@@ -5,6 +5,7 @@
  */
 package bus.validator.common;
 
+import utils.ObjectWrapper;
 import dto.common.IDTO;
 
 /**
