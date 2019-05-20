@@ -46,7 +46,7 @@ public class User implements Serializable, IDTO {
 
     public User(long id,
                 Role role,
-                UserStatus userstatus,
+                UserStatus userStatus,
                 String username,
                 String password,
                 String fullname,
@@ -59,7 +59,7 @@ public class User implements Serializable, IDTO {
         this.orders = new HashSet<>(0);
         this.id = id;
         this.role = role;
-        this.userStatus = userstatus;
+        this.userStatus = userStatus;
         this.username = username;
         this.password = password;
         this.fullName = fullname;
@@ -73,7 +73,7 @@ public class User implements Serializable, IDTO {
 
     public User(long id,
                 Role role,
-                UserStatus userstatus,
+                UserStatus userStatus,
                 String username,
                 String password,
                 String fullname,
@@ -87,7 +87,7 @@ public class User implements Serializable, IDTO {
         this.orders = new HashSet<>(0);
         this.id = id;
         this.role = role;
-        this.userStatus = userstatus;
+        this.userStatus = userStatus;
         this.username = username;
         this.password = password;
         this.fullName = fullname;

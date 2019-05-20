@@ -40,14 +40,14 @@ public class Order implements Serializable, IDTO {
     }
 
     public Order(long id,
-                 OrderStatus orderstatus,
+                 OrderStatus orderStatus,
                  User user,
                  Date orderDate,
                  Date lastModifiedDate,
                  long totalPrice) {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
-        this.orderStatus = orderstatus;
+        this.orderStatus = orderStatus;
         this.user = user;
         this.orderDate = orderDate;
         this.lastModifiedDate = lastModifiedDate;
@@ -55,22 +55,22 @@ public class Order implements Serializable, IDTO {
     }
 
     public Order(long id,
-                 OrderStatus orderstatus,
+                 OrderStatus orderStatus,
                  User user,
                  Date orderDate,
                  Date paymentDate,
                  Date lastModifiedDate,
                  long totalPrice,
-                 Set<OrderDetail> orderdetails) {
+                 Set<OrderDetail> orderDetails) {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
-        this.orderStatus = orderstatus;
+        this.orderStatus = orderStatus;
         this.user = user;
         this.orderDate = orderDate;
         this.paymentDate = paymentDate;
         this.lastModifiedDate = lastModifiedDate;
         this.totalPrice = totalPrice;
-        this.orderDetails = orderdetails;
+        this.orderDetails = orderDetails;
     }
 
     @Id

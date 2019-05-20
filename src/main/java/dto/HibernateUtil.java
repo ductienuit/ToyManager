@@ -5,8 +5,11 @@
  */
 package dto;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -20,10 +23,6 @@ import org.hibernate.service.ServiceRegistryBuilder;
  */
 public class HibernateUtil {
     private static SessionFactory SESSION_FACTORY;
-
-    static {
-
-    }
 
     public static SessionFactory getSESSION_FACTORY() {
         if (SESSION_FACTORY == null) {
@@ -49,6 +48,28 @@ public class HibernateUtil {
         }
 
         return SESSION_FACTORY;
+    }
+
+    public static void main(String[] args) {
+        Session session = getSESSION_FACTORY()
+            .openSession();
+
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Category c = new Category();
+            c.setName("Category 1");
+            tx.commit();
+            System.out.println("Completed!");
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            System.out.println("Error!");
+        } finally {
+            session.close();
+        }
 
     }
 }

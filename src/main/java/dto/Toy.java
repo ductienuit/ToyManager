@@ -60,7 +60,7 @@ public class Toy implements Serializable, IDTO, IName {
                boolean gender,
                String imageUri,
                String description,
-               Set<OrderDetail> orderdetails) {
+               Set<OrderDetail> orderDetails) {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
         this.category = category;
@@ -69,7 +69,7 @@ public class Toy implements Serializable, IDTO, IName {
         this.gender = gender;
         this.imageUri = imageUri;
         this.description = description;
-        this.orderDetails = orderdetails;
+        this.orderDetails = orderDetails;
     }
 
     @Id

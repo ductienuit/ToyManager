@@ -72,7 +72,7 @@ public class OrderStatus implements Serializable, IDTO, IName {
     }
 
     @OneToMany(fetch = FetchType.LAZY,
-               mappedBy = "orderstatus")
+               mappedBy = "orderStatus")
     public Set<Order> getOrders() {
         return this.orders;
     }

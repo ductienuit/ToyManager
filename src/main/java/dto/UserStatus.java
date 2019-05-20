@@ -72,7 +72,7 @@ public class UserStatus implements Serializable, IDTO, IName {
     }
 
     @OneToMany(fetch = FetchType.LAZY,
-               mappedBy = "userstatus")
+               mappedBy = "userStatus")
     public Set<User> getUsers() {
         return this.users;
     }

@@ -41,13 +41,13 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="toymanager"/>
+  <table-filter match-name="orderstatus"/>
+  <table-filter match-name="category"/>
+  <table-filter match-name="role"/>
   <table-filter match-name="user"/>
+  <table-filter match-name="toy"/>
+  <table-filter match-name="orderdetail"/>
+  <table-filter match-name="parameter"/>
   <table-filter match-name="userstatus"/>
   <table-filter match-name="order"/>
-  <table-filter match-name="toy"/>
-  <table-filter match-name="role"/>
-  <table-filter match-name="category"/>
-  <table-filter match-name="parameter"/>
-  <table-filter match-name="orderstatus"/>
-  <table-filter match-name="orderdetail"/>
 </hibernate-reverse-engineering>
