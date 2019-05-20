@@ -11,7 +11,6 @@ package bus.validator.common;
  * @param <T>
  */
 public class ObjectWrapper<T> {
-
     private T object;
 
     /**
@@ -31,5 +30,4 @@ public class ObjectWrapper<T> {
     public void setObject(T object) {
         this.object = object;
     }
-
 }

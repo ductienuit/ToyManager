@@ -13,8 +13,9 @@ import java.math.BigDecimal;
  * @author CMQ
  */
 public class ToyPriceValidator extends BigDecimalValidator {
-
     public ToyPriceValidator() {
-        super("Đơn giá", BigDecimal.ZERO, BigDecimal.valueOf(Double.MAX_VALUE));
+        super("Đơn giá",
+              BigDecimal.ZERO,
+              BigDecimal.valueOf(Double.MAX_VALUE));
     }
 }

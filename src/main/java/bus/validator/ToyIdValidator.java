@@ -13,8 +13,9 @@ import java.math.BigInteger;
  * @author CMQ
  */
 public class ToyIdValidator extends BigIntegerValidator {
-
     public ToyIdValidator() {
-        super("Mã đồ chơi", BigInteger.ZERO, BigInteger.valueOf(Long.MAX_VALUE));
+        super("Mã đồ chơi",
+              BigInteger.ZERO,
+              BigInteger.valueOf(Long.MAX_VALUE));
     }
 }

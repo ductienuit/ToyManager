@@ -19,7 +19,7 @@ public class EntityManagerUtil {
     public static EntityManager getENTITY_MANAGER() {
         if (ENTITY_MANAGER == null) {
             EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("name");
+                .createEntityManagerFactory("name");
 
             ENTITY_MANAGER = factory.createEntityManager();
         }

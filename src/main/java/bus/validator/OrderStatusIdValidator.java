@@ -13,8 +13,9 @@ import java.math.BigInteger;
  * @author CMQ
  */
 public class OrderStatusIdValidator extends BigIntegerValidator {
-
     public OrderStatusIdValidator() {
-        super("Mã trạng thái", BigInteger.ZERO, BigInteger.valueOf(Long.MAX_VALUE));
+        super("Mã trạng thái",
+              BigInteger.ZERO,
+              BigInteger.valueOf(Long.MAX_VALUE));
     }
 }

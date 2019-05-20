@@ -31,19 +31,19 @@ public class HibernateUtil {
                 // configuration settings from hibernate.cfg.xml
                 Configuration configuration = new Configuration().configure();
                 StandardServiceRegistryBuilder serviceRegistryBuilder
-                                               = new StandardServiceRegistryBuilder();
+                                                   = new StandardServiceRegistryBuilder();
                 serviceRegistryBuilder
-                .applySettings(configuration
-                .getProperties());
+                    .applySettings(configuration
+                        .getProperties());
 
                 ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
 
                 SESSION_FACTORY = configuration.buildSessionFactory(
-                serviceRegistry);
+                    serviceRegistry);
             } catch (Throwable ex) {
                 // Log the exception.
                 System.err.println("Initial SessionFactory creation failed."
-                                   + ex);
+                                       + ex);
                 throw new ExceptionInInitializerError(ex);
             }
         }

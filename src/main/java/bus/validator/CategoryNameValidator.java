@@ -12,8 +12,12 @@ import bus.validator.common.StringValidator;
  * @author CMQ
  */
 public class CategoryNameValidator extends StringValidator {
-
     public CategoryNameValidator() {
-        super("Tên thể loại", 256, StringValidator.LimitComparisonType.LessThanOrEqual, false, false, false);
+        super("Tên thể loại",
+              256,
+              StringValidator.LimitComparisonType.LessThanOrEqual,
+              false,
+              false,
+              false);
     }
 }

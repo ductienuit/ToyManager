@@ -14,22 +14,26 @@ import dto.Toy;
  * @author CMQ
  */
 public class ToyValidator extends BaseEntityValidator<Toy> {
-
     public ToyValidator() {
-        super("Đồ chơi", Toy.class);
+        super("Đồ chơi",
+              Toy.class);
     }
 
     @Override
     public ValidationPairs GetValidators(final Toy entity) {
         return new ValidationPairs() {
             {
-                add(new ToyIdValidator(), entity.getId());
-                add(new ToyNameValidator(), entity.getName());
-                add(new ToyPriceValidator(), entity.getPrice());
-                add(new ToyImageURIValidator(), entity.getImageURI());
-                add(new ToyDescriptionValidator(), entity.getDescription());
+                add(new ToyIdValidator(),
+                    entity.getId());
+                add(new ToyNameValidator(),
+                    entity.getName());
+                add(new ToyPriceValidator(),
+                    entity.getPrice());
+                add(new ToyImageURIValidator(),
+                    entity.getImageUri());
+                add(new ToyDescriptionValidator(),
+                    entity.getDescription());
             }
         };
     }
-
 }

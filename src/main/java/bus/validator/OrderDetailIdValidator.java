@@ -13,8 +13,9 @@ import java.math.BigInteger;
  * @author CMQ
  */
 public class OrderDetailIdValidator extends BigIntegerValidator {
-
     public OrderDetailIdValidator() {
-        super("Mã chi tiết đơn hàng", BigInteger.ZERO, BigInteger.valueOf(Long.MAX_VALUE));
+        super("Mã chi tiết đơn hàng",
+              BigInteger.ZERO,
+              BigInteger.valueOf(Long.MAX_VALUE));
     }
 }

@@ -12,8 +12,9 @@ import bus.validator.common.IntegerValidator;
  * @author CMQ
  */
 public class OrderDetailQuantityValidator extends IntegerValidator {
-
     public OrderDetailQuantityValidator() {
-        super("Số lượng", 0, Integer.MAX_VALUE);
+        super("Số lượng",
+              0,
+              Integer.MAX_VALUE);
     }
 }

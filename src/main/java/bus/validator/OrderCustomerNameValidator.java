@@ -12,7 +12,6 @@ import bus.validator.common.StringValidator;
  * @author CMQ
  */
 public class OrderCustomerNameValidator extends StringValidator {
-
     public OrderCustomerNameValidator() {
         super("Tên khách hàng");
     }

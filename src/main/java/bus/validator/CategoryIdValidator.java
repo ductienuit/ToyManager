@@ -13,8 +13,9 @@ import java.math.BigInteger;
  * @author CMQ
  */
 public class CategoryIdValidator extends BigIntegerValidator {
-
     public CategoryIdValidator() {
-        super("Mã thể loại", BigInteger.ZERO, BigInteger.valueOf(Long.MAX_VALUE));
+        super("Mã thể loại",
+              BigInteger.ZERO,
+              BigInteger.valueOf(Long.MAX_VALUE));
     }
 }

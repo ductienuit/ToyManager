@@ -12,7 +12,6 @@ import bus.validator.common.StringValidator;
  * @author CMQ
  */
 public class OrderCustomerAddressValidator extends StringValidator {
-
     public OrderCustomerAddressValidator() {
         super("Địa chỉ khách hàng");
     }

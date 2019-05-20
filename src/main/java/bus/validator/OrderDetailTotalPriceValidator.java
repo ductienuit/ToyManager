@@ -13,8 +13,9 @@ import java.math.BigDecimal;
  * @author CMQ
  */
 public class OrderDetailTotalPriceValidator extends BigDecimalValidator {
-
     public OrderDetailTotalPriceValidator() {
-        super("Tổng giá", BigDecimal.ZERO, BigDecimal.valueOf(Long.MAX_VALUE));
+        super("Tổng giá",
+              BigDecimal.ZERO,
+              BigDecimal.valueOf(Long.MAX_VALUE));
     }
 }

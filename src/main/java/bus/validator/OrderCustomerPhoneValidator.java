@@ -12,7 +12,6 @@ import bus.validator.common.PhoneValidator;
  * @author CMQ
  */
 public class OrderCustomerPhoneValidator extends PhoneValidator {
-
     public OrderCustomerPhoneValidator() {
         super("Số điện thoại khách hàng");
     }

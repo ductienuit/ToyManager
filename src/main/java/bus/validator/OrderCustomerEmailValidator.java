@@ -12,7 +12,6 @@ import bus.validator.common.EmailValidator;
  * @author CMQ
  */
 public class OrderCustomerEmailValidator extends EmailValidator {
-
     public OrderCustomerEmailValidator() {
         super("Email khách hàng");
     }

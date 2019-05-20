@@ -10,11 +10,11 @@ package bus.validator.common;
  * @author CMQ
  */
 public class ValidationPair {
-
     private final IValidator validator;
     private final Object object;
 
-    public ValidationPair(IValidator validator, Object object) {
+    public ValidationPair(IValidator validator,
+                          Object object) {
         this.validator = validator;
         this.object = object;
     }
@@ -38,7 +38,7 @@ public class ValidationPair {
     }
 
     public ValidationResult getValidationResult() {
-        return getValidator().validateObject(getObject());
+        return getValidator()
+            .validateObject(getObject());
     }
-
 }

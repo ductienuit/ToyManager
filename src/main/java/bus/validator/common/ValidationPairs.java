@@ -13,7 +13,6 @@ import java.util.Collection;
  * @author CMQ
  */
 public class ValidationPairs extends ArrayList<ValidationPair> {
-
     public ValidationPairs(int initialCapacity) {
         super(initialCapacity);
     }
@@ -26,8 +25,10 @@ public class ValidationPairs extends ArrayList<ValidationPair> {
         super(c);
     }
 
-    public boolean add(IValidator validator, Object object) {
-        return this.add(new ValidationPair(validator, object));
+    public boolean add(IValidator validator,
+                       Object object) {
+        return this.add(new ValidationPair(validator,
+                                           object));
     }
 
     public ValidationResult getValidationResult() {

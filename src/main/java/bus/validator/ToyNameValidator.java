@@ -12,8 +12,12 @@ import bus.validator.common.StringValidator;
  * @author CMQ
  */
 public class ToyNameValidator extends StringValidator {
-
     public ToyNameValidator() {
-        super("Tên đồ chơi", 256, StringValidator.LimitComparisonType.LessThanOrEqual, false, false, false);
+        super("Tên đồ chơi",
+              256,
+              StringValidator.LimitComparisonType.LessThanOrEqual,
+              false,
+              false,
+              false);
     }
 }
