@@ -14,7 +14,7 @@ import bus.validator.common.StringValidator;
 public class OrderStatusNameValidator extends StringValidator {
     public OrderStatusNameValidator() {
         super("Tên trạng thái",
-              256,
+              255,
               LimitComparisonType.LessThanOrEqual,
               false,
               false,

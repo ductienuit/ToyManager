@@ -11,9 +11,9 @@ import bus.validator.common.LongValidator;
  *
  * @author CMQ
  */
-public class OrderIdValidator extends LongValidator {
-    public OrderIdValidator() {
-        super("Mã đơn hàng",
+public class UserIdValidator extends LongValidator {
+    public UserIdValidator() {
+        super("Mã người dùng",
               0L,
               Long.MAX_VALUE);
     }

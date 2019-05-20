@@ -5,16 +5,14 @@
  */
 package bus.validator;
 
-import bus.validator.common.LongValidator;
+import bus.validator.common.DateValidator;
 
 /**
  *
  * @author CMQ
  */
-public class OrderIdValidator extends LongValidator {
-    public OrderIdValidator() {
-        super("Mã đơn hàng",
-              0L,
-              Long.MAX_VALUE);
+public class UserCreatedDateValidator extends DateValidator {
+    public UserCreatedDateValidator() {
+        super("Ngày tạo người dùng");
     }
 }

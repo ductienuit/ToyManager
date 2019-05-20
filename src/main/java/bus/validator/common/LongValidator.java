@@ -14,36 +14,37 @@ import java.math.BigInteger;
  *
  * @author CMQ
  */
-public class BigIntegerValidator extends BaseRangeValidator<BigInteger> {
-    public BigIntegerValidator() {
-        this(BigInteger.valueOf(Long.MIN_VALUE),
-             BigInteger.valueOf(Long.MAX_VALUE));
+public class LongValidator extends BaseRangeValidator<Long> {
+    public LongValidator() {
+        this(Long.MIN_VALUE,
+             Long.MAX_VALUE);
     }
 
-    public BigIntegerValidator(BigInteger minValue,
-                               BigInteger maxValue) {
+    public LongValidator(Long minValue,
+                         Long maxValue) {
         super(minValue,
               maxValue,
-              BigInteger.class);
+              Long.class);
     }
 
-    public BigIntegerValidator(String displayName,
-                               BigInteger minValue,
-                               BigInteger maxValue) {
+    public LongValidator(String displayName,
+                         Long minValue,
+                         Long maxValue) {
         super(displayName,
               minValue,
               maxValue,
-              BigInteger.class);
+              Long.class);
     }
 
     @Override
     public ValidationResult convert(Object convertingValue,
-                                    ObjectWrapper<BigInteger> convertedValue) {
-        BigInteger result;
+                                    ObjectWrapper<Long> convertedValue) {
+        Long result;
 
         try {
-            result = new BigInteger((String) convertingValue);
-        } catch (NumberFormatException e) {
+            result = Long.valueOf((String) convertingValue);
+        } catch (NumberFormatException
+                 | ClassCastException e) {
             return new ValidationResult(
                 false,
                 "Sai định dạng" + System.lineSeparator() + getDisplayName()

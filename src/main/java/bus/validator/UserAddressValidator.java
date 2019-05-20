@@ -11,13 +11,8 @@ import bus.validator.common.StringValidator;
  *
  * @author CMQ
  */
-public class ToyImageURIValidator extends StringValidator {
-    public ToyImageURIValidator() {
-        super("Đường dẫn hình ảnh",
-              255,
-              StringValidator.LimitComparisonType.LessThanOrEqual,
-              false,
-              false,
-              false);
+public class UserAddressValidator extends StringValidator {
+    public UserAddressValidator() {
+        super("Địa chỉ người dùng");
     }
 }

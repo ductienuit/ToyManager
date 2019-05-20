@@ -14,7 +14,7 @@ import bus.validator.common.StringValidator;
 public class ToyNameValidator extends StringValidator {
     public ToyNameValidator() {
         super("Tên đồ chơi",
-              256,
+              255,
               StringValidator.LimitComparisonType.LessThanOrEqual,
               false,
               false,

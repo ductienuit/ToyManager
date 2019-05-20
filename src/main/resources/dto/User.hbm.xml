@@ -19,8 +19,8 @@
     <property name="password" type="string">
       <column name="Password" not-null="true"/>
     </property>
-    <property name="fullname" type="string">
-      <column name="Fullname" not-null="true"/>
+    <property name="fullName" type="string">
+      <column name="FullName" not-null="true"/>
     </property>
     <property name="gender" type="boolean">
       <column name="Gender" not-null="true"/>

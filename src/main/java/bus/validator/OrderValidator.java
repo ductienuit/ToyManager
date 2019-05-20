@@ -25,14 +25,6 @@ public class OrderValidator extends BaseEntityValidator<Order> {
             {
                 add(new OrderIdValidator(),
                     entity.getId());
-                add(new OrderCustomerEmailValidator(),
-                    entity.getCustomerEmail());
-                add(new OrderCustomerPhoneValidator(),
-                    entity.getCustomerPhoneNumber());
-                add(new OrderCustomerAddressValidator(),
-                    entity.getCustomerAddress());
-                add(new OrderCustomerNameValidator(),
-                    entity.getCustomerName());
                 add(new OrderDateValidator(),
                     entity.getOrderDate());
                 add(new OrderPaymentDate(),

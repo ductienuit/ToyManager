@@ -31,7 +31,7 @@ public class User implements Serializable, IDTO {
     private UserStatus userStatus;
     private String username;
     private String password;
-    private String fullname;
+    private String fullName;
     private boolean gender;
     private String email;
     private String phoneNumber;
@@ -62,7 +62,7 @@ public class User implements Serializable, IDTO {
         this.userStatus = userstatus;
         this.username = username;
         this.password = password;
-        this.fullname = fullname;
+        this.fullName = fullname;
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -90,7 +90,7 @@ public class User implements Serializable, IDTO {
         this.userStatus = userstatus;
         this.username = username;
         this.password = password;
-        this.fullname = fullname;
+        this.fullName = fullname;
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -156,12 +156,12 @@ public class User implements Serializable, IDTO {
 
     @Column(name = "Fullname",
             nullable = false)
-    public String getFullname() {
-        return this.fullname;
+    public String getFullName() {
+        return this.fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     @Column(name = "Gender",

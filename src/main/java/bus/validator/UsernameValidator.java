@@ -11,8 +11,13 @@ import bus.validator.common.StringValidator;
  *
  * @author CMQ
  */
-public class OrderCustomerAddressValidator extends StringValidator {
-    public OrderCustomerAddressValidator() {
-        super("Địa chỉ khách hàng");
+public class UsernameValidator extends StringValidator {
+    public UsernameValidator() {
+        super("Tên người dùng",
+              255,
+              StringValidator.LimitComparisonType.LessThanOrEqual,
+              false,
+              false,
+              false);
     }
 }

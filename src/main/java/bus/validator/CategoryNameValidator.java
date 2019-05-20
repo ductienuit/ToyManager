@@ -14,7 +14,7 @@ import bus.validator.common.StringValidator;
 public class CategoryNameValidator extends StringValidator {
     public CategoryNameValidator() {
         super("Tên thể loại",
-              256,
+              255,
               StringValidator.LimitComparisonType.LessThanOrEqual,
               false,
               false,

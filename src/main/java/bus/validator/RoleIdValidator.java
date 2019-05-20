@@ -5,14 +5,16 @@
  */
 package bus.validator;
 
-import bus.validator.common.PhoneValidator;
+import bus.validator.common.LongValidator;
 
 /**
  *
  * @author CMQ
  */
-public class OrderCustomerPhoneValidator extends PhoneValidator {
-    public OrderCustomerPhoneValidator() {
-        super("Số điện thoại khách hàng");
+public class RoleIdValidator extends LongValidator {
+    public RoleIdValidator() {
+        super("Mã quyền",
+              0L,
+              Long.MAX_VALUE);
     }
 }

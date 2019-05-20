@@ -5,14 +5,14 @@
  */
 package bus.validator;
 
-import bus.validator.common.EmailValidator;
+import bus.validator.common.DateValidator;
 
 /**
  *
  * @author CMQ
  */
-public class OrderCustomerEmailValidator extends EmailValidator {
-    public OrderCustomerEmailValidator() {
-        super("Email khách hàng");
+public class UserLastModifiedDateValidator extends DateValidator {
+    public UserLastModifiedDateValidator() {
+        super("Ngày chỉnh sửa người dùng cuối cùng");
     }
 }
