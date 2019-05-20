@@ -1,5 +1,5 @@
 package dto;
-// Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
+// Generated May 20, 2019 1:15:31 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
 import dto.common.IName;
@@ -27,7 +27,7 @@ public class Toy implements Serializable, IDTO, IName {
     private Category category;
     private String name;
     private long price;
-    private byte gender;
+    private boolean gender;
     private String imageUri;
     private String description;
     private Set<OrderDetail> orderDetails;
@@ -40,7 +40,7 @@ public class Toy implements Serializable, IDTO, IName {
                Category category,
                String name,
                long price,
-               byte gender,
+               boolean gender,
                String imageUri,
                String description) {
         this.orderDetails = new HashSet<>(0);
@@ -57,7 +57,7 @@ public class Toy implements Serializable, IDTO, IName {
                Category category,
                String name,
                long price,
-               byte gender,
+               boolean gender,
                String imageUri,
                String description,
                Set<OrderDetail> orderdetails) {
@@ -76,10 +76,12 @@ public class Toy implements Serializable, IDTO, IName {
     @Column(name = "Id",
             unique = true,
             nullable = false)
+    @Override
     public long getId() {
         return this.id;
     }
 
+    @Override
     public void setId(long id) {
         this.id = id;
     }
@@ -97,10 +99,12 @@ public class Toy implements Serializable, IDTO, IName {
 
     @Column(name = "Name",
             nullable = false)
+    @Override
     public String getName() {
         return this.name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -119,11 +123,11 @@ public class Toy implements Serializable, IDTO, IName {
 
     @Column(name = "Gender",
             nullable = false)
-    public byte getGender() {
+    public boolean isGender() {
         return this.gender;
     }
 
-    public void setGender(byte gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 

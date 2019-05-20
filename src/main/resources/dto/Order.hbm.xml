@@ -1,30 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 20, 2019 1:15:32 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class catalog="toymanager" name="dto.Order" optimistic-lock="version" table="order">
     <id name="id" type="long">
       <column name="Id"/>
       <generator class="assigned"/>
     </id>
-    <many-to-one class="dto.OrderStatus" fetch="select" name="orderstatus">
+    <many-to-one class="dto.OrderStatus" fetch="select" name="orderStatus">
       <column name="OrderStatusId" not-null="true"/>
     </many-to-one>
     <many-to-one class="dto.User" fetch="select" name="user">
       <column name="UserId" not-null="true"/>
     </many-to-one>
-    <property name="customerEmail" type="string">
-      <column name="CustomerEmail" not-null="true"/>
-    </property>
-    <property name="customerPhoneNumber" type="string">
-      <column length="10" name="CustomerPhoneNumber" not-null="true"/>
-    </property>
-    <property name="customerAddress" type="string">
-      <column name="CustomerAddress" not-null="true"/>
-    </property>
-    <property name="customerName" type="string">
-      <column name="CustomerName" not-null="true"/>
-    </property>
     <property name="orderDate" type="timestamp">
       <column length="26" name="OrderDate" not-null="true"/>
     </property>

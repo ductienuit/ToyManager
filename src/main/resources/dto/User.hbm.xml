@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 20, 2019 1:15:32 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class catalog="toymanager" name="dto.User" optimistic-lock="version" table="user">
     <id name="id" type="long">
@@ -21,6 +21,18 @@
     </property>
     <property name="fullname" type="string">
       <column name="Fullname" not-null="true"/>
+    </property>
+    <property name="gender" type="boolean">
+      <column name="Gender" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column name="Email" not-null="true"/>
+    </property>
+    <property name="phoneNumber" type="string">
+      <column length="10" name="PhoneNumber" not-null="true"/>
+    </property>
+    <property name="address" type="string">
+      <column name="Address" not-null="true"/>
     </property>
     <property name="createdDate" type="timestamp">
       <column length="26" name="CreatedDate" not-null="true"/>

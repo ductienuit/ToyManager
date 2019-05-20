@@ -1,7 +1,8 @@
 package dto;
-// Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
+// Generated May 20, 2019 1:15:31 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
+import dto.common.IName;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -31,6 +32,10 @@ public class User implements Serializable, IDTO {
     private String username;
     private String password;
     private String fullname;
+    private boolean gender;
+    private String email;
+    private String phoneNumber;
+    private String address;
     private Date createdDate;
     private Date lastModifiedDate;
     private Set<Order> orders;
@@ -45,6 +50,10 @@ public class User implements Serializable, IDTO {
                 String username,
                 String password,
                 String fullname,
+                boolean gender,
+                String email,
+                String phoneNumber,
+                String address,
                 Date createdDate,
                 Date lastModifiedDate) {
         this.orders = new HashSet<>(0);
@@ -54,6 +63,10 @@ public class User implements Serializable, IDTO {
         this.username = username;
         this.password = password;
         this.fullname = fullname;
+        this.gender = gender;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
     }
@@ -64,6 +77,10 @@ public class User implements Serializable, IDTO {
                 String username,
                 String password,
                 String fullname,
+                boolean gender,
+                String email,
+                String phoneNumber,
+                String address,
                 Date createdDate,
                 Date lastModifiedDate,
                 Set<Order> orders) {
@@ -74,6 +91,10 @@ public class User implements Serializable, IDTO {
         this.username = username;
         this.password = password;
         this.fullname = fullname;
+        this.gender = gender;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
         this.orders = orders;
@@ -141,6 +162,47 @@ public class User implements Serializable, IDTO {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    @Column(name = "Gender",
+            nullable = false)
+    public boolean isGender() {
+        return this.gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    @Column(name = "Email",
+            nullable = false)
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Column(name = "PhoneNumber",
+            nullable = false,
+            length = 10)
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Column(name = "Address",
+            nullable = false)
+    public String getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Temporal(TemporalType.TIMESTAMP)

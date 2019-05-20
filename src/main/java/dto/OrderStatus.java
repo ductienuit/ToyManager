@@ -1,5 +1,5 @@
 package dto;
-// Generated May 20, 2019 12:22:56 PM by Hibernate Tools 4.3.1
+// Generated May 20, 2019 1:15:31 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
 import dto.common.IName;
@@ -49,20 +49,24 @@ public class OrderStatus implements Serializable, IDTO, IName {
     @Column(name = "Id",
             unique = true,
             nullable = false)
+    @Override
     public long getId() {
         return this.id;
     }
 
+    @Override
     public void setId(long id) {
         this.id = id;
     }
 
     @Column(name = "Name",
             nullable = false)
+    @Override
     public String getName() {
         return this.name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
