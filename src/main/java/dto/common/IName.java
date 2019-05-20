@@ -10,7 +10,6 @@ package dto.common;
  * @author CMQ
  */
 public interface IName {
-
     String getName();
 
     void setName(String name);

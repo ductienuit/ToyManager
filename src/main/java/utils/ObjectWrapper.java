@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bus.validator.common;
+package utils;
 
 /**
  *
@@ -11,8 +11,14 @@ package bus.validator.common;
  * @param <T>
  */
 public class ObjectWrapper<T> {
-
     private T object;
+
+    public ObjectWrapper(T object) {
+        this.object = object;
+    }
+
+    public ObjectWrapper() {
+    }
 
     /**
      * Get the value of object
@@ -31,5 +37,4 @@ public class ObjectWrapper<T> {
     public void setObject(T object) {
         this.object = object;
     }
-
 }

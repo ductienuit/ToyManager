@@ -10,7 +10,6 @@ package bus.validator.common;
  * @author CMQ
  */
 public abstract class BaseValidator implements IValidator {
-
     private String displayName;
 
     public BaseValidator() {
@@ -38,5 +37,4 @@ public abstract class BaseValidator implements IValidator {
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
-
 }

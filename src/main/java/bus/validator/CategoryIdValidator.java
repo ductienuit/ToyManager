@@ -5,16 +5,16 @@
  */
 package bus.validator;
 
-import bus.validator.common.BigIntegerValidator;
-import java.math.BigInteger;
+import bus.validator.common.LongValidator;
 
 /**
  *
  * @author CMQ
  */
-public class CategoryIdValidator extends BigIntegerValidator {
-
+public class CategoryIdValidator extends LongValidator {
     public CategoryIdValidator() {
-        super("Mã thể loại", BigInteger.ZERO, BigInteger.valueOf(Long.MAX_VALUE));
+        super("Mã thể loại",
+              0L,
+              Long.MAX_VALUE);
     }
 }

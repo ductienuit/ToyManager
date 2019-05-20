@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bus.validator;
+package dao;
 
-import bus.validator.common.EmailValidator;
+import dao.common.BasicDAO;
+import dto.Order;
 
 /**
  *
  * @author CMQ
  */
-public class OrderCustomerEmailValidator extends EmailValidator {
-
-    public OrderCustomerEmailValidator() {
-        super("Email khách hàng");
+public class OrderDAO extends BasicDAO<Order> {
+    public OrderDAO() {
+        super(Order.class);
     }
 }

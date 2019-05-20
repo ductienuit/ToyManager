@@ -6,7 +6,7 @@
 package bus.validator.common;
 
 import bus.validator.common.BaseObjectValidator;
-import bus.validator.common.ObjectWrapper;
+import utils.ObjectWrapper;
 import bus.validator.common.ValidationResult;
 
 /**
@@ -15,17 +15,22 @@ import bus.validator.common.ValidationResult;
  * @param <T>
  */
 public abstract class BaseRangeValidator<T extends Comparable<T>> extends BaseObjectValidator<T> {
-
     private T minValue;
     private T maxValue;
 
-    public BaseRangeValidator(String displayName, T minValue, T maxValue, Class<T> type) {
-        super(displayName, type);
+    public BaseRangeValidator(String displayName,
+                              T minValue,
+                              T maxValue,
+                              Class<T> type) {
+        super(displayName,
+              type);
         this.minValue = minValue;
         this.maxValue = maxValue;
     }
 
-    public BaseRangeValidator(T minValue, T maxValue, Class<T> type) {
+    public BaseRangeValidator(T minValue,
+                              T maxValue,
+                              Class<T> type) {
         super(type);
         this.minValue = minValue;
         this.maxValue = maxValue;
@@ -71,14 +76,16 @@ public abstract class BaseRangeValidator<T extends Comparable<T>> extends BaseOb
     public ValidationResult validateType(T value) {
         if (value.compareTo(getMinValue()) < 0) {
             return new ValidationResult(
-                    false,
-                    getDisplayName() + " không được nhỏ hơn " + GetValueString(getMinValue()) + ".");
+                false,
+                getDisplayName() + " không được nhỏ hơn " + GetValueString(
+                    getMinValue()) + ".");
         }
 
         if (value.compareTo(getMaxValue()) > 0) {
             return new ValidationResult(
-                    false,
-                    getDisplayName() + " không được lớn hơn " + GetValueString(getMaxValue()) + ".");
+                false,
+                getDisplayName() + " không được lớn hơn " + GetValueString(
+                    getMaxValue()) + ".");
         }
 
         return ValidationResult.VALID_RESULT;

@@ -12,8 +12,12 @@ import bus.validator.common.StringValidator;
  * @author CMQ
  */
 public class ToyDescriptionValidator extends StringValidator {
-
     public ToyDescriptionValidator() {
-        super("Mô tả đồ chơi", Integer.MAX_VALUE, StringValidator.LimitComparisonType.LessThanOrEqual, false, false, false);
+        super("Mô tả đồ chơi",
+              Integer.MAX_VALUE,
+              StringValidator.LimitComparisonType.LessThanOrEqual,
+              false,
+              false,
+              false);
     }
 }

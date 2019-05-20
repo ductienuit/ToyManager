@@ -5,6 +5,7 @@
  */
 package bus.validator.common;
 
+import utils.ObjectWrapper;
 import dto.common.IDTO;
 
 /**
@@ -13,9 +14,10 @@ import dto.common.IDTO;
  * @param <T>
  */
 public abstract class BaseEntityValidator<T extends IDTO> extends BaseObjectValidator<T> {
-
-    public BaseEntityValidator(String displayName, Class<T> type) {
-        super(displayName, type);
+    public BaseEntityValidator(String displayName,
+                               Class<T> type) {
+        super(displayName,
+              type);
     }
 
     public BaseEntityValidator(Class<T> type) {
@@ -25,26 +27,29 @@ public abstract class BaseEntityValidator<T extends IDTO> extends BaseObjectVali
     public abstract ValidationPairs GetValidators(final T entity);
 
     @Override
-    public ValidationResult convert(Object convertingValue, ObjectWrapper<T> convertedValue) {
-        if (getType().isInstance(convertingValue)) {
+    public ValidationResult convert(Object convertingValue,
+                                    ObjectWrapper<T> convertedValue) {
+        if (getType()
+            .isInstance(convertingValue)) {
             convertedValue.setObject((T) convertingValue);
             return ValidationResult.VALID_RESULT;
         }
 
         return new ValidationResult(
-                false,
-                getDisplayName() + " không đúng kiểu dữ liệu.");
+            false,
+            getDisplayName() + " không đúng kiểu dữ liệu.");
     }
 
     @Override
     public ValidationResult validateType(T value) {
         ValidationResult result = ValidationResult.VALID_RESULT;
 
-        // If ID is empty, it's not an object so we can skip validating
-        if (value.getId() == null) {
+        // If ID is invalid, it's not an object so we can skip validating
+        if (value.getId() < 1) {
             return result;
         }
 
-        return GetValidators(value).getValidationResult();
+        return GetValidators(value)
+            .getValidationResult();
     }
 }
