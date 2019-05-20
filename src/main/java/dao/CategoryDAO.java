@@ -16,4 +16,54 @@ public class CategoryDAO extends BasicDAO<Category> {
     public CategoryDAO() {
         super(Category.class);
     }
+
+    public static void main(String[] args) {
+        CategoryDAO dao = new CategoryDAO();
+
+        // insert
+        System.out.println("1. Insert");
+        Category c1 = new Category();
+        c1.setName("Category 1");
+        dao.insert(c1);
+        System.out.println("Success!");
+
+        // search
+        System.out.println("2. Search");
+        Category c2 = dao.search(c1.getId());
+        System.out.println("Category [id = " + c2.getId() + ", name = " + c2
+            .getName() + "]");
+        System.out.println("Success!");
+
+        // update
+        System.out.println("3. Update");
+        Category c3 = c2;
+        c3.setName("Category 2");
+        dao.update(c3);
+        Category c4 = dao.search(c3.getId());
+        System.out.println("Category [id = " + c4.getId() + ", name = " + c4
+            .getName() + "]");
+        System.out.println("Success!");
+
+        // count
+        Long count = dao.count();
+        System.out.println("4. Count");
+        System.out.println("Category has " + count + " record(s).");
+        System.out.println("Success!");
+
+        // hasany
+        Boolean hasany = dao.hasAny();
+        System.out.println("5. HasAny");
+        System.out.println("Category has at least 1 record: " + hasany);
+        System.out.println("Success!");
+
+        // delete
+        System.out.println("6. Delete");
+        dao.delete(c4);
+        Category c5 = dao.search(c4.getId());
+        if (c5 == null) {
+            System.out.println("Attempt to find Category [id = " + c4.getId()
+                                   + "]: null");
+        }
+        System.out.println("Success!");
+    }
 }
