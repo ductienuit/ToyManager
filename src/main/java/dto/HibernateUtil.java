@@ -60,7 +60,9 @@ public class HibernateUtil {
             tx = session.beginTransaction();
             Category c = new Category();
             c.setName("Category 1");
+            session.save(c);
             tx.commit();
+
             System.out.println("Completed!");
         } catch (HibernateException e) {
             if (tx != null) {
