@@ -9,7 +9,7 @@ package com.halo.thuchanh3.model;
  *
  * @author DucTien
  */
-public class CategoryModel extends AbstractModel {
+public class CategoryModel extends AbstractModel<CategoryModel> {
 
     private String name;
     private String code;

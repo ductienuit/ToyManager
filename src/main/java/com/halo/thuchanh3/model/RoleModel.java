@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author DucTien
  */
-public class RoleModel extends AbstractModel {
+public class RoleModel extends AbstractModel<RoleModel> {
 
     private String nameRole;
 

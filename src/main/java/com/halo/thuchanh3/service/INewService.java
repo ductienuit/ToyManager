@@ -6,6 +6,7 @@
 package com.halo.thuchanh3.service;
 
 import com.halo.thuchanh3.model.NewsModel;
+import com.halo.thuchanh3.paging.Pageble;
 import java.util.List;
 
 /**
@@ -17,4 +18,13 @@ public interface INewService {
     List<NewsModel> findByCategoryId(Long categoryId);
 
     NewsModel save(NewsModel newsModel);
+
+    public NewsModel update(NewsModel newsModel);
+
+    public void delete(long[] ids);
+
+    List<NewsModel> findAll(Pageble page);
+
+    int getTotalItem();
+
 }

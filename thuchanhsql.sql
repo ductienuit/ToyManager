@@ -72,7 +72,14 @@ insert into news(title, categoryid) values('Bài viết 1', 1);
 insert into news(title, categoryid) values('Bài viết 2', 2);
 insert into news(title, categoryid) values('Bài viết 3', 3);
 
-    
+insert into role(code, name) values('ADMIN','Quản trị');
+insert into role(code, name) values('USER','Người dùng');
+
+INSERT INTO user(`username`, `password`, `fullname`, `roleid`, `status`) VALUES ('admin', '123456', 'admin', '1', '1');
+INSERT INTO user(`username`, `password`, `fullname`, `roleid`, `status`) VALUES ('user1', '123456', 'Ong A', '2', '1');
+INSERT INTO user(`username`, `password`, `fullname`, `roleid`, `status`) VALUES ('user2', '123456', 'Ba B', '2', '1');
+
+
     
     
     

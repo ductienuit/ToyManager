@@ -6,6 +6,7 @@
 package com.halo.thuchanh3.dao;
 
 import com.halo.thuchanh3.model.NewsModel;
+import com.halo.thuchanh3.paging.Pageble;
 import java.util.List;
 
 /**
@@ -19,4 +20,12 @@ public interface INewDAO extends GenericDAO<NewsModel> {
     Long save(NewsModel newsModel);
 
     public NewsModel findOne(Long id);
+
+    public void update(NewsModel updateNews);
+
+    public void delete(long id);
+
+    List<NewsModel> findAll(Pageble page);
+
+    public int getTotalItem();
 }

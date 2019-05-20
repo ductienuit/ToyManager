@@ -7,31 +7,30 @@ package com.halo.thuchanh3.dao.impl;
 
 import com.halo.thuchanh3.dao.GenericDAO;
 import com.halo.thuchanh3.mapper.RowMapper;
-import com.halo.thuchanh3.model.CategoryModel;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author DucTien
  */
 public abstract class AbstractDAO<T> implements GenericDAO<T> {
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
 
     public Connection getConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/newservlet12month2018";
-            String user = "root";
-            String paswd = "Ductien1997";
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String url = "jdbc:mysql://localhost:3306/newservlet12month2018";
+//            String user = "root";
+//            String paswd = "Ductien1997";
+            Class.forName(resourceBundle.getString("driverName"));
+            String url = resourceBundle.getString("url");
+            String user = resourceBundle.getString("user");
+            String paswd = resourceBundle.getString("password");
             Connection con = DriverManager.getConnection(url, user, paswd);
             return con;
         } catch (ClassNotFoundException | SQLException ex) {
@@ -89,6 +88,8 @@ public abstract class AbstractDAO<T> implements GenericDAO<T> {
                     statement.setInt(index, (Integer) parameter);
                 } else if (parameter instanceof Timestamp) {
                     statement.setTimestamp(index, (Timestamp) parameter);
+                } else if (parameter == null) {
+                    statement.setNull(index, Types.NULL);
                 }
 
             } catch (SQLException ex) {
@@ -182,6 +183,37 @@ public abstract class AbstractDAO<T> implements GenericDAO<T> {
 
     @Override
     public int count(String sql, Object... parameters) {
-        return 0;
+        Connection connection = getConnection();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        int count = 0;
+        if (connection != null) {
+            try {
+                statement = connection.prepareStatement(sql);
+                setParameter(statement, parameters);
+                rs = statement.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt(1); //Lấy giá trị đầu tiên của bảng, vì câu SQL Count
+                }
+                return count;
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                return count;
+            } finally {
+                try {
+                    //Close connection
+                    connection.close();
+                    if (statement != null) {
+                        statement.close();
+                    }
+                    if (rs != null) {
+                        rs.close();
+                    }
+                } catch (SQLException ex) {
+                    return count;
+                }
+            }
+        }
+        return count;
     }
 }

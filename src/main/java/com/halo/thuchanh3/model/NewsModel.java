@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author DucTien
  */
-public class NewsModel extends AbstractModel {
+public class NewsModel extends AbstractModel<NewsModel> {
 
     public String getTitle() {
         return title;
@@ -60,11 +60,21 @@ public class NewsModel extends AbstractModel {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public String getShortDescriptions() {
+        return shortDescriptions;
+    }
+
+    public void setShortDescriptions(String shortDescriptions) {
+        this.shortDescriptions = shortDescriptions;
+    }
+
     private String title;
     private String thumbnail;
     private String content;
-
+    private String shortDescriptions;
     private Long categoryId;
     private int status;
     private Long roleId;
+
 }
