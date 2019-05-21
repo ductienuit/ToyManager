@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
  */
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat", "/toy"})
 public class HomeController extends HttpServlet {
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
+    private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
     @Inject
     private ICategoryService categoryService;
 

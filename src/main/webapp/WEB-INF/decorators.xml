@@ -19,7 +19,10 @@ and open the template in the editor.
     <decorator name="web" page="web.jsp">
         <pattern>/*</pattern>
     </decorator>
+    <decorator name="category" page="category.jsp">
+        <pattern>/danh-muc*</pattern>
+    </decorator>
     <decorator name="login" page="login.jsp">
-        <pattern>/dang-nhap</pattern>
+        <pattern>/dang-nhap*</pattern>
     </decorator>
 </decorators>
