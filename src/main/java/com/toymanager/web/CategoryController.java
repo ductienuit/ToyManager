@@ -42,12 +42,19 @@ public class CategoryController extends HttpServlet {
 //        xxx.forward(request, response);
         String message = request.getParameter("category");
         String alert = request.getParameter("alert");
+        String productid = request.getParameter("sanpham");
 
         if (message != null && alert != null) {
             request.setAttribute("category", resourceBundle.getString(message));
         }
-        RequestDispatcher rd = request.getRequestDispatcher("/view/web/category.jsp");
-        rd.forward(request, response);
+        if (productid != null) {
+            RequestDispatcher rd = request.getRequestDispatcher("/view/web/product.jsp");
+            rd.forward(request, response);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("/view/web/category.jsp");
+            rd.forward(request, response);
+        }
+
 
 //        if (action != null && action.equals("login")) {
 //            String message = request.getParameter("message");

@@ -47,8 +47,10 @@
                         <form>
                             <select class="input-select">
                                 <option value="0">Danh mục</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
+                                <option value="1">Đồ chơi nam</option>
+                                <option value="1">Đồ chơi nữ</option>
+                                <option value="1">Đồ chơi gỗ</option>
+                                <option value="1">Lego</option>
                             </select>
                             <input class="input" placeholder="Nhập từ khóa">
                             <button class="search-btn">Tìm kiếm</button>
@@ -64,7 +66,7 @@
                         <div class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>Your Cart</span>
+                                <span>Giỏ hàng</span>
                                 <div class="qty">3</div>
                             </a>
                             <div class="cart-dropdown">
@@ -92,12 +94,12 @@
                                     </div>
                                 </div>
                                 <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
+                                    <small>3 sản phẩm</small>
+                                    <h5>Tổng: $2940.00</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">View Cart</a>
-                                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#">Giỏ hàng</a>
+                                    <a href="#">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -129,9 +131,13 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="#">Trang chủ</a></li>
                 <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Categories</a></li>
+                <li><a href="#">Đồ chơi nam</a></li>
+                <li><a href="#">Đồ chơi nữ</a></li>
+                <li><a href="#">Đồ chơi gỗ</a></li>
+                <li><a href="#">Đồ chơi búp bê</a></li>
+                <li><a href="#">Lego</a></li>
             </ul>
             <!-- /NAV -->
         </div>
