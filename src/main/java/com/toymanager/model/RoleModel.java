@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.model;
-
-import java.sql.Timestamp;
+package com.toymanager.model;
 
 /**
- *
  * @author DucTien
  */
 public class RoleModel extends AbstractModel<RoleModel> {
@@ -30,6 +27,7 @@ public class RoleModel extends AbstractModel<RoleModel> {
     public void setCode(String code) {
         this.code = code;
     }
+
     private String code;
 
 }

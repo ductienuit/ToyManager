@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.admin.api;
+package com.toymanager.admin.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.halo.thuchanh3.model.NewsModel;
-import com.halo.thuchanh3.service.INewService;
-import com.halo.thuchanh3.utils.HttpUtils;
+import com.toymanager.model.NewsModel;
+import com.toymanager.service.INewService;
+import com.toymanager.utils.HttpUtils;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author DucTien
  */
 @WebServlet(urlPatterns = {"/api-admin-new"})

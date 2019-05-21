@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.service.impl;
+package com.toymanager.service.impl;
 
-import com.halo.thuchanh3.dao.ICategoryDAO;
-import com.halo.thuchanh3.dao.impl.CategoryDAO;
-import com.halo.thuchanh3.model.CategoryModel;
-import com.halo.thuchanh3.service.ICategoryService;
+import com.toymanager.dao.ICategoryDAO;
+import com.toymanager.model.CategoryModel;
+import com.toymanager.service.ICategoryService;
+
 import java.util.List;
 import javax.inject.Inject;
 
 /**
- *
  * @author DucTien
  */
 public class CategoryService implements ICategoryService {
 
-//    private ICategoryDAO categoryDao;
+    //    private ICategoryDAO categoryDao;
 //
 //    public CategoryService() {
 //        categoryDao = new CategoryDAO();

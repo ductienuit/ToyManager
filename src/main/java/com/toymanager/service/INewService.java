@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.service;
+package com.toymanager.service;
 
-import com.halo.thuchanh3.model.NewsModel;
-import com.halo.thuchanh3.paging.Pageble;
+import com.toymanager.model.NewsModel;
+import com.toymanager.paging.Pageble;
+
 import java.util.List;
 
 /**
- *
  * @author DucTien
  */
 public interface INewService {

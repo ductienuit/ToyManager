@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.paging;
+package com.toymanager.paging;
 
-import com.halo.thuchanh3.sort.Sorter;
+import com.toymanager.sort.Sorter;
 
 /**
- *
  * @author DucTien
  */
 public class PageRequest implements Pageble {

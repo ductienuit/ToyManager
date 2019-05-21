@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.dao.impl;
+package com.toymanager.dao.impl;
 
-import com.halo.thuchanh3.dao.INewDAO;
-import com.halo.thuchanh3.mapper.NewMapper;
-import com.halo.thuchanh3.model.NewsModel;
-import com.halo.thuchanh3.paging.Pageble;
+import com.toymanager.dao.INewDAO;
+import com.toymanager.mapper.NewMapper;
+import com.toymanager.model.NewsModel;
+import com.toymanager.paging.Pageble;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author DucTien
  */
 public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {

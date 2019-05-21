@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.constant;
+package com.toymanager.constant;
 
 /**
  * @author DucTien

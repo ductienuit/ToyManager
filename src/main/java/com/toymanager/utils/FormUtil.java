@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.utils;
+package com.toymanager.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
- *
  * @author DucTien
  */
 public class FormUtil {

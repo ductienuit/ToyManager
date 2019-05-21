@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.service;
+package com.toymanager.service;
 
-import com.halo.thuchanh3.model.CategoryModel;
+import com.toymanager.model.CategoryModel;
+
 import java.util.List;
 
 /**
- *
  * @author DucTien
  */
 public interface ICategoryService {

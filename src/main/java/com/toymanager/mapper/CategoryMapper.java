@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.mapper;
+package com.toymanager.mapper;
 
-import com.halo.thuchanh3.model.CategoryModel;
-import com.halo.thuchanh3.model.NewsModel;
+import com.toymanager.model.CategoryModel;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
  * @author DucTien
  */
 public class CategoryMapper implements RowMapper<CategoryModel> {

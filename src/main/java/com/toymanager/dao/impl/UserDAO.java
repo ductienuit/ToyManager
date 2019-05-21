@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.dao.impl;
+package com.toymanager.dao.impl;
 
-import com.halo.thuchanh3.dao.IUserDAO;
-import com.halo.thuchanh3.mapper.NewMapper;
-import com.halo.thuchanh3.mapper.UserMapper;
-import com.halo.thuchanh3.model.NewsModel;
-import com.halo.thuchanh3.model.UserModel;
+import com.toymanager.dao.IUserDAO;
+import com.toymanager.mapper.UserMapper;
+import com.toymanager.model.UserModel;
+
 import java.util.List;
 
 /**
- *
  * @author DucTien
  */
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {

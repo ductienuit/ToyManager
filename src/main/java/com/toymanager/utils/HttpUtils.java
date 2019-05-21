@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.utils;
+package com.toymanager.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- *
  * @author DucTien
  */
 public class HttpUtils {

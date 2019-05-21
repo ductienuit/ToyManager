@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.web;
+package com.toymanager.web;
 
-import com.halo.thuchanh3.model.UserModel;
-import com.halo.thuchanh3.service.ICategoryService;
-import com.halo.thuchanh3.service.INewService;
-import com.halo.thuchanh3.service.IUserService;
-import com.halo.thuchanh3.utils.FormUtil;
-import com.halo.thuchanh3.utils.SessionUtil;
-import dao.CategoryDAO;
+import com.toymanager.model.UserModel;
+import com.toymanager.service.ICategoryService;
+import com.toymanager.service.INewService;
+import com.toymanager.service.IUserService;
+import com.toymanager.utils.FormUtil;
+import com.toymanager.utils.SessionUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;

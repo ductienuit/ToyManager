@@ -34,7 +34,7 @@
                 <div class="col-md-3">
                     <div class="header-logo">
                         <a href="#" class="logo">
-                            <%--                            <img src="<c:url value='/template/toy/img/logo.png'/>" alt="">--%>
+                            <%--                            <img src="<c:url value='/template/web/img/logo.png'/>" alt="">--%>
                             <h1 style="margin-top: 15px; color:white" href="#">Toy Toy</h1>
                         </a>
                     </div>
@@ -71,7 +71,7 @@
                                 <div class="cart-list">
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="<c:url value='/template/toy/img/product01.png'/>" alt="">
+                                            <img src="<c:url value='/template/web/img/product01.png'/>" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#">product name goes here</a></h3>
@@ -82,7 +82,7 @@
 
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="<c:url value='/template/toy/img/product02.png'/>" alt="">
+                                            <img src="<c:url value='/template/web/img/product02.png'/>" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#">product name goes here</a></h3>

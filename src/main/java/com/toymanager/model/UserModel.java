@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.model;
-
-import java.sql.Timestamp;
+package com.toymanager.model;
 
 /**
- *
  * @author DucTien
  */
 public class UserModel extends AbstractModel<UserModel> {

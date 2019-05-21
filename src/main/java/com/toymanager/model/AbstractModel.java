@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.model;
+package com.toymanager.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author DucTien
  */
 public class AbstractModel<T> {
@@ -44,6 +43,7 @@ public class AbstractModel<T> {
     public void setSortBy(String sortBy) {
         this.sortBy = sortBy;
     }
+
     private String sortBy;
 
     public Integer getPage() {

@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.admin;
+package com.toymanager.admin;
 
-import com.halo.thuchanh3.constant.SystemConstant;
-import com.halo.thuchanh3.model.NewsModel;
-import com.halo.thuchanh3.paging.PageRequest;
-import com.halo.thuchanh3.paging.Pageble;
-import com.halo.thuchanh3.service.INewService;
-import com.halo.thuchanh3.sort.Sorter;
-import com.halo.thuchanh3.utils.FormUtil;
+import com.toymanager.constant.SystemConstant;
+import com.toymanager.model.NewsModel;
+import com.toymanager.paging.PageRequest;
+import com.toymanager.paging.Pageble;
+import com.toymanager.service.INewService;
+import com.toymanager.sort.Sorter;
+import com.toymanager.utils.FormUtil;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author DucTien
  */
 @WebServlet(urlPatterns = {"/admin-news"})

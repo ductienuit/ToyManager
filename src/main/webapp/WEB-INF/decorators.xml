@@ -13,11 +13,11 @@ and open the template in the editor.
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin*</pattern>
     </decorator>
+    <decorator name="web-old" page="web-old.jsp">
+        <pattern>/web-old*</pattern>
+    </decorator>
     <decorator name="web" page="web.jsp">
         <pattern>/*</pattern>
-    </decorator>
-    <decorator name="toy" page="toy.jsp">
-        <pattern>/toy*</pattern>
     </decorator>
     <decorator name="login" page="login.jsp">
         <pattern>/dang-nhap</pattern>

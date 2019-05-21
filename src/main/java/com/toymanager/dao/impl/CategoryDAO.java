@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.dao.impl;
+package com.toymanager.dao.impl;
 
-import com.halo.thuchanh3.dao.ICategoryDAO;
-import com.halo.thuchanh3.mapper.CategoryMapper;
-import com.halo.thuchanh3.model.CategoryModel;
+import com.toymanager.dao.ICategoryDAO;
+import com.toymanager.mapper.CategoryMapper;
+import com.toymanager.model.CategoryModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author DucTien
  */
 public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategoryDAO {

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.dao.impl;
+package com.toymanager.dao.impl;
 
-import com.halo.thuchanh3.dao.GenericDAO;
-import com.halo.thuchanh3.mapper.RowMapper;
+import com.toymanager.dao.GenericDAO;
+import com.toymanager.mapper.RowMapper;
 
 import java.sql.*;
 import java.util.ArrayList;

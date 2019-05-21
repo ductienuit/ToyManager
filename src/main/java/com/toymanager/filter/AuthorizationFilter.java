@@ -1,9 +1,9 @@
-package com.halo.thuchanh3.filter;
+package com.toymanager.filter;
 
 
-import com.halo.thuchanh3.constant.SystemConstant;
-import com.halo.thuchanh3.model.UserModel;
-import com.halo.thuchanh3.utils.SessionUtil;
+import com.toymanager.constant.SystemConstant;
+import com.toymanager.model.UserModel;
+import com.toymanager.utils.SessionUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

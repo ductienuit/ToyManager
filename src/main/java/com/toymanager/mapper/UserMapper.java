@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.halo.thuchanh3.mapper;
+package com.toymanager.mapper;
 
-import com.halo.thuchanh3.model.RoleModel;
-import com.halo.thuchanh3.model.UserModel;
+import com.toymanager.model.RoleModel;
+import com.toymanager.model.UserModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
