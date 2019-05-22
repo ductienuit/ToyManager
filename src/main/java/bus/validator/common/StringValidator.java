@@ -5,9 +5,7 @@
  */
 package bus.validator.common;
 
-import bus.validator.common.BaseObjectValidator;
 import utils.ObjectWrapper;
-import bus.validator.common.ValidationResult;
 
 /**
  *

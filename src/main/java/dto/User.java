@@ -1,8 +1,7 @@
 package dto;
-// Generated May 20, 2019 1:15:31 PM by Hibernate Tools 4.3.1
+// Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
-import dto.common.IName;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -49,7 +48,7 @@ public class User implements Serializable, IDTO {
                 UserStatus userStatus,
                 String username,
                 String password,
-                String fullname,
+                String fullName,
                 boolean gender,
                 String email,
                 String phoneNumber,
@@ -62,7 +61,7 @@ public class User implements Serializable, IDTO {
         this.userStatus = userStatus;
         this.username = username;
         this.password = password;
-        this.fullName = fullname;
+        this.fullName = fullName;
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -76,7 +75,7 @@ public class User implements Serializable, IDTO {
                 UserStatus userStatus,
                 String username,
                 String password,
-                String fullname,
+                String fullName,
                 boolean gender,
                 String email,
                 String phoneNumber,
@@ -90,7 +89,7 @@ public class User implements Serializable, IDTO {
         this.userStatus = userStatus;
         this.username = username;
         this.password = password;
-        this.fullName = fullname;
+        this.fullName = fullName;
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -104,10 +103,12 @@ public class User implements Serializable, IDTO {
     @Column(name = "Id",
             unique = true,
             nullable = false)
+    @Override
     public long getId() {
         return this.id;
     }
 
+    @Override
     public void setId(long id) {
         this.id = id;
     }
@@ -154,7 +155,7 @@ public class User implements Serializable, IDTO {
         this.password = password;
     }
 
-    @Column(name = "Fullname",
+    @Column(name = "FullName",
             nullable = false)
     public String getFullName() {
         return this.fullName;

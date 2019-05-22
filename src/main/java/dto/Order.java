@@ -1,8 +1,7 @@
 package dto;
-// Generated May 20, 2019 1:15:31 PM by Hibernate Tools 4.3.1
+// Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
-import dto.common.IName;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
