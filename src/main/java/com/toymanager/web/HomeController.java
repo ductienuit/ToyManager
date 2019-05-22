@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
  * người dùng sẽ nhận (url nào) 2. Trả kết qu cho người dùng trong single pages
  * như kiểm tra tính đúng dữ liệu
  */
-@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat", "/toy"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
 public class HomeController extends HttpServlet {
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
     @Inject
