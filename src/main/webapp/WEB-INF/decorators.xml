@@ -9,7 +9,6 @@ and open the template in the editor.
     <excludes>
         <pattern>/api*</pattern>
     </excludes>
-
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin*</pattern>
     </decorator>
