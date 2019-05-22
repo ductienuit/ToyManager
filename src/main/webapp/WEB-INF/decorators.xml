@@ -22,6 +22,12 @@ and open the template in the editor.
     <decorator name="category" page="category.jsp">
         <pattern>/danh-muc*</pattern>
     </decorator>
+    <decorator name="checkout" page="checkout.jsp">
+        <pattern>/checkout*</pattern>
+    </decorator>
+    <decorator name="account" page="account.jsp">
+        <pattern>/tai-khoan*</pattern>
+    </decorator>
     <decorator name="login" page="login.jsp">
         <pattern>/dang-nhap*</pattern>
     </decorator>
