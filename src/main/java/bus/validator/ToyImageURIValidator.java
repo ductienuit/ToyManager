@@ -16,7 +16,7 @@ public class ToyImageURIValidator extends StringValidator {
         super("Đường dẫn hình ảnh",
               255,
               StringValidator.LimitComparisonType.LessThanOrEqual,
-              false,
+              true,
               false,
               false);
     }

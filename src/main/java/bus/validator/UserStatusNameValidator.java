@@ -17,7 +17,7 @@ public class UserStatusNameValidator extends StringValidator {
               255,
               StringValidator.LimitComparisonType.LessThanOrEqual,
               false,
-              false,
+              true,
               false);
     }
 }
