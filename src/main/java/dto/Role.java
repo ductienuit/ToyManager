@@ -1,5 +1,5 @@
 package dto;
-// Generated May 20, 2019 1:15:31 PM by Hibernate Tools 4.3.1
+// Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
 import dto.common.IName;
@@ -23,7 +23,7 @@ import javax.persistence.Table;
 public class Role implements Serializable, IDTO, IName {
     private long id;
     private String name;
-    private String code;
+    private int priority;
     private Set<User> users;
 
     public Role() {
@@ -32,21 +32,21 @@ public class Role implements Serializable, IDTO, IName {
 
     public Role(long id,
                 String name,
-                String code) {
+                int priority) {
         this.users = new HashSet<>(0);
         this.id = id;
         this.name = name;
-        this.code = code;
+        this.priority = priority;
     }
 
     public Role(long id,
                 String name,
-                String code,
+                int priority,
                 Set<User> users) {
         this.users = new HashSet<>(0);
         this.id = id;
         this.name = name;
-        this.code = code;
+        this.priority = priority;
         this.users = users;
     }
 
@@ -76,14 +76,14 @@ public class Role implements Serializable, IDTO, IName {
         this.name = name;
     }
 
-    @Column(name = "Code",
+    @Column(name = "Priority",
             nullable = false)
-    public String getCode() {
-        return this.code;
+    public int getPriority() {
+        return this.priority;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     @OneToMany(fetch = FetchType.LAZY,

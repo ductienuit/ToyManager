@@ -1,5 +1,5 @@
 package dto;
-// Generated May 20, 2019 1:15:31 PM by Hibernate Tools 4.3.1
+// Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
 import dto.common.IName;
@@ -25,6 +25,7 @@ import javax.persistence.Table;
 public class Toy implements Serializable, IDTO, IName {
     private long id;
     private Category category;
+    private ToyStatus toyStatus;
     private String name;
     private long price;
     private boolean gender;
@@ -38,6 +39,7 @@ public class Toy implements Serializable, IDTO, IName {
 
     public Toy(long id,
                Category category,
+               ToyStatus toyStatus,
                String name,
                long price,
                boolean gender,
@@ -46,6 +48,7 @@ public class Toy implements Serializable, IDTO, IName {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
         this.category = category;
+        this.toyStatus = toyStatus;
         this.name = name;
         this.price = price;
         this.gender = gender;
@@ -55,6 +58,7 @@ public class Toy implements Serializable, IDTO, IName {
 
     public Toy(long id,
                Category category,
+               ToyStatus toyStatus,
                String name,
                long price,
                boolean gender,
@@ -64,6 +68,7 @@ public class Toy implements Serializable, IDTO, IName {
         this.orderDetails = new HashSet<>(0);
         this.id = id;
         this.category = category;
+        this.toyStatus = toyStatus;
         this.name = name;
         this.price = price;
         this.gender = gender;
@@ -95,6 +100,17 @@ public class Toy implements Serializable, IDTO, IName {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ToyStatusId",
+                nullable = false)
+    public ToyStatus getToyStatus() {
+        return this.toyStatus;
+    }
+
+    public void setToyStatus(ToyStatus toyStatus) {
+        this.toyStatus = toyStatus;
     }
 
     @Column(name = "Name",
