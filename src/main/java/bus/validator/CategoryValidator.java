@@ -27,6 +27,8 @@ public class CategoryValidator extends BaseEntityValidator<Category> {
                     entity.getId());
                 add(new CategoryNameValidator(),
                     entity.getName());
+                add(new CategoryCodeValidator(),
+                    entity.getCode());
             }
         };
     }
