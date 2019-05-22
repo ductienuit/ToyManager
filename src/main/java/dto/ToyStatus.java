@@ -21,6 +21,10 @@ import javax.persistence.Table;
        catalog = "toymanager"
 )
 public class ToyStatus implements Serializable, IDTO, IName {
+    public static ToyStatus IN_STOCK = new ToyStatus(0,
+                                                     "Còn hàng");
+    public static ToyStatus OUT_OF_STOCK = new ToyStatus(1,
+                                                         "Hết hàng");
     private long id;
     private String name;
     private Set<Toy> toys;

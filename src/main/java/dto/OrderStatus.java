@@ -21,6 +21,14 @@ import javax.persistence.Table;
        catalog = "toymanager"
 )
 public class OrderStatus implements Serializable, IDTO, IName {
+    public static OrderStatus CANCELLED = new OrderStatus(3,
+                                                          "Huỷ");
+    public static OrderStatus PENDING = new OrderStatus(0,
+                                                        "Đang chờ");
+    public static OrderStatus SHIPPED = new OrderStatus(2,
+                                                        "Đã giao");
+    public static OrderStatus SHIPPING = new OrderStatus(1,
+                                                         "Đang giao");
     private long id;
     private String name;
     private Set<Order> orders;
