@@ -7,28 +7,26 @@ package bus.validator;
 
 import bus.validator.common.BaseEntityValidator;
 import bus.validator.common.ValidationPairs;
-import dto.Role;
+import dto.ToyStatus;
 
 /**
  *
  * @author CMQ
  */
-public class RoleValidator extends BaseEntityValidator<Role> {
-    public RoleValidator() {
-        super("Quyền",
-              Role.class);
+public class ToyStatusValidator extends BaseEntityValidator<ToyStatus> {
+    public ToyStatusValidator() {
+        super("Trạng thái đồ chơi",
+              ToyStatus.class);
     }
 
     @Override
-    public ValidationPairs GetValidators(final Role entity) {
+    public ValidationPairs GetValidators(final ToyStatus entity) {
         return new ValidationPairs() {
             {
                 add(new RoleIdValidator(),
                     entity.getId());
                 add(new RoleNameValidator(),
                     entity.getName());
-                add(new RolePriorityValidator(),
-                    entity.getPriority());
             }
         };
     }
