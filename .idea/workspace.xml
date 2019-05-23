@@ -6,26 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4217a3a2-8098-4a1f-8e5e-8d218da24d44" name="Default Changelist" comment="add /danh-muc page">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/toymanager/admin/AccountsControllerAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/toymanager/admin/OrderControllerAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/template/admin/js/ace-elements.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/accounts/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/toymanager/admin/CategoryControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/toymanager/admin/CategoryControllerAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/toymanager/admin/NewsControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/toymanager/admin/ProductControllerAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/common/admin/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/common/admin/menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/decorators/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/decorators/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/category/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/category/edit.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/category/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/category/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/orders/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/accounts/add.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/orders/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/orders/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/products/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/products/edit.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/products/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/products/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/user/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/products/add.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/user/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/orders/detail.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="4217a3a2-8098-4a1f-8e5e-8d218da24d44" name="Default Changelist" comment="add /danh-muc page" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,17 +33,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/products/edit.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="134" column="24" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -170,8 +141,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1268" />
-    <option name="y" value="177" />
+    <option name="x" value="94" />
+    <option name="y" value="110" />
     <option name="width" value="1026" />
     <option name="height" value="546" />
   </component>
@@ -232,32 +203,7 @@
               <item name="ToyManager" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="toymanager" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ToyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ToyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ToyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ToyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ToyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ToyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="decorators" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ToyManager" type="b2602c69:ProjectViewProjectNode" />
@@ -266,33 +212,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ToyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ToyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ToyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ToyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="products" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ToyManager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ToyManager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -643,7 +562,7 @@
       <workItem from="1558510298449" duration="4313000" />
       <workItem from="1558516017349" duration="2350000" />
       <workItem from="1558534062996" duration="14552000" />
-      <workItem from="1558578760036" duration="17498000" />
+      <workItem from="1558578760036" duration="18937000" />
     </task>
     <task id="LOCAL-00001" summary="convert intellij project">
       <created>1558275544801</created>
@@ -677,7 +596,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87874000" />
+    <option name="totallyTimeSpent" value="89313000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -690,7 +609,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1368" y="2" width="1376" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2112462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1176,8 +1094,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/products/edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="134" column="24" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
+        <state relative-caret-position="181">
+          <caret line="139" column="32" lean-forward="true" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
         </state>
       </provider>
     </entry>
