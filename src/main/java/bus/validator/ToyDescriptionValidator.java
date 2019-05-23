@@ -17,7 +17,7 @@ public class ToyDescriptionValidator extends StringValidator {
               Integer.MAX_VALUE,
               StringValidator.LimitComparisonType.LessThanOrEqual,
               false,
-              false,
+              true,
               false);
     }
 }

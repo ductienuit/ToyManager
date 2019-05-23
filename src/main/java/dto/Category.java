@@ -23,6 +23,7 @@ import javax.persistence.Table;
 public class Category implements Serializable, IDTO, IName {
     private long id;
     private String name;
+    private String code;
     private Set<Toy> toys;
 
     public Category() {
@@ -30,18 +31,22 @@ public class Category implements Serializable, IDTO, IName {
     }
 
     public Category(long id,
-                    String name) {
+                    String name,
+                    String code) {
         this.toys = new HashSet<>(0);
         this.id = id;
         this.name = name;
+        this.code = code;
     }
 
     public Category(long id,
                     String name,
+                    String code,
                     Set<Toy> toys) {
         this.toys = new HashSet<>(0);
         this.id = id;
         this.name = name;
+        this.code = code;
         this.toys = toys;
     }
 
@@ -69,6 +74,16 @@ public class Category implements Serializable, IDTO, IName {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Column(name = "Code",
+            nullable = false)
+    public String getCode() {
+        return this.code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @OneToMany(fetch = FetchType.LAZY,

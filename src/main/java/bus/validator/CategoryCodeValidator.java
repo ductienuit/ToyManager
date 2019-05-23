@@ -11,13 +11,13 @@ import bus.validator.common.StringValidator;
  *
  * @author CMQ
  */
-public class ToyStatusNameValidator extends StringValidator {
-    public ToyStatusNameValidator() {
-        super("Tên trạng thái đồ chơi",
+public class CategoryCodeValidator extends StringValidator {
+    public CategoryCodeValidator() {
+        super("Code thể loại",
               255,
               StringValidator.LimitComparisonType.LessThanOrEqual,
               false,
-              true,
+              false,
               false);
     }
 }
