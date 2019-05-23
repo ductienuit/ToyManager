@@ -18,14 +18,14 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-products'/>" id="formSubmit" method="get">
+    <form action="<c:url value='/admin-category'/>" id="formSubmit" method="get">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Trang chủ</a>
+                        <a href="#">Loại đồ chới</a>
                     </li>
                 </ul>
                 <!-- /.breadcrumb -->
@@ -37,21 +37,66 @@
                             <div class="table-btn-controls">
                                 <div class="pull-right tableTools-container">
                                     <div class="dt-buttons btn-overlap btn-group">
-                                        <a flag="info"
-                                           class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                                           data-toggle="tooltip"
-                                           title='Thêm bài viết' href='<c:url value="/admin-products?type=edit"/>'>
-                                                    <span>
-                                                        <i class="fa fa-plus-circle bigger-110 purple"></i>
-                                                    </span>
-                                        </a>
-                                        <button id="btnDelete" type="button"
-                                                class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title='Xóa bài viết'>
-                                                    <span>
-                                                        <i class="fa fa-trash-o bigger-110 pink"></i>
-                                                    </span>
+                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                data-target="#myModal"><span>                                                   <i
+                                                class="fa fa-plus-circle bigger-100 purple"></i>
+                                                    </span>Thêm
                                         </button>
+
+                                        <div id="myModal" class="modal" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;
+                                                        </button>
+                                                        <h4 class="blue bigger">Thêm loại đồ chơi</h4>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="form-group">
+                                                                    <label for="form-field-username">Tên loại đồ
+                                                                        chơi</label>
+
+                                                                    <div>
+                                                                        <input type="text" id="form-field-username"
+                                                                               placeholder="Tên loại đồ chơi"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="space-4"></div>
+
+                                                                <div class="form-group">
+                                                                    <label for="form-field-first">Code</label>
+
+                                                                    <div>
+                                                                        <input type="text" id="form-field-first"
+                                                                               placeholder="Mã code loại đồ chơi"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-sm" data-dismiss="modal">
+                                                            <i class="ace-icon fa fa-times"></i>
+                                                            Cancel
+                                                        </button>
+
+                                                        <button class="btn btn-sm btn-primary">
+                                                            <i class="ace-icon fa fa-check"></i>
+                                                            Save
+                                                        </button>
+                                                        <button class="btn btn-sm">
+                                                            <i class="ace-icon fa fa-times"></i>
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -62,8 +107,8 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Tên bài viết</th>
-                                            <th>Mô tả ngắn</th>
+                                            <th>Tên loại đồ chơi</th>
+                                            <th>Code</th>
                                             <th>Thao tác</th>
                                         </tr>
                                         </thead>
@@ -73,14 +118,24 @@
                                                 <td>${item.title}</td>
                                                 <td>${item.shortDescriptions}</td>
                                                 <td>
-                                                    <c:url var="editURL" value="/admin-products">
+                                                    <c:url var="editURL" value="/admin-category">
                                                         <c:param name="type" value="edit"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
+
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                       title="Cập nhật bài viết" href='${editURL}'><i
+                                                       title="Cập nhật loại đồ chơi" href='${editURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
+                                                    <c:url var="deleteURL" value="/admin-category">
+                                                        <c:param name="type" value="delete"/>
+                                                        <c:param name="id" value="${item.id}"/>
+                                                    </c:url>
+                                                    <a class="btn btn-sm btn-danger btn-edit" data-toggle="tooltip"
+                                                       title="Xóa thể loại" href='${deleteURL}'><i
+                                                            class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </a>
+
                                                 </td>
                                             </tr>
                                         </c:forEach>

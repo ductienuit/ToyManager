@@ -13,7 +13,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Sửa đồ chơi</title>
+    <title>Thêm đồ chơi</title>
 </head>
 
 <body>
@@ -136,7 +136,7 @@
                         Đồ chơi
                         <small>
                             <i class="ace-icon fa fa-angle-double-right"></i>
-                            Sửa đồ chơi
+                            Thêm đồ chơi
                         </small>
                     </h1>
                 </div><!-- /.page-header -->
@@ -230,7 +230,7 @@
                                 <div class="col-md-offset-3 col-md-9">
                                     <button class="btn btn-info" type="button">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
-                                        Sửa đồ chơi
+                                        Thêm đồ chơi
                                     </button>
 
                                     &nbsp; &nbsp; &nbsp;

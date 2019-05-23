@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.toymanager.admin;
 
 import com.toymanager.constant.SystemConstant;
@@ -8,6 +13,7 @@ import com.toymanager.service.INewService;
 import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
 
+import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,13 +21,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * @author DucTien
  */
-@WebServlet(urlPatterns = {"/admin-category"})
-public class CategoryControllerAdmin extends HttpServlet {
+@WebServlet(urlPatterns = {"/admin-products"})
+public class ProductControllerAdmin extends HttpServlet {
 
     @Inject
     private INewService newsService;
@@ -39,7 +44,7 @@ public class CategoryControllerAdmin extends HttpServlet {
         model.setTotalItem(newsService.getTotalItem());
         model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
         request.setAttribute(SystemConstant.MODEL, model);
-        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/category/edit.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/products/add.jsp");
         rd.forward(request, response);
     }
 

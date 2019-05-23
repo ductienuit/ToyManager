@@ -47,7 +47,7 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href='<c:url value="/admin-products?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc"/>'>
+                    <a href='<c:url value="/admin-order?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
                         Danh sách đơn hàng
                     </a>
@@ -68,7 +68,14 @@
                     <b class="arrow"></b>
                 </li>
                 <li>
-                    <a href='<c:url value="/admin-category?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc"/>'>
+                    <a href='<c:url value="/admin-accounts?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Quản lí tài khoản
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href='<c:url value="/admin-products?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
                         Thống kê
                     </a>

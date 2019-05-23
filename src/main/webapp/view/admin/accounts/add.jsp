@@ -13,12 +13,12 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Sửa đồ chơi</title>
+    <title>Thêm tài khoản</title>
 </head>
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-products'/>" id="formSubmit" method="get">
+    <form action="<c:url value='/admin-accounts'/>" id="formSubmit" method="get">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -27,7 +27,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Đồ chơi</li>
+                    <li class="active">Tài khoản</li>
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -133,10 +133,10 @@
 
                 <div class="page-header">
                     <h1>
-                        Đồ chơi
+                        Tài khoản
                         <small>
                             <i class="ace-icon fa fa-angle-double-right"></i>
-                            Sửa đồ chơi
+                            Thêm tài khoản
                         </small>
                     </h1>
                 </div><!-- /.page-header -->
@@ -146,30 +146,21 @@
                         <!-- PAGE CONTENT BEGINS -->
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên đồ
-                                    chơi</label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tài
+                                    khoản</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" placeholder="Nhập tên đồ chơi"
+                                    <input type="text" id="form-field-1" placeholder="Username"
                                            class="col-xs-10 col-sm-5">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
-                                    Loại đồ chơi </label>
-                                <div class="col-sm-9"><select class="form-control" id="form-field-2">
-                                    <option value="1">Đồ chơi loại A</option>
-                                    <option value="2">Đồ chơi loại B</option>
-                                </select></div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-3">Đơn
-                                    giá</label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Họ và
+                                    tên </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-3" placeholder="Đơn giá"
+                                    <input type="text" id="form-field-2" placeholder="Họ và tên"
                                            class="form-control">
                                 </div>
                             </div>
@@ -177,66 +168,71 @@
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Giới
-                                    tính </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Mật
+                                    khẩu </label>
 
                                 <div class="col-sm-9">
-                                    <input type="password" id="form-field-4" placeholder="Giới tính của đồ chơi"
+                                    <input type="password" id="form-field-3" placeholder="Nhập mật khẩu"
                                            class="col-xs-10 col-sm-5">
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
                             <div class="form-group">
-
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Tải lên ảnh
-                                    miêu tả </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Địa
+                                    chỉ </label>
 
                                 <div class="col-sm-9">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="form-field-5"
-                                                   aria-describedby="inputGroupFileAddon01">
-                                        </div>
-                                    </div>
+                                    <input type="text" id="form-field-4" placeholder="Địa chỉ"
+                                           class="form-control">
                                 </div>
-
                             </div>
+
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-5">
+                                    Số điện thoại </label>
+
+                                <div class="col-sm-9">
+                                    <input type="email" id="form-field-5" placeholder="Nhập địa chỉ"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-5">
+                                    Phân quyền </label>
+                                <div class="col-sm-9"><select class="form-control" id="form-field-select-1">
+                                    <option value="1">Người dùng</option>
+                                    <option value="2">Quản trị viên</option>
+                                </select></div>
+                            </div>
+
 
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-6">
-                                    Miêu tả ngắn</label>
+                                    Số điện thoại </label>
 
                                 <div class="col-sm-9">
-                                    <input type="email" id="form-field-6" placeholder="Miêu tả đồ chơi"
+                                    <input type="email" id="form-field-6" placeholder="Nhập địa chỉ"
                                            class="form-control">
                                 </div>
                             </div>
-
-                            <div class="space-4"></div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-7">
-                                    Trạng thái hàng </label>
-                                <div class="col-sm-9"><select class="form-control" id="form-field-7">
-                                    <option value="1">Còn hàng</option>
-                                    <option value="2">Hết hàng</option>
-                                </select></div>
-                            </div>
-
                             <div class="space-4"></div>
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
                                     <button class="btn btn-info" type="button">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
-                                        Sửa đồ chơi
+                                        Submit
                                     </button>
 
                                     &nbsp; &nbsp; &nbsp;
                                     <button class="btn" type="reset">
                                         <i class="ace-icon fa fa-undo bigger-110"></i>
-                                        Hủy
+                                        Reset
                                     </button>
                                 </div>
                             </div>
@@ -253,3 +249,5 @@
 </body>
 
 </html>
+
+

@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: DucTien
+  Date: 22/05/2019
+  Time: 3:07 CH
+  To change this template use File | Settings | File Templates.
+--%>
 <%@include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -6,19 +13,19 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Danh sách bài viết</title>
+    <title>Danh sách thể loại</title>
 </head>
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-products'/>" id="formSubmit" method="get">
+    <form action="<c:url value='/admin-order'/>" id="formSubmit" method="get">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Trang chủ</a>
+                        <a href="#">Đơn hàng ABCXYZ</a>
                     </li>
                 </ul>
                 <!-- /.breadcrumb -->
@@ -26,55 +33,34 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="widget-box table-filter">
-                            <div class="table-btn-controls">
-                                <div class="pull-right tableTools-container">
-                                    <div class="dt-buttons btn-overlap btn-group">
-                                        <a flag="info"
-                                           class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                                           data-toggle="tooltip"
-                                           title='Thêm bài viết' href='<c:url value="/admin-products?type=edit"/>'>
-                                                    <span>
-                                                        <i class="fa fa-plus-circle bigger-110 purple"></i>
-                                                    </span>
-                                        </a>
-                                        <button id="btnDelete" type="button"
-                                                class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title='Xóa bài viết'>
-                                                    <span>
-                                                        <i class="fa fa-trash-o bigger-110 pink"></i>
-                                                    </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Tên bài viết</th>
-                                            <th>Mô tả ngắn</th>
-                                            <th>Thao tác</th>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Ngày đặt hàng</th>
+                                            <th>Tên đồ chơi</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng</th>
+                                            <th>Tổng tiền</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
+                                                <td>1</td>
                                                 <td>${item.title}</td>
                                                 <td>${item.shortDescriptions}</td>
+                                                <td>${item.title}</td>
                                                 <td>
-                                                    <c:url var="editURL" value="/admin-products">
-                                                        <c:param name="type" value="edit"/>
-                                                        <c:param name="id" value="${item.id}"/>
-                                                    </c:url>
-                                                    <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                       title="Cập nhật bài viết" href='${editURL}'><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                    </a>
+                                                    <span class="label label-sm label-warning">Đang chờ</span>
+                                                    <span class="label label-sm label-warning">Đang giao</span>
+                                                    <span class="label label-sm label-success">Đã giao</span>
+                                                    <span class="label label-sm label-danger">Đã hủy</span>
                                                 </td>
+                                                <td>${item.title}</td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
@@ -85,9 +71,32 @@
                                     <input type="hidden" value="" id="sortName" name="sortName"/>
                                     <input type="hidden" value="" id="sortBy" name="sortBy"/>
                                     <input type="hidden" value="" id="type" name="type"/>
+                                    <h1>Tổng hóa đơn: 199$</h1>
+                                    <hr>
+                                    <div>
+                                        <label for="form-field-select-1">Tình trạng đơn hàng hiện tại</label>
 
+                                        <select class="form-control" id="form-field-select-1">
+                                            <option value="1">Đang chờ</option>
+                                            <option value="2">Đang giao</option>
+                                            <option value="3">Đã giao</option>
+                                            <option value="4">Hủy đơn hàng</option>
+                                        </select>
+                                    </div>
+                                    <div class="clearfix form-actions">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button class="btn btn-info" type="button">
+                                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                                Xác nhận
+                                            </button>
 
-                                    <!-- PAGE CONTENT ENDS -->
+                                            &nbsp; &nbsp; &nbsp;
+                                            <button class="btn" type="reset">
+                                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                Reset
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -20,8 +20,8 @@ import java.io.IOException;
 /**
  * @author DucTien
  */
-@WebServlet(urlPatterns = {"/admin-category"})
-public class CategoryControllerAdmin extends HttpServlet {
+@WebServlet(urlPatterns = {"/admin-accounts"})
+public class AccountsControllerAdmin extends HttpServlet {
 
     @Inject
     private INewService newsService;
@@ -39,7 +39,7 @@ public class CategoryControllerAdmin extends HttpServlet {
         model.setTotalItem(newsService.getTotalItem());
         model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
         request.setAttribute(SystemConstant.MODEL, model);
-        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/category/edit.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/accounts/add.jsp");
         rd.forward(request, response);
     }
 
@@ -49,3 +49,4 @@ public class CategoryControllerAdmin extends HttpServlet {
 
     }
 }
+

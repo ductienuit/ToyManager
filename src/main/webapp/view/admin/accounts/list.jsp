@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: DucTien
+  Date: 22/05/2019
+  Time: 3:07 CH
+  To change this template use File | Settings | File Templates.
+--%>
 <%@include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -6,19 +13,19 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Danh sách bài viết</title>
+    <title>Danh sách tài khoản</title>
 </head>
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-products'/>" id="formSubmit" method="get">
+    <form action="<c:url value='/admin-accounts'/>" id="formSubmit" method="get">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Trang chủ</a>
+                        <a href="#">Danh sách tài khoản</a>
                     </li>
                 </ul>
                 <!-- /.breadcrumb -->
@@ -33,18 +40,11 @@
                                         <a flag="info"
                                            class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
                                            data-toggle="tooltip"
-                                           title='Thêm bài viết' href='<c:url value="/admin-products?type=edit"/>'>
+                                           title='Thêm tài khoảns' href='<c:url value="/admin-accounts?type=add"/>'>
                                                     <span>
                                                         <i class="fa fa-plus-circle bigger-110 purple"></i>
                                                     </span>
                                         </a>
-                                        <button id="btnDelete" type="button"
-                                                class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title='Xóa bài viết'>
-                                                    <span>
-                                                        <i class="fa fa-trash-o bigger-110 pink"></i>
-                                                    </span>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -55,8 +55,8 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Tên bài viết</th>
-                                            <th>Mô tả ngắn</th>
+                                            <th>Tên tài khoản</th>
+                                            <th>Phân quyền</th>
                                             <th>Thao tác</th>
                                         </tr>
                                         </thead>
@@ -64,14 +64,29 @@
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
                                                 <td>${item.title}</td>
-                                                <td>${item.shortDescriptions}</td>
                                                 <td>
-                                                    <c:url var="editURL" value="/admin-products">
+                                                    <div>
+                                                        <select class="form-control" id="form-field-select-1">
+                                                            <option value="1">Người dùng</option>
+                                                            <option value="2">Quản trị viên</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <c:url var="editURL" value="/admin-accounts">
                                                         <c:param name="type" value="edit"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
-                                                    <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                       title="Cập nhật bài viết" href='${editURL}'><i
+                                                    <a class="btn btn-sm btn-success" data-toggle="tooltip"
+                                                       title="Cập nhật tài khoản" href='${editURL}'><i
+                                                            class="fa fa-check-square-o" aria-hidden="true"></i>
+                                                    </a>
+                                                    <c:url var="editURL" value="/admin-accounts">
+                                                        <c:param name="type" value="delete"/>
+                                                        <c:param name="id" value="${item.id}"/>
+                                                    </c:url>
+                                                    <a class="btn btn-sm btn-primary btn-remove" data-toggle="tooltip"
+                                                       title="Xóa tài khoản" href='${editURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
