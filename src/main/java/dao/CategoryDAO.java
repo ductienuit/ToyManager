@@ -9,7 +9,6 @@ import dao.common.BasicDAO;
 import dto.Category;
 
 /**
- *
  * @author CMQ
  */
 public class CategoryDAO extends BasicDAO<Category> {
@@ -17,21 +16,24 @@ public class CategoryDAO extends BasicDAO<Category> {
         super(Category.class);
     }
 
-    public static void main(String[] args) {
+    public void Test() {
         CategoryDAO dao = new CategoryDAO();
 
         // insert
         System.out.println("1. Insert");
         Category c1 = new Category();
         c1.setName("Category 1");
+        c1.setCode("the-thao");
         dao.insert(c1);
         System.out.println("Success!");
 
         // search
         System.out.println("2. Search");
+        c1.setId(1);
         Category c2 = dao.search(c1.getId());
-        System.out.println("Category [id = " + c2.getId() + ", name = " + c2
-            .getName() + "]");
+        if (c2 != null)
+            System.out.println("Category [id = " + c2.getId() + ", name = " + c2
+                    .getName() + "]");
         System.out.println("Success!");
 
         // update
@@ -41,7 +43,7 @@ public class CategoryDAO extends BasicDAO<Category> {
         dao.update(c3);
         Category c4 = dao.search(c3.getId());
         System.out.println("Category [id = " + c4.getId() + ", name = " + c4
-            .getName() + "]");
+                .getName() + "]");
         System.out.println("Success!");
 
         // count
@@ -62,7 +64,7 @@ public class CategoryDAO extends BasicDAO<Category> {
         Category c5 = dao.search(c4.getId());
         if (c5 == null) {
             System.out.println("Attempt to find Category [id = " + c4.getId()
-                                   + "]: null");
+                    + "]: null");
         }
         System.out.println("Success!");
     }

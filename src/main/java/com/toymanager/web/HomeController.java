@@ -11,6 +11,7 @@ import com.toymanager.service.INewService;
 import com.toymanager.service.IUserService;
 import com.toymanager.utils.FormUtil;
 import com.toymanager.utils.SessionUtil;
+import dao.CategoryDAO;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -46,25 +47,29 @@ public class HomeController extends HttpServlet {
 //        TEST
 //        RequestDispatcher xxx = request.getRequestDispatcher("/view/web/home.jsp");
 //        xxx.forward(request, response);
-
-        if (action != null && action.equals("login")) {
-            String message = request.getParameter("message");
-            String alert = request.getParameter("alert");
-
-            if (message != null && alert != null) {
-                request.setAttribute("message", resourceBundle.getString(message));
-                request.setAttribute("alert", alert);
-            }
-
-            RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
-            rd.forward(request, response);
-        } else if (action != null && action.equals("logout")) {
-            SessionUtil.getInstance().removeValue(request, "USERMODEL");
-            response.sendRedirect(request.getContextPath() + "/trang-chu");
-        } else {
-            RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
-            rd.forward(request, response);
+        String message = request.getParameter("message");
+        if (message != null) {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            categoryDAO.Test();
         }
+//        if (action != null && action.equals("login")) {
+//            String message = request.getParameter("message");
+//            String alert = request.getParameter("alert");
+//
+//            if (message != null && alert != null) {
+//                request.setAttribute("message", resourceBundle.getString(message));
+//                request.setAttribute("alert", alert);
+//            }
+//
+//            RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
+//            rd.forward(request, response);
+//        } else if (action != null && action.equals("logout")) {
+//            SessionUtil.getInstance().removeValue(request, "USERMODEL");
+//            response.sendRedirect(request.getContextPath() + "/trang-chu");
+//        } else {
+//            RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
+//            rd.forward(request, response);
+//        }
     }
 
     @Override
