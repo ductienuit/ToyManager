@@ -43,6 +43,23 @@ public class UserDAO extends BasicDAO<User> {
         return userWrapper.getObject();
     }
 
+    public List<User> findUsersByStatusId(final long statusId) {
+        final ObjectWrapper<List<User>> usersWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            Criteria criteria = session
+                .createCriteria(User.class)
+                .createCriteria("userStatus")
+                .add(Restrictions.eq("id",
+                                     statusId));
+
+            List result = criteria.list();
+            usersWrapper.setObject(result);
+        });
+
+        return usersWrapper.getObject();
+    }
+
     public boolean hasUser(final String username) {
         final ObjectWrapper<Boolean> resultWrapper = new ObjectWrapper<>(false);
 
@@ -59,22 +76,5 @@ public class UserDAO extends BasicDAO<User> {
         });
 
         return resultWrapper.getObject();
-    }
-
-    public List<User> findUsersByStatusId(final long statusId) {
-        final ObjectWrapper<List<User>> usersWrapper = new ObjectWrapper<>();
-
-        HibernateUtil.beginTransaction((session, transaction) -> {
-            Criteria criteria = session
-                .createCriteria(User.class)
-                .createCriteria("userStatus")
-                .add(Restrictions.eq("id",
-                                     statusId));
-
-            List result = criteria.list();
-            usersWrapper.setObject(result);
-        });
-
-        return usersWrapper.getObject();
     }
 }

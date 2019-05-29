@@ -7,7 +7,6 @@ package dao.impl;
 
 import dao.common.BasicDAO;
 import dto.Category;
-import dto.User;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;

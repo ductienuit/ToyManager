@@ -7,7 +7,6 @@ package dao.impl;
 
 import dao.common.BasicDAO;
 import dto.Toy;
-import dto.User;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -56,6 +55,25 @@ public class ToyDAO extends BasicDAO<Toy> {
         return toysWrapper.getObject();
     }
 
+    public List<Toy> findToysByPriceRange(final long minValue,
+                                          final long maxValue) {
+        final ObjectWrapper<List<Toy>> toysWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            Criteria criteria = session
+                .createCriteria(Toy.class)
+                .add(Restrictions.ge("price",
+                                     minValue))
+                .add(Restrictions.le("price",
+                                     maxValue));
+
+            List result = criteria.list();
+            toysWrapper.setObject(result);
+        });
+
+        return toysWrapper.getObject();
+    }
+
     public List<Toy> findToysByStatusId(final long statusId) {
         final ObjectWrapper<List<Toy>> toysWrapper = new ObjectWrapper<>();
 
@@ -81,25 +99,6 @@ public class ToyDAO extends BasicDAO<Toy> {
                 .createCriteria(Toy.class)
                 .add(Restrictions.like("name",
                                        "%" + name + "%"));
-
-            List result = criteria.list();
-            toysWrapper.setObject(result);
-        });
-
-        return toysWrapper.getObject();
-    }
-
-    public List<Toy> findToysByPriceRange(final long minValue,
-                                          final long maxValue) {
-        final ObjectWrapper<List<Toy>> toysWrapper = new ObjectWrapper<>();
-
-        HibernateUtil.beginTransaction((session, transaction) -> {
-            Criteria criteria = session
-                .createCriteria(Toy.class)
-                .add(Restrictions.ge("price",
-                                     minValue))
-                .add(Restrictions.le("price",
-                                     maxValue));
 
             List result = criteria.list();
             toysWrapper.setObject(result);

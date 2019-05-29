@@ -23,23 +23,6 @@ public class OrderDAO extends BasicDAO<Order> {
         super(Order.class);
     }
 
-    public List<Order> findOrdersByStatusId(final long statusId) {
-        final ObjectWrapper<List<Order>> ordersWrapper = new ObjectWrapper<>();
-
-        HibernateUtil.beginTransaction((session, transaction) -> {
-            Criteria criteria = session
-                .createCriteria(Order.class)
-                .createCriteria("orderStatus")
-                .add(Restrictions.eq("id",
-                                     statusId));
-
-            List result = criteria.list();
-            ordersWrapper.setObject(result);
-        });
-
-        return ordersWrapper.getObject();
-    }
-
     public List<Order> findOrdersByPaymentDateRange(final Date fromDate,
                                                     final Date toDate) {
         final ObjectWrapper<List<Order>> ordersWrapper = new ObjectWrapper<>();
@@ -51,6 +34,23 @@ public class OrderDAO extends BasicDAO<Order> {
                                      fromDate))
                 .add(Restrictions.le("paymentDate",
                                      toDate));
+
+            List result = criteria.list();
+            ordersWrapper.setObject(result);
+        });
+
+        return ordersWrapper.getObject();
+    }
+
+    public List<Order> findOrdersByStatusId(final long statusId) {
+        final ObjectWrapper<List<Order>> ordersWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            Criteria criteria = session
+                .createCriteria(Order.class)
+                .createCriteria("orderStatus")
+                .add(Restrictions.eq("id",
+                                     statusId));
 
             List result = criteria.list();
             ordersWrapper.setObject(result);
