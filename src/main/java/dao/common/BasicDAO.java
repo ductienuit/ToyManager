@@ -5,7 +5,6 @@
  */
 package dao.common;
 
-import dao.common.IDAO;
 import dto.common.IDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +64,7 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     public void delete(final Iterable<T> entities) {
         HibernateUtil.beginTransaction((session, transaction) -> {
             for (T entity : entities) {
-                session.update(entity);
+                session.delete(entity);
             }
 
             transaction.commit();
@@ -85,8 +84,8 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
-    public Iterable<T> getAll() {
-        final ObjectWrapper<Iterable<T>> listWrapper = new ObjectWrapper<>();
+    public List<T> getAll() {
+        final ObjectWrapper<List<T>> listWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             listWrapper.setObject(session
@@ -115,7 +114,7 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
-    public Iterable<Long> insert(final Iterable<T> entities) {
+    public List<Long> insert(final Iterable<T> entities) {
         final ArrayList<Long> ids = new ArrayList<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {

@@ -16,4 +16,5 @@ public class UserDAO extends BasicDAO<User> {
     public UserDAO() {
         super(User.class);
     }
+    public
 }

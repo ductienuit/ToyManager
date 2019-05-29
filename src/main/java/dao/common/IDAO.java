@@ -6,6 +6,7 @@
 package dao.common;
 
 import dto.common.IDTO;
+import java.util.List;
 
 /**
  *
@@ -15,7 +16,7 @@ import dto.common.IDTO;
 public interface IDAO<T extends IDTO> {
     Long insert(T entity);
 
-    Iterable<Long> insert(Iterable<T> entities);
+    List<Long> insert(Iterable<T> entities);
 
     void update(T entity);
 
@@ -25,7 +26,7 @@ public interface IDAO<T extends IDTO> {
 
     void delete(Iterable<T> entities);
 
-    Iterable<T> getAll();
+    List<T> getAll();
 
     boolean hasAny();
 
