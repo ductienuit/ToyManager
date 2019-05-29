@@ -22,8 +22,8 @@ public class UserDAO extends BasicDAO<User> {
         super(User.class);
     }
 
-    public User getUser(final String username,
-                        final String password) {
+    public User findUser(final String username,
+                         final String password) {
         final ObjectWrapper<User> userWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
@@ -61,7 +61,7 @@ public class UserDAO extends BasicDAO<User> {
         return resultWrapper.getObject();
     }
 
-    public List<User> getUsersByStatusId(final long statusId) {
+    public List<User> findUsersByStatusId(final long statusId) {
         final ObjectWrapper<List<User>> usersWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {

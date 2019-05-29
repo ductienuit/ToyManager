@@ -89,16 +89,16 @@ public class ToyDAO extends BasicDAO<Toy> {
         return toysWrapper.getObject();
     }
 
-    public List<Toy> findToysInPriceRange(final long minValue,
+    public List<Toy> findToysByPriceRange(final long minValue,
                                           final long maxValue) {
         final ObjectWrapper<List<Toy>> toysWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             Criteria criteria = session
                 .createCriteria(Toy.class)
-                .add(Restrictions.gt("price",
+                .add(Restrictions.ge("price",
                                      minValue))
-                .add(Restrictions.lt("price",
+                .add(Restrictions.le("price",
                                      maxValue));
 
             List result = criteria.list();
