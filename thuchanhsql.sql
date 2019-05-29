@@ -80,7 +80,7 @@ INSERT INTO user(`username`, `password`, `fullname`, `roleid`, `status`) VALUES 
 INSERT INTO user(`username`, `password`, `fullname`, `roleid`, `status`) VALUES ('user2', '123456', 'Ba B', '2', '1');
 
 
-    
+select * from news limit 0,2;    
     
     
     
