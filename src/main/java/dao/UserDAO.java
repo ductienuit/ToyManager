@@ -61,15 +61,15 @@ public class UserDAO extends BasicDAO<User> {
         return resultWrapper.getObject();
     }
 
-    public List<User> getUsersByStatusId(final long id) {
+    public List<User> getUsersByStatusId(final long statusId) {
         final ObjectWrapper<List<User>> usersWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             Criteria criteria = session
                 .createCriteria(User.class)
                 .createCriteria("userStatus")
-                .add(Restrictions.eq("Id",
-                                     id));
+                .add(Restrictions.eq("id",
+                                     statusId));
 
             List result = criteria.list();
             usersWrapper.setObject(result);
