@@ -14,6 +14,18 @@ import java.util.List;
  * @param <T>
  */
 public interface IDAO<T extends IDTO> {
+    Long count();
+
+    void delete(T entity);
+
+    void delete(Iterable<T> entities);
+
+    List<T> findAll();
+
+    T findEntityById(Long id);
+
+    boolean hasAny();
+
     Long insert(T entity);
 
     List<Long> insert(Iterable<T> entities);
@@ -21,16 +33,4 @@ public interface IDAO<T extends IDTO> {
     void update(T entity);
 
     void update(Iterable<T> entities);
-
-    void delete(T entity);
-
-    void delete(Iterable<T> entities);
-
-    List<T> getAll();
-
-    boolean hasAny();
-
-    Long count();
-
-    T search(Long id);
 }

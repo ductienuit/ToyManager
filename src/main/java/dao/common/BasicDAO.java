@@ -25,15 +25,6 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
         this.type = type;
     }
 
-    /**
-     * Get the value of type
-     *
-     * @return the value of type
-     */
-    public Class<T> getType() {
-        return type;
-    }
-
     @Override
     public Long count() {
         final ObjectWrapper<Long> countWrapper = new ObjectWrapper<>(0L);
@@ -72,7 +63,20 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
-    public T search(Long id) {
+    public List<T> findAll() {
+        final ObjectWrapper<List<T>> listWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            listWrapper.setObject(session
+                .createCriteria(type)
+                .list());
+        });
+
+        return listWrapper.getObject();
+    }
+
+    @Override
+    public T findEntityById(Long id) {
         final ObjectWrapper<T> entityWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
@@ -83,17 +87,13 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
         return entityWrapper.getObject();
     }
 
-    @Override
-    public List<T> getAll() {
-        final ObjectWrapper<List<T>> listWrapper = new ObjectWrapper<>();
-
-        HibernateUtil.beginTransaction((session, transaction) -> {
-            listWrapper.setObject(session
-                .createCriteria(type)
-                .list());
-        });
-
-        return listWrapper.getObject();
+    /**
+     * Get the value of type
+     *
+     * @return the value of type
+     */
+    public Class<T> getType() {
+        return type;
     }
 
     @Override
