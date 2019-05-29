@@ -5,16 +5,16 @@
  */
 package bus.validator;
 
-import bus.validator.common.BigDecimalValidator;
-import java.math.BigDecimal;
+import bus.validator.common.LongValidator;
 
 /**
  *
  * @author CMQ
  */
-public class OrderDetailTotalPriceValidator extends BigDecimalValidator {
-
+public class OrderDetailTotalPriceValidator extends LongValidator {
     public OrderDetailTotalPriceValidator() {
-        super("Tổng giá", BigDecimal.ZERO, BigDecimal.valueOf(Long.MAX_VALUE));
+        super("Tổng giá",
+              0L,
+              Long.MAX_VALUE);
     }
 }

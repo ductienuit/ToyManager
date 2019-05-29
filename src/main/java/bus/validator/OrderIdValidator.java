@@ -5,16 +5,16 @@
  */
 package bus.validator;
 
-import bus.validator.common.BigIntegerValidator;
-import java.math.BigInteger;
+import bus.validator.common.LongValidator;
 
 /**
  *
  * @author CMQ
  */
-public class OrderIdValidator extends BigIntegerValidator {
-
+public class OrderIdValidator extends LongValidator {
     public OrderIdValidator() {
-        super("Mã đơn hàng", BigInteger.ZERO, BigInteger.valueOf(Long.MAX_VALUE));
+        super("Mã đơn hàng",
+              0L,
+              Long.MAX_VALUE);
     }
 }

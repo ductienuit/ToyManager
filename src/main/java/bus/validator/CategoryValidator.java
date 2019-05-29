@@ -14,19 +14,22 @@ import dto.Category;
  * @author CMQ
  */
 public class CategoryValidator extends BaseEntityValidator<Category> {
-
     public CategoryValidator() {
-        super("Thể loại", Category.class);
+        super("Thể loại",
+              Category.class);
     }
 
     @Override
     public ValidationPairs GetValidators(final Category entity) {
         return new ValidationPairs() {
             {
-                add(new CategoryIdValidator(), entity.getId());
-                add(new CategoryNameValidator(), entity.getName());
+                add(new CategoryIdValidator(),
+                    entity.getId());
+                add(new CategoryNameValidator(),
+                    entity.getName());
+                add(new CategoryCodeValidator(),
+                    entity.getCode());
             }
         };
     }
-
 }

@@ -10,12 +10,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ToyManager" target="1.7" />
+      <module name="ToyManager" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ToyManager" options="-endorseddirs C:\Users\DucTien\Documents\NetBeansProjects\ToyManager\target/endorsed" />
+      <module name="ToyManager" options="-endorseddirs C:\Users\DucTien\Documents\GitHub\ToyManager\target/endorsed" />
     </option>
   </component>
 </project>

@@ -18,7 +18,7 @@
 
     <filter>
         <filter-name>servletFilter</filter-name>
-        <filter-class>com.halo.thuchanh3.filter.AuthorizationFilter</filter-class>
+        <filter-class>com.toymanager.filter.AuthorizationFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>servletFilter</filter-name>
@@ -28,15 +28,15 @@
 
     <servlet>
         <servlet-name>HomeController</servlet-name>
-        <servlet-class>com.halo.thuchanh3.web.HomeController</servlet-class>
+        <servlet-class>com.toymanager.web.HomeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewAPI</servlet-name>
-        <servlet-class>com.halo.thuchanh3.admin.api.NewAPI</servlet-class>
+        <servlet-class>com.toymanager.admin.api.NewAPI</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewsController</servlet-name>
-        <servlet-class>com.halo.thuchanh3.admin.NewsController</servlet-class>
+        <servlet-class>com.toymanager.admin.ProductControllerAdmin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
@@ -44,7 +44,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>HomeControllerAdmin</servlet-name>
-        <servlet-class>com.halo.thuchanh3.admin.HomeControllerAdmin</servlet-class>
+        <servlet-class>com.toymanager.admin.HomeControllerAdmin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeControllerAdmin</servlet-name>
@@ -63,7 +63,7 @@
             30
         </session-timeout>
     </session-config>
-    <!--    <session-config>
-        <tracking-mode>COOKIE</tracking-mode>
-    </session-config>-->
+    <!--    <session-config>-->
+    <!--        <tracking-mode>COOKIE</tracking-mode>-->
+    <!--    </session-config>-->
 </web-app>

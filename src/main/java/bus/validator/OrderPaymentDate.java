@@ -12,7 +12,6 @@ import bus.validator.common.DateValidator;
  * @author CMQ
  */
 public class OrderPaymentDate extends DateValidator {
-
     public OrderPaymentDate() {
         super("Ngày thanh toán");
     }

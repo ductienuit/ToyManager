@@ -5,16 +5,13 @@
  */
 package bus.validator.common;
 
-import bus.validator.common.BaseObjectValidator;
-import bus.validator.common.ObjectWrapper;
-import bus.validator.common.ValidationResult;
+import utils.ObjectWrapper;
 
 /**
  *
  * @author CMQ
  */
 public class StringValidator extends BaseObjectValidator<String> {
-
     private Boolean emptyAllowed;
     private Boolean whiteSpaceAllowed;
     private Boolean emptyWhiteSpaceAllowed;
@@ -22,21 +19,31 @@ public class StringValidator extends BaseObjectValidator<String> {
     private LimitComparisonType limitComparison;
 
     public StringValidator() {
-        this(Integer.MAX_VALUE, LimitComparisonType.LessThanOrEqual, true, true, true);
+        this(Integer.MAX_VALUE,
+             LimitComparisonType.LessThanOrEqual,
+             true,
+             true,
+             true);
     }
 
     public StringValidator(String displayName) {
-        this(displayName, Integer.MAX_VALUE, LimitComparisonType.LessThanOrEqual, true, true, true);
+        this(displayName,
+             Integer.MAX_VALUE,
+             LimitComparisonType.LessThanOrEqual,
+             true,
+             true,
+             true);
     }
 
     public StringValidator(
-            String displayName,
-            Integer characterLimit,
-            LimitComparisonType limitComparison,
-            Boolean emptyAllowed,
-            Boolean whiteSpaceAllowed,
-            Boolean emptyWhiteSpaceAllowed) {
-        super(displayName, String.class);
+        String displayName,
+        Integer characterLimit,
+        LimitComparisonType limitComparison,
+        Boolean emptyAllowed,
+        Boolean whiteSpaceAllowed,
+        Boolean emptyWhiteSpaceAllowed) {
+        super(displayName,
+              String.class);
         this.emptyAllowed = emptyAllowed;
         this.whiteSpaceAllowed = whiteSpaceAllowed;
         this.emptyWhiteSpaceAllowed = emptyWhiteSpaceAllowed;
@@ -45,11 +52,11 @@ public class StringValidator extends BaseObjectValidator<String> {
     }
 
     public StringValidator(
-            Integer characterLimit,
-            LimitComparisonType limitComparison,
-            Boolean allowEmpty,
-            Boolean allowWhiteSpace,
-            Boolean allowEmptyWhiteSpace) {
+        Integer characterLimit,
+        LimitComparisonType limitComparison,
+        Boolean allowEmpty,
+        Boolean allowWhiteSpace,
+        Boolean allowEmptyWhiteSpace) {
         super(String.class);
         this.emptyAllowed = allowEmpty;
         this.whiteSpaceAllowed = allowWhiteSpace;
@@ -149,59 +156,64 @@ public class StringValidator extends BaseObjectValidator<String> {
     }
 
     @Override
-    public ValidationResult convert(Object convertingValue, ObjectWrapper<String> convertedValue) {
+    public ValidationResult convert(Object convertingValue,
+                                    ObjectWrapper<String> convertedValue) {
         if (convertingValue instanceof String) {
             convertedValue.setObject((String) convertingValue);
             return ValidationResult.VALID_RESULT;
         }
 
         return new ValidationResult(
-                false,
-                getDisplayName() + " phải thuộc kiễu chuỗi.");
+            false,
+            getDisplayName() + " phải thuộc kiễu chuỗi.");
     }
 
     @Override
     public ValidationResult validateType(String value) {
         if (isEmptyAllowed() == false && value.isEmpty()) {
             return new ValidationResult(
-                    false,
-                    getDisplayName() + " không được trống.");
+                false,
+                getDisplayName() + " không được trống.");
         }
 
-        if (isEmptyWhiteSpaceAllowed() == false && value.trim().isEmpty()) {
+        if (isEmptyWhiteSpaceAllowed() == false && value.trim()
+            .isEmpty()) {
             return new ValidationResult(
-                    false,
-                    getDisplayName() + " không được chứa toàn kí tự trống.");
+                false,
+                getDisplayName() + " không được chứa toàn kí tự trống.");
         }
 
         if (isWhiteSpaceAllowed() == false && value.indexOf(' ') >= 0) {
             return new ValidationResult(
-                    false,
-                    getDisplayName() + " không được chứa kí tự trống.");
+                false,
+                getDisplayName() + " không được chứa kí tự trống.");
         }
 
         switch (getLimitComparison()) {
             case LessThanOrEqual:
                 if (value.length() > getCharacterLimit()) {
                     return new ValidationResult(
-                            false,
-                            getDisplayName() + " phải chứa tối đa " + getCharacterLimit() + " kí tự.");
+                        false,
+                        getDisplayName() + " phải chứa tối đa "
+                            + getCharacterLimit() + " kí tự.");
                 }
                 break;
 
             case Equal:
                 if (value.length() != getCharacterLimit()) {
                     return new ValidationResult(
-                            false,
-                            getDisplayName() + " phải chứa chính xác " + getCharacterLimit() + " kí tự.");
+                        false,
+                        getDisplayName() + " phải chứa chính xác "
+                            + getCharacterLimit() + " kí tự.");
                 }
                 break;
 
             case MoreThanOrEqual:
                 if (value.length() < getCharacterLimit()) {
                     return new ValidationResult(
-                            false,
-                            getDisplayName() + " phải chứa tối thiểu " + getCharacterLimit() + " kí tự.");
+                        false,
+                        getDisplayName() + " phải chứa tối thiểu "
+                            + getCharacterLimit() + " kí tự.");
                 }
                 break;
         }
@@ -214,5 +226,4 @@ public class StringValidator extends BaseObjectValidator<String> {
         Equal,
         MoreThanOrEqual,
     }
-
 }
