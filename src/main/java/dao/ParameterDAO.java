@@ -16,4 +16,8 @@ public class ParameterDAO extends BasicDAO<Parameter> {
     public ParameterDAO() {
         super(Parameter.class);
     }
+
+    public Parameter getFirstParameter() {
+        return this.findEntityById(0L);
+    }
 }
