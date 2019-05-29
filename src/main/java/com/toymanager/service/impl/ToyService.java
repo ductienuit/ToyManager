@@ -18,7 +18,7 @@ import javax.inject.Inject;
 /**
  * @author DucTien
  */
-public class NewService implements IToyService {
+public class ToyService implements IToyService {
 
     @Inject
     private INewDAO newsDao;
