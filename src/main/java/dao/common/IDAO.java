@@ -7,15 +7,16 @@ package dao.common;
 
 import dto.common.IDTO;
 
+import java.util.List;
+
 /**
- *
- * @author CMQ
  * @param <T>
+ * @author CMQ
  */
 public interface IDAO<T extends IDTO> {
     Long insert(T entity);
 
-    Iterable<Long> insert(Iterable<T> entities);
+    List<Long> insert(List<T> entities);
 
     void update(T entity);
 
@@ -25,7 +26,7 @@ public interface IDAO<T extends IDTO> {
 
     void delete(Iterable<T> entities);
 
-    Iterable<T> getAll();
+    Iterable<T> findAll();
 
     boolean hasAny();
 

@@ -7,7 +7,7 @@ package com.toymanager.admin.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.toymanager.model.NewsModel;
-import com.toymanager.service.INewService;
+import com.toymanager.service.IToyService;
 import com.toymanager.utils.HttpUtils;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NewAPI extends HttpServlet {
 
     @Inject
-    private INewService newService;
+    private IToyService newService;
 
     //Add topic
     @Override

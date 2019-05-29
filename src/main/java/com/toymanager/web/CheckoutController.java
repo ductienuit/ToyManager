@@ -1,13 +1,5 @@
 package com.toymanager.web;
 
-import com.toymanager.model.UserModel;
-import com.toymanager.service.ICategoryService;
-import com.toymanager.service.INewService;
-import com.toymanager.service.IUserService;
-import com.toymanager.utils.FormUtil;
-import com.toymanager.utils.SessionUtil;
-
-import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

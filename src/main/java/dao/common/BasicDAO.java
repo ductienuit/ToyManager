@@ -5,21 +5,21 @@
  */
 package dao.common;
 
-import dao.common.IDAO;
 import dto.common.IDTO;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import utils.HibernateUtil;
 import utils.ObjectWrapper;
 
 /**
- *
- * @author CMQ
  * @param <T>
+ * @author CMQ
  */
-public class BasicDAO<T extends IDTO> implements IDAO<T> {
+public abstract class BasicDAO<T extends IDTO> implements IDAO<T> {
     private final Class<T> type;
 
     public BasicDAO(Class<T> type) {
@@ -41,8 +41,8 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             Criteria criteria = session
-                .createCriteria(type)
-                .setProjection(Projections.rowCount());
+                    .createCriteria(type)
+                    .setProjection(Projections.rowCount());
 
             List result = criteria.list();
             if (!result.isEmpty()) {
@@ -65,7 +65,7 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     public void delete(final Iterable<T> entities) {
         HibernateUtil.beginTransaction((session, transaction) -> {
             for (T entity : entities) {
-                session.update(entity);
+                session.delete(entity);
             }
 
             transaction.commit();
@@ -78,20 +78,20 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             entityWrapper.setObject((T) session.get(type,
-                                                    id));
+                    id));
         });
 
         return entityWrapper.getObject();
     }
 
     @Override
-    public Iterable<T> getAll() {
-        final ObjectWrapper<Iterable<T>> listWrapper = new ObjectWrapper<>();
+    public List<T> findAll() {
+        final ObjectWrapper<List<T>> listWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             listWrapper.setObject(session
-                .createCriteria(type)
-                .list());
+                    .createCriteria(type)
+                    .list());
         });
 
         return listWrapper.getObject();
@@ -115,7 +115,7 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
-    public Iterable<Long> insert(final Iterable<T> entities) {
+    public List<Long> insert(final List<T> entities) {
         final ArrayList<Long> ids = new ArrayList<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {

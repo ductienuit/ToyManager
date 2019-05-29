@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.toymanager.service;
+package dao.impl;
 
-
-import dto.Category;
-
-import java.util.List;
+import dao.common.BasicDAO;
+import dto.Toy;
 
 /**
- * @author DucTien
+ * @author CMQ
  */
-public interface ICategoryService {
-
-    List<Category> findAll();
+public class ToyDAO extends BasicDAO<Toy> {
+    public ToyDAO() {
+        super(Toy.class);
+    }
 }

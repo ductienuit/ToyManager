@@ -8,7 +8,8 @@ package com.toymanager.service.impl;
 import com.toymanager.dao.INewDAO;
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
-import com.toymanager.service.INewService;
+import com.toymanager.service.IToyService;
+import dto.Toy;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -17,13 +18,13 @@ import javax.inject.Inject;
 /**
  * @author DucTien
  */
-public class NewService implements INewService {
+public class NewService implements IToyService {
 
     @Inject
     private INewDAO newsDao;
 
     @Override
-    public List<NewsModel> findByCategoryId(Long categoryId) {
+    public List<Toy> findByCategoryId(Long categoryId) {
         return newsDao.findByCategoryId(categoryId);
     }
 
