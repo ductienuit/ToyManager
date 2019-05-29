@@ -6,19 +6,20 @@
 package dao.common;
 
 import dto.common.IDTO;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import utils.HibernateUtil;
 import utils.ObjectWrapper;
 
 /**
- *
- * @author CMQ
  * @param <T>
+ * @author CMQ
  */
-public class BasicDAO<T extends IDTO> implements IDAO<T> {
+public abstract class BasicDAO<T extends IDTO> implements IDAO<T> {
     private final Class<T> type;
 
     public BasicDAO(Class<T> type) {
@@ -31,8 +32,8 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             Criteria criteria = session
-                .createCriteria(type)
-                .setProjection(Projections.rowCount());
+                    .createCriteria(type)
+                    .setProjection(Projections.rowCount());
 
             List result = criteria.list();
             if (!result.isEmpty()) {

@@ -7,6 +7,7 @@ package com.toymanager.dao;
 
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
+import dto.Toy;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public interface INewDAO extends GenericDAO<NewsModel> {
 
-    List<NewsModel> findByCategoryId(Long categoryId);
+    List<Toy> findByCategoryId(Long categoryId);
 
     Long save(NewsModel newsModel);
 

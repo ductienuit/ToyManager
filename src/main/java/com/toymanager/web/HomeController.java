@@ -7,14 +7,13 @@ package com.toymanager.web;
 
 import com.toymanager.model.UserModel;
 import com.toymanager.service.ICategoryService;
-import com.toymanager.service.INewService;
+import com.toymanager.service.IToyService;
 import com.toymanager.service.IUserService;
 import com.toymanager.utils.FormUtil;
 import com.toymanager.utils.SessionUtil;
-import dao.CategoryDAO;
+import dao.impl.CategoryDAO;
 
 import javax.inject.Inject;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +34,7 @@ public class HomeController extends HttpServlet {
     private ICategoryService categoryService;
 
     @Inject
-    private INewService newsService;
+    private IToyService newsService;
 
     @Inject
     private IUserService userService;
