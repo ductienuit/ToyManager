@@ -18,6 +18,6 @@ public class ParameterDAO extends BasicDAO<Parameter> {
     }
 
     public Parameter getFirstParameter() {
-        return this.findEntityById(0L);
+        return this.findEntityById(1L);
     }
 }
