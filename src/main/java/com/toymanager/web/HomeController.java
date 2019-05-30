@@ -31,11 +31,7 @@ import java.util.ResourceBundle;
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
 public class HomeController extends HttpServlet {
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
-    @Inject
-    private ICategoryService categoryService;
 
-    @Inject
-    private INewService newsService;
 
     @Inject
     private IUserService userService;
@@ -48,28 +44,28 @@ public class HomeController extends HttpServlet {
 //        RequestDispatcher xxx = request.getRequestDispatcher("/view/web/home.jsp");
 //        xxx.forward(request, response);
         String message = request.getParameter("message");
-        if (message != null) {
-            CategoryDAO categoryDAO = new CategoryDAO();
-            categoryDAO.Test();
-        }
-//        if (action != null && action.equals("login")) {
-//            String message = request.getParameter("message");
-//            String alert = request.getParameter("alert");
-//
-//            if (message != null && alert != null) {
-//                request.setAttribute("message", resourceBundle.getString(message));
-//                request.setAttribute("alert", alert);
-//            }
-//
-//            RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
-//            rd.forward(request, response);
-//        } else if (action != null && action.equals("logout")) {
-//            SessionUtil.getInstance().removeValue(request, "USERMODEL");
-//            response.sendRedirect(request.getContextPath() + "/trang-chu");
-//        } else {
-//            RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
-//            rd.forward(request, response);
+//        if (message != null) {
+//            CategoryDAO categoryDAO = new CategoryDAO();
+//            categoryDAO.Test();
 //        }
+
+        if (action != null && action.equals("login")) {
+            String alert = request.getParameter("alert");
+
+            if (message != null && alert != null) {
+                request.setAttribute("message", resourceBundle.getString(message));
+                request.setAttribute("alert", alert);
+            }
+
+            RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
+            rd.forward(request, response);
+        } else if (action != null && action.equals("logout")) {
+            SessionUtil.getInstance().removeValue(request, "USERMODEL");
+            response.sendRedirect(request.getContextPath() + "/trang-chu");
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
+            rd.forward(request, response);
+        }
     }
 
     @Override
