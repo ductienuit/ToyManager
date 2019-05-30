@@ -8,10 +8,11 @@ package dao.common;
 import dto.common.IDTO;
 import java.util.List;
 
+import java.util.List;
+
 /**
- *
- * @author CMQ
  * @param <T>
+ * @author CMQ
  */
 public interface IDAO<T extends IDTO> {
     Long count();

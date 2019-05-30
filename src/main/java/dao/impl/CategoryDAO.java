@@ -8,9 +8,7 @@ package dao;
 import dao.common.BasicDAO;
 import dto.Category;
 import dto.User;
-
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateUtil;
@@ -26,6 +24,7 @@ public class CategoryDAO extends BasicDAO<Category> {
 
     public void Test() {
         CategoryDAO dao = new CategoryDAO();
+
         // insert
         System.out.println("1. Insert");
         Category c1 = new Category();
@@ -40,7 +39,7 @@ public class CategoryDAO extends BasicDAO<Category> {
         Category c2 = dao.findEntityById(c1.getId());
         if (c2 != null) {
             System.out.println("Category [id = " + c2.getId() + ", name = " + c2
-                    .getName() + "]");
+                .getName() + "]");
         }
         System.out.println("Success!");
 
@@ -51,7 +50,7 @@ public class CategoryDAO extends BasicDAO<Category> {
         dao.update(c3);
         Category c4 = dao.findEntityById(c3.getId());
         System.out.println("Category [id = " + c4.getId() + ", name = " + c4
-                .getName() + "]");
+            .getName() + "]");
         System.out.println("Success!");
 
         // count
@@ -72,7 +71,7 @@ public class CategoryDAO extends BasicDAO<Category> {
         Category c5 = dao.findEntityById(c4.getId());
         if (c5 == null) {
             System.out.println("Attempt to find Category [id = " + c4.getId()
-                    + "]: null");
+                                   + "]: null");
         }
         System.out.println("Success!");
     }
@@ -82,9 +81,9 @@ public class CategoryDAO extends BasicDAO<Category> {
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             Criteria criteria = session
-                    .createCriteria(Category.class)
-                    .add(Restrictions.eq("code",
-                            code));
+                .createCriteria(Category.class)
+                .add(Restrictions.eq("code",
+                                     code));
 
             List result = criteria.list();
             if (!result.isEmpty()) {
@@ -100,9 +99,9 @@ public class CategoryDAO extends BasicDAO<Category> {
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             Criteria criteria = session
-                    .createCriteria(Category.class)
-                    .add(Restrictions.eq("name",
-                            name));
+                .createCriteria(Category.class)
+                .add(Restrictions.eq("name",
+                                     name));
 
             List result = criteria.list();
             if (!result.isEmpty()) {

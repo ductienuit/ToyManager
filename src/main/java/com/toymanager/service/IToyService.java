@@ -7,15 +7,16 @@ package com.toymanager.service;
 
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
+import dto.Toy;
 
 import java.util.List;
 
 /**
  * @author DucTien
  */
-public interface INewService {
+public interface IToyService {
 
-    List<NewsModel> findByCategoryId(Long categoryId);
+    List<Toy> findByCategoryId(Long categoryId);
 
     NewsModel save(NewsModel newsModel);
 

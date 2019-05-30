@@ -5,12 +5,12 @@
  */
 package com.toymanager.service.impl;
 
-import com.toymanager.dao.ICategoryDAO;
-import com.toymanager.model.CategoryModel;
 import com.toymanager.service.ICategoryService;
+import dao.impl.CategoryDAO;
+import dto.Category;
 
-import java.util.List;
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * @author DucTien
@@ -23,11 +23,11 @@ public class CategoryService implements ICategoryService {
 //        categoryDao = new CategoryDAO();
 //          .......
 //    }
-    @Inject   //Thay vì khai báo như phía trên, ta xài Inject thôi đủ rồi. Depenency Injection
-    private ICategoryDAO categoryDao;
+    //@Inject   //Thay vì khai báo như phía trên, ta xài Inject thôi đủ rồi. Depenency Injection
+    private CategoryDAO categoryDao;
 
     @Override
-    public List<CategoryModel> findAll() {
+    public List<Category> findAll() {
         return categoryDao.findAll();
     }
 }

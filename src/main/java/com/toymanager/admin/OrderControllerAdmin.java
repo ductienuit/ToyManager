@@ -4,7 +4,7 @@ import com.toymanager.constant.SystemConstant;
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.PageRequest;
 import com.toymanager.paging.Pageble;
-import com.toymanager.service.INewService;
+import com.toymanager.service.IToyService;
 import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
 
@@ -21,7 +21,7 @@ import java.io.IOException;
 public class OrderControllerAdmin extends HttpServlet {
 
     @Inject
-    private INewService newsService;
+    private IToyService newsService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

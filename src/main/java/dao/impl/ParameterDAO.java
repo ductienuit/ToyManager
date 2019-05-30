@@ -3,17 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.impl;
 
 import dao.common.BasicDAO;
-import dto.Order;
+import dto.Parameter;
 
 /**
  *
  * @author CMQ
  */
-public class OrderDAO extends BasicDAO<Order> {
-    public OrderDAO() {
-        super(Order.class);
+public class ParameterDAO extends BasicDAO<Parameter> {
+    public ParameterDAO() {
+        super(Parameter.class);
+    }
+
+    public Parameter getFirstParameter() {
+        return this.findEntityById(1L);
     }
 }

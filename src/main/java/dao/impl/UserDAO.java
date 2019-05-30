@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.impl;
 
 import dao.common.BasicDAO;
 import dto.User;
@@ -22,8 +22,8 @@ public class UserDAO extends BasicDAO<User> {
         super(User.class);
     }
 
-    public User getUser(final String username,
-                        final String password) {
+    public User findUser(final String username,
+                         final String password) {
         final ObjectWrapper<User> userWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
@@ -43,6 +43,23 @@ public class UserDAO extends BasicDAO<User> {
         return userWrapper.getObject();
     }
 
+    public List<User> findUsersByStatusId(final long statusId) {
+        final ObjectWrapper<List<User>> usersWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            Criteria criteria = session
+                .createCriteria(User.class)
+                .createCriteria("userStatus")
+                .add(Restrictions.eq("id",
+                                     statusId));
+
+            List result = criteria.list();
+            usersWrapper.setObject(result);
+        });
+
+        return usersWrapper.getObject();
+    }
+
     public boolean hasUser(final String username) {
         final ObjectWrapper<Boolean> resultWrapper = new ObjectWrapper<>(false);
 
@@ -59,22 +76,5 @@ public class UserDAO extends BasicDAO<User> {
         });
 
         return resultWrapper.getObject();
-    }
-
-    public List<User> getUsersByStatusId(final long statusId) {
-        final ObjectWrapper<List<User>> usersWrapper = new ObjectWrapper<>();
-
-        HibernateUtil.beginTransaction((session, transaction) -> {
-            Criteria criteria = session
-                .createCriteria(User.class)
-                .createCriteria("userStatus")
-                .add(Restrictions.eq("id",
-                                     statusId));
-
-            List result = criteria.list();
-            usersWrapper.setObject(result);
-        });
-
-        return usersWrapper.getObject();
     }
 }
