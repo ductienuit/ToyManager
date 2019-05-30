@@ -9,7 +9,6 @@ import com.toymanager.dao.INewDAO;
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IToyService;
-import dto.Toy;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,7 +23,7 @@ public class ToyService implements IToyService {
     private INewDAO newsDao;
 
     @Override
-    public List<Toy> findByCategoryId(Long categoryId) {
+    public List<NewsModel> findByCategoryId(Long categoryId) {
         return newsDao.findByCategoryId(categoryId);
     }
 

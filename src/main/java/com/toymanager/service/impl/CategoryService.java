@@ -6,7 +6,7 @@
 package com.toymanager.service.impl;
 
 import com.toymanager.service.ICategoryService;
-import dao.impl.CategoryDAO;
+import dao.CategoryDAO;
 import dto.Category;
 
 import javax.inject.Inject;

@@ -9,7 +9,6 @@ import com.toymanager.dao.INewDAO;
 import com.toymanager.mapper.NewMapper;
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
-import dto.Toy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ import java.util.List;
 public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
 
     @Override
-    public List<Toy> findByCategoryId(Long categoryId) {
+    public List<NewsModel> findByCategoryId(Long categoryId) {
         List<NewsModel> results = new ArrayList<>();
         String sqlQuery = "select * from news where categoryid = ?";
         //open connection
