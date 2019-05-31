@@ -57,7 +57,6 @@
                         <tr><td></td><td>
                                 <input type="hidden" name="command" value="insert">        
                                 <input type="submit" class="button" value="Lưu dữ liệu">
-                                
                             </td>
                         </tr>
                     </table>

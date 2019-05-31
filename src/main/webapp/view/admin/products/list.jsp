@@ -74,6 +74,14 @@
                                                        title="Cập nhật bài viết" href='${editURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
+                                                    <c:url var="deleteURL" value="/admin-products">
+                                                        <c:param name="type" value="delete"/>
+                                                        <c:param name="id" value="${item.id}"/>
+                                                    </c:url>
+                                                    <a class="btn btn-sm btn-primary btn-remove" data-toggle="tooltip"
+                                                       title="Xóa bài viết" href='${deleteURL}'><i
+                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

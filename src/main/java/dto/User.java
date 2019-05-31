@@ -27,6 +27,7 @@ import javax.persistence.TemporalType;
 public class User implements Serializable, IDTO {
     private long id;
     private Role role;
+    private Long roleId;
     private UserStatus userStatus;
     private String username;
     private String password;
@@ -239,4 +240,14 @@ public class User implements Serializable, IDTO {
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
+
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
 }

@@ -18,7 +18,7 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-category'/>" id="formSubmit" method="get">
+    <form action="<c:url value='/admin-category?action=insert'/>" id="formSubmit" method="post">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -46,54 +46,45 @@
                                         <div id="myModal" class="modal" tabindex="-1">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
+
+                                                <form id="insertCategoryForm" method="post" >
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal">&times;
                                                         </button>
                                                         <h4 class="blue bigger">Thêm loại đồ chơi</h4>
                                                     </div>
-
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-xs-12">
                                                                 <div class="form-group">
-                                                                    <label for="form-field-username">Tên loại đồ
+                                                                    <label >Tên loại đồ
                                                                         chơi</label>
-
                                                                     <div>
-                                                                        <input type="text" id="form-field-username"
-                                                                               placeholder="Tên loại đồ chơi"/>
+                                                                        <input type="text" name="name" required/>
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="space-4"></div>
-
                                                                 <div class="form-group">
-                                                                    <label for="form-field-first">Code</label>
-
+                                                                    <label >Code</label>
                                                                     <div>
-                                                                        <input type="text" id="form-field-first"
-                                                                               placeholder="Mã code loại đồ chơi"/>
+                                                                        <input type="text" name="code" id="macode" placeholder="Vi du: the-thao" required/>
+                                                                        <input type="hidden" name="command" value="insert">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="modal-footer">
+                                                        <button class="btn btn-sm btn-primary" onclick="addCategory()" >
+                                                            <i class="ace-icon fa fa-check"></i>
+                                                            Thêm
+                                                        </button>
                                                         <button class="btn btn-sm" data-dismiss="modal">
                                                             <i class="ace-icon fa fa-times"></i>
-                                                            Cancel
-                                                        </button>
-
-                                                        <button class="btn btn-sm btn-primary">
-                                                            <i class="ace-icon fa fa-check"></i>
-                                                            Save
-                                                        </button>
-                                                        <button class="btn btn-sm">
-                                                            <i class="ace-icon fa fa-times"></i>
-                                                            Cancel
+                                                            Hủy
                                                         </button>
                                                     </div>
+                                                </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,6 +170,11 @@
             }
         });
     });
+
+    function addCategory() {
+        //insertCategoryForm
+        $('#insertCategoryForm').submit();
+    }
 </script>
 </body>
 

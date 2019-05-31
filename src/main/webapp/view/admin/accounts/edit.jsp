@@ -18,7 +18,7 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-accounts'/>" id="formSubmit" method="post">
+    <form action="<c:url value='/admin-accounts?action=edit'/>" id="formSubmit" method="post">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -136,7 +136,7 @@
                         Tài khoản
                         <small>
                             <i class="ace-icon fa fa-angle-double-right"></i>
-                            Thêm tài khoản
+                            Sửa tài khoản
                         </small>
                     </h1>
                 </div><!-- /.page-header -->
@@ -151,7 +151,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="text" name="username" placeholder="Username"
-                                           class="col-xs-10 col-sm-5" id="username" required>
+                                           class="col-xs-10 col-sm-5" id="username" value="${model.username}" readonly>
                                 </div>
                             </div>
 
@@ -161,7 +161,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="text" id="fullName" placeholder="Họ và tên" name="fullName"
-                                           class="form-control" required>
+                                           class="form-control" value="${model.fullName}">
                                 </div>
                             </div>
 
@@ -173,7 +173,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="password" id="password" placeholder="Nhập mật khẩu" name="password"
-                                           class="col-xs-10 col-sm-5" required>
+                                           class="col-xs-10 col-sm-5" value="${model.password}">
                                 </div>
                             </div>
 
@@ -184,7 +184,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="text" id="address" placeholder="Địa chỉ" name="address"
-                                           class="form-control" required>
+                                           class="form-control" value="${model.address}">
                                 </div>
                             </div>
 
@@ -194,7 +194,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="email" id="email" placeholder="Nhập email" name="email"
-                                           class="form-control" required>
+                                           class="form-control" value="${model.email}">
                                 </div>
                             </div>
 
@@ -206,7 +206,7 @@
                                 <div class="col-sm-9">
                                     <input type="number" id="form-field-5" placeholder="Nhập số điện thoại"
                                            name="phoneNumber"
-                                           class="form-control" required>
+                                           class="form-control" value="${model.phoneNumber}">
                                 </div>
                             </div>
 
@@ -216,7 +216,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="quyen">
                                     Phân quyền </label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" id="quyen">
+                                    <select class="form-control" id="quyen" value="${model.roleId}">
                                         <option value="1">Người dùng</option>
                                         <option value="2">Quản trị viên</option>
                                     </select>
@@ -227,13 +227,13 @@
                             <div class="space-4"></div>
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" type="button" onclick="submitInsertUser()">
+                                    <button class="btn btn-info" type="button" onclick="submitEditUser()">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
                                         Submit
                                     </button>
 
                                     &nbsp; &nbsp; &nbsp;
-                                    <button class="btn" type="reset">
+                                    <button class="btn" type="reset" onclick="history.go(0)">
                                         <i class="ace-icon fa fa-undo bigger-110"></i>
                                         Reset
                                     </button>
@@ -266,7 +266,7 @@
         var selectedCountry = $(this).children("option:selected").val();
     });
 
-    function submitInsertUser(){
+    function submitEditUser(){
         $('#roleId').val(selectedCountry);
         $('#addAccount').submit();
     }

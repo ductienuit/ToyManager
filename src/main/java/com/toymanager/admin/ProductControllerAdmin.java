@@ -44,7 +44,7 @@ public class ProductControllerAdmin extends HttpServlet {
         model.setTotalItem(newsService.getTotalItem());
         model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
         request.setAttribute(SystemConstant.MODEL, model);
-        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/products/add.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/products/list.jsp");
         rd.forward(request, response);
     }
 

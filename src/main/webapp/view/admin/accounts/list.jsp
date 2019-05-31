@@ -66,7 +66,7 @@
                                                 <td>${item.title}</td>
                                                 <td>
                                                     <div>
-                                                        <select class="form-control" id="form-field-select-1">
+                                                        <select class="form-control" id="form-field-select-1" value="1">
                                                             <option value="1">Người dùng</option>
                                                             <option value="2">Quản trị viên</option>
                                                         </select>
@@ -81,12 +81,12 @@
                                                        title="Cập nhật tài khoản" href='${editURL}'><i
                                                             class="fa fa-check-square-o" aria-hidden="true"></i>
                                                     </a>
-                                                    <c:url var="editURL" value="/admin-accounts">
+                                                    <c:url var="deleteURL" value="/admin-accounts">
                                                         <c:param name="type" value="delete"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
                                                     <a class="btn btn-sm btn-primary btn-remove" data-toggle="tooltip"
-                                                       title="Xóa tài khoản" href='${editURL}'><i
+                                                       title="Xóa tài khoản" href='${deleteURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
