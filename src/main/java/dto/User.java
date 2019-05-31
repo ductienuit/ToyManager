@@ -2,6 +2,8 @@ package dto;
 // Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
+import org.hibernate.annotations.Proxy;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -114,7 +116,7 @@ public class User implements Serializable, IDTO {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "RoleId",
                 nullable = false)
     public Role getRole() {

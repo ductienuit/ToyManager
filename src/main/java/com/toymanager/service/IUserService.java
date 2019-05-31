@@ -6,6 +6,7 @@
 package com.toymanager.service;
 
 import com.toymanager.model.UserModel;
+import dto.User;
 
 /**
  * @author DucTien
@@ -13,4 +14,5 @@ import com.toymanager.model.UserModel;
 public interface IUserService {
 
     UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status);
+    User findByUserNameAndPasswordAndStatus(String userName, String password);
 }

@@ -11,6 +11,8 @@ import com.toymanager.service.IUserService;
 import com.toymanager.utils.FormUtil;
 import com.toymanager.utils.SessionUtil;
 import dao.CategoryDAO;
+import dto.User;
+import org.hibernate.Hibernate;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -72,13 +74,14 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action != null && action.equals("login")) {
-            UserModel model = FormUtil.toModel(UserModel.class, request);
-            model = userService.findByUserNameAndPasswordAndStatus(model.getUserName(), model.getPassword(), 1);
+            User model = FormUtil.toModel(User.class, request);
+            model = userService.findByUserNameAndPasswordAndStatus(model.getUsername(), model.getPassword());
             if (model != null) {
                 SessionUtil.getInstance().putValue(request, "USERMODEL", model);
-                if (model.getRole().getCode().equals("USER")) {
+                int priority = model.getRole().getPriority();
+                if (priority<1) {
                     response.sendRedirect(request.getContextPath() + "/trang-chu");
-                } else if (model.getRole().getCode().equals("ADMIN")) {
+                } else if (model.getRole().getPriority()>=1) {
                     response.sendRedirect(request.getContextPath() + "/admin-home");
                 }
             } else {
@@ -86,4 +89,21 @@ public class HomeController extends HttpServlet {
             }
         }
     }
+//    void Old(HttpServletRequest request, HttpServletResponse response){
+//        String action = request.getParameter("action");
+//        if (action != null && action.equals("login")) {
+//            UserModel model = FormUtil.toModel(UserModel.class, request);
+//            model = userService.findByUserNameAndPasswordAndStatus(model.getUserName(), model.getPassword(), 1);
+//            if (model != null) {
+//                SessionUtil.getInstance().putValue(request, "USERMODEL", model);
+//                if (model.getRole().getCode().equals("USER")) {
+//                    response.sendRedirect(request.getContextPath() + "/trang-chu");
+//                } else if (model.getRole().getCode().equals("ADMIN")) {
+//                    response.sendRedirect(request.getContextPath() + "/admin-home");
+//                }
+//            } else {
+//                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=username_password_invalid&alert=danger");
+//            }
+//        }
+//    }
 }

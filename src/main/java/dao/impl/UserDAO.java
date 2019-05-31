@@ -13,10 +13,13 @@ import org.hibernate.criterion.Restrictions;
 import utils.HibernateUtil;
 import utils.ObjectWrapper;
 
+import javax.transaction.Transactional;
+
 /**
  *
  * @author CMQ
  */
+@Transactional
 public class UserDAO extends BasicDAO<User> {
     public UserDAO() {
         super(User.class);

@@ -8,6 +8,8 @@ package com.toymanager.service.impl;
 import com.toymanager.dao.IUserDAO;
 import com.toymanager.model.UserModel;
 import com.toymanager.service.IUserService;
+import dao.impl.UserDAO;
+import dto.User;
 
 import javax.inject.Inject;
 
@@ -19,8 +21,15 @@ public class UserService implements IUserService {
     @Inject
     private IUserDAO userDao;
 
+    private UserDAO userDAO2=new UserDAO();
+
     @Override
     public UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status) {
         return userDao.findByUserNameAndPasswordAndStatus(userName, password, status);
+    }
+
+    @Override
+    public User findByUserNameAndPasswordAndStatus(String userName, String password) {
+        return userDAO2.findUser(userName,password);
     }
 }
