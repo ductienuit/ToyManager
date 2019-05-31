@@ -7,6 +7,7 @@ package com.toymanager.service;
 
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
+import dto.Toy;
 
 import java.util.List;
 
@@ -26,5 +27,17 @@ public interface IToyService {
     List<NewsModel> findAll(Pageble page);
 
     int getTotalItem();
+
+    List<Toy> findByCategoryId1(Long categoryId);
+
+    Toy save1(Toy toyModel);
+
+    public Toy update1(Toy toyModel);
+
+    public void delete1(long[] ids);
+
+    List<Toy> findAll1(Pageble page);
+
+    int getTotalItem1();
 
 }

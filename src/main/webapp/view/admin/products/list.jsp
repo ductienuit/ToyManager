@@ -63,8 +63,8 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>${item.title}</td>
-                                                <td>${item.shortDescriptions}</td>
+                                                <td>${item.name}</td>
+                                                <td>${item.description}</td>
                                                 <td>
                                                     <c:url var="editURL" value="/admin-products">
                                                         <c:param name="type" value="edit"/>

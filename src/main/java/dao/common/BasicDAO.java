@@ -5,6 +5,7 @@
  */
 package dao.common;
 
+import com.toymanager.paging.Pageble;
 import dto.common.IDTO;
 
 import java.util.ArrayList;
@@ -146,5 +147,19 @@ public abstract class BasicDAO<T extends IDTO> implements IDAO<T> {
 
             transaction.commit();
         });
+    }
+    @Override
+    public List<T> findAll(Pageble page){
+        final ObjectWrapper<List<T>> listWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            listWrapper.setObject(session
+                    .createCriteria(type)
+                    .setFirstResult(page.getOffset())
+                    .setMaxResults(page.getLimit())
+                    .list());
+        });
+
+        return listWrapper.getObject();
     }
 }

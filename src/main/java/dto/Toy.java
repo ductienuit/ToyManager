@@ -1,8 +1,11 @@
 package dto;
 // Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
+import com.toymanager.model.AbstractModel;
 import dto.common.IDTO;
 import dto.common.IName;
+import dto.common.Pagination;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +25,7 @@ import javax.persistence.Table;
 @Table(name = "toy",
        catalog = "toymanager"
 )
-public class Toy implements Serializable, IDTO, IName {
+public class Toy extends Pagination<Toy> implements Serializable, IDTO, IName{
     private long id;
     private Category category;
     private ToyStatus toyStatus;

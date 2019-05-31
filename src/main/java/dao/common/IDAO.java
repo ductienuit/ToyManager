@@ -5,9 +5,8 @@
  */
 package dao.common;
 
+import com.toymanager.paging.Pageble;
 import dto.common.IDTO;
-import java.util.List;
-
 import java.util.List;
 
 /**
@@ -34,4 +33,6 @@ public interface IDAO<T extends IDTO> {
     void update(T entity);
 
     void update(Iterable<T> entities);
+
+    List<T> findAll(Pageble page);
 }

@@ -9,6 +9,8 @@ import com.toymanager.dao.INewDAO;
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IToyService;
+import dao.impl.ToyDAO;
+import dto.Toy;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -21,6 +23,12 @@ public class ToyService implements IToyService {
 
     @Inject
     private INewDAO newsDao;
+
+    private ToyDAO toyDAO;
+
+    ToyService(){
+        toyDAO = new ToyDAO();
+    }
 
     @Override
     public List<NewsModel> findByCategoryId(Long categoryId) {
@@ -62,5 +70,43 @@ public class ToyService implements IToyService {
     @Override
     public int getTotalItem() {
         return newsDao.getTotalItem();
+    }
+
+    @Override
+    public List<Toy> findByCategoryId1(Long categoryId) {
+        return toyDAO.findToysByCategoryId(categoryId);
+    }
+
+    @Override
+    public Toy save1(Toy toyModel) {
+        Long id = toyDAO.insert(toyModel);
+        System.out.print(id);
+        return toyDAO.findEntityById(id);
+    }
+
+    @Override
+    public Toy update1(Toy toyModel) {
+        Toy oldToy = toyDAO.findEntityById(toyModel.getId());
+        toyDAO.update(oldToy);
+        return toyDAO.findEntityById(toyModel.getId());
+    }
+
+    @Override
+    public void delete1(long[] ids) {
+        Toy temp;
+        for (long i : ids) {
+            temp = toyDAO.findEntityById(i);
+            toyDAO.delete(temp);
+        }
+    }
+
+    @Override
+    public List<Toy> findAll1(Pageble page) {
+        return toyDAO.findAll(page);
+    }
+
+    @Override
+    public int getTotalItem1() {
+        return Math.toIntExact(toyDAO.count());
     }
 }
