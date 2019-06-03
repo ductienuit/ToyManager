@@ -6,6 +6,7 @@ import com.toymanager.paging.Pageble;
 import com.toymanager.service.IToyService;
 import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
+import dto.Order;
 import dto.Toy;
 
 import javax.inject.Inject;
@@ -28,7 +29,7 @@ public class OrderControllerAdmin extends HttpServlet {
             throws ServletException, IOException {
         //Thay vì dùng request.getParameter từng giá trị thì mình dùng
         //FormUtil để mapping với model của mình
-        Toy model = FormUtil.toModel(Toy.class, request);
+        Order model = FormUtil.toModel(Order.class, request);
         Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
         Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
 

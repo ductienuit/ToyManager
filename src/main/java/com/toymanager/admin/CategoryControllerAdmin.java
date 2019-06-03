@@ -7,6 +7,7 @@ import com.toymanager.paging.Pageble;
 import com.toymanager.service.IToyService;
 import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
+import dto.Category;
 import dto.Toy;
 
 import javax.inject.Inject;
@@ -34,7 +35,7 @@ public class CategoryControllerAdmin extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         //Thay vì dùng request.getParameter từng giá trị thì mình dùng
         //FormUtil để mapping với model của mình
-        Toy model = FormUtil.toModel(Toy.class, request);
+        Category model = FormUtil.toModel(Category.class, request);
         Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
         Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
 

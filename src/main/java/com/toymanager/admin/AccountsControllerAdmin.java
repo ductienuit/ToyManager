@@ -48,7 +48,7 @@ public class AccountsControllerAdmin extends HttpServlet {
 //        }
         //Thay vì dùng request.getParameter từng giá trị thì mình dùng
         //FormUtil để mapping với model của mình
-        Toy model = FormUtil.toModel(Toy.class, request);
+        User model = FormUtil.toModel(User.class, request);
         Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
         Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
 
