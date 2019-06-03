@@ -16,28 +16,16 @@ import java.util.List;
  */
 public interface IToyService {
 
-    List<NewsModel> findByCategoryId(Long categoryId);
+    List<Toy> findByCategoryId(Long categoryId);
 
-    NewsModel save(NewsModel newsModel);
+    Toy save(Toy toyModel);
 
-    public NewsModel update(NewsModel newsModel);
+    public Toy update(Toy toyModel);
 
     public void delete(long[] ids);
 
-    List<NewsModel> findAll(Pageble page);
+    List<Toy> findAll(Pageble page);
 
     int getTotalItem();
-
-    List<Toy> findByCategoryId1(Long categoryId);
-
-    Toy save1(Toy toyModel);
-
-    public Toy update1(Toy toyModel);
-
-    public void delete1(long[] ids);
-
-    List<Toy> findAll1(Pageble page);
-
-    int getTotalItem1();
 
 }

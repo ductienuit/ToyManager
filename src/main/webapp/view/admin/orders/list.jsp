@@ -51,9 +51,9 @@
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
                                                 <td>1</td>
-                                                <td>${item.title}</td>
-                                                <td>${item.shortDescriptions}</td>
-                                                <td>${item.title}</td>
+                                                <td>${item.name}</td>
+                                                <td>${item.description}</td>
+                                                <td>${item.name}</td>
                                                 <td>
                                                     <span class="label label-sm label-warning">Đang chờ</span>
                                                     <span class="label label-sm label-warning">Đang giao</span>

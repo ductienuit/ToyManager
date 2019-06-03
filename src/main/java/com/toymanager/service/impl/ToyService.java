@@ -21,8 +21,8 @@ import javax.inject.Inject;
  */
 public class ToyService implements IToyService {
 
-    @Inject
-    private INewDAO newsDao;
+//    @Inject
+//    private INewDAO newsDao;
 
     private ToyDAO toyDAO;
 
@@ -31,68 +31,26 @@ public class ToyService implements IToyService {
     }
 
     @Override
-    public List<NewsModel> findByCategoryId(Long categoryId) {
-        return newsDao.findByCategoryId(categoryId);
-    }
-
-    @Override
-    public NewsModel save(NewsModel newsModel) {
-        newsModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        newsModel.setCreatedBy("");
-        Long id = newsDao.save(newsModel);
-        System.out.print(id);
-        return newsDao.findOne(id);
-    }
-
-    @Override
-    public NewsModel update(NewsModel updateNews) {
-        NewsModel oldNews = newsDao.findOne(updateNews.getId());
-        updateNews.setCreatedDate(oldNews.getCreatedDate());
-        updateNews.setCreatedBy(oldNews.getCreatedBy());
-        updateNews.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        updateNews.setModifiedBy("");
-        newsDao.update(updateNews);
-        return newsDao.findOne(updateNews.getId());
-    }
-
-    @Override
-    public void delete(long[] ids) {
-        for (long i : ids) {
-            newsDao.delete(i);
-        }
-    }
-
-    @Override
-    public List<NewsModel> findAll(Pageble page) {
-        return newsDao.findAll(page);
-    }
-
-    @Override
-    public int getTotalItem() {
-        return newsDao.getTotalItem();
-    }
-
-    @Override
-    public List<Toy> findByCategoryId1(Long categoryId) {
+    public List<Toy> findByCategoryId(Long categoryId) {
         return toyDAO.findToysByCategoryId(categoryId);
     }
 
     @Override
-    public Toy save1(Toy toyModel) {
+    public Toy save(Toy toyModel) {
         Long id = toyDAO.insert(toyModel);
         System.out.print(id);
         return toyDAO.findEntityById(id);
     }
 
     @Override
-    public Toy update1(Toy toyModel) {
+    public Toy update(Toy toyModel) {
         Toy oldToy = toyDAO.findEntityById(toyModel.getId());
         toyDAO.update(oldToy);
         return toyDAO.findEntityById(toyModel.getId());
     }
 
     @Override
-    public void delete1(long[] ids) {
+    public void delete(long[] ids) {
         Toy temp;
         for (long i : ids) {
             temp = toyDAO.findEntityById(i);
@@ -101,12 +59,12 @@ public class ToyService implements IToyService {
     }
 
     @Override
-    public List<Toy> findAll1(Pageble page) {
+    public List<Toy> findAll(Pageble page) {
         return toyDAO.findAll(page);
     }
 
     @Override
-    public int getTotalItem1() {
+    public int getTotalItem() {
         return Math.toIntExact(toyDAO.count());
     }
 }

@@ -63,7 +63,8 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>${item.title}</td>
+                                                <td>${item.name}</td>
+                                                <td>${item.description}</td>
                                                 <td>
                                                     <div>
                                                         <select class="form-control" id="form-field-select-1" value="1">

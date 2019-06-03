@@ -48,16 +48,12 @@ public class ProductControllerAdmin extends HttpServlet {
 //        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/products/list.jsp");
 //        rd.forward(request, response);
 
-
-
-
         Toy model = FormUtil.toModel(Toy.class, request);
         Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
         Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
 
-        model.setListResult(toyService.findAll1(pageble));
-
-        int totalItem = toyService.getTotalItem1();
+        model.setListResult(toyService.findAll(pageble));
+        int totalItem = toyService.getTotalItem();
         model.setTotalItem(totalItem);
         model.setTotalPage((int) Math.ceil((double) totalItem / model.getMaxPageItem()));
         request.setAttribute(SystemConstant.MODEL, model);
