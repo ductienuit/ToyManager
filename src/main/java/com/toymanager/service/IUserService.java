@@ -5,14 +5,14 @@
  */
 package com.toymanager.service;
 
-import com.toymanager.model.UserModel;
 import dto.User;
+import dto.common.IDTO;
 
 /**
  * @author DucTien
  */
-public interface IUserService {
+public interface IUserService<T extends IDTO> extends IBaseService<T> {
 
-    UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status);
+    User findByUserNameAndPasswordAndStatus(String userName, String password, Integer status);
     User findByUserNameAndPasswordAndStatus(String userName, String password);
 }

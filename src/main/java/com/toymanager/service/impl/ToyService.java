@@ -19,7 +19,7 @@ import javax.inject.Inject;
 /**
  * @author DucTien
  */
-public class ToyService implements IToyService {
+public class ToyService implements IToyService<Toy> {
 
 //    @Inject
 //    private INewDAO newsDao;
@@ -31,8 +31,8 @@ public class ToyService implements IToyService {
     }
 
     @Override
-    public List<Toy> findByCategoryId(Long categoryId) {
-        return toyDAO.findToysByCategoryId(categoryId);
+    public Toy findById(Long categoryId) {
+        return toyDAO.findEntityById(categoryId);
     }
 
     @Override

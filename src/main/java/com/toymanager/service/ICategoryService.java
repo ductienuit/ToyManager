@@ -7,13 +7,12 @@ package com.toymanager.service;
 
 
 import dto.Category;
+import dto.common.IDTO;
 
 import java.util.List;
 
 /**
  * @author DucTien
  */
-public interface ICategoryService {
-
-    List<Category> findAll();
+public interface ICategoryService<T extends IDTO> extends IBaseService<T> {
 }

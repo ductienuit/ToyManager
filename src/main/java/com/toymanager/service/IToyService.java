@@ -8,24 +8,13 @@ package com.toymanager.service;
 import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
 import dto.Toy;
+import dto.common.IDTO;
 
 import java.util.List;
 
 /**
  * @author DucTien
  */
-public interface IToyService {
-
-    Toy findByCategoryId(Long categoryId);
-
-    Toy save(Toy toyModel);
-
-    Toy update(Toy toyModel);
-
-    void delete(long[] ids);
-
-    List<Toy> findAll(Pageble page);
-
-    int getTotalItem();
+public interface IToyService<T extends IDTO> extends IBaseService<T> {
 
 }

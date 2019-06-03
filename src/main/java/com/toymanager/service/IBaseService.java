@@ -7,7 +7,7 @@ import dto.common.IDTO;
 import java.util.List;
 
 public interface IBaseService<T extends IDTO> {
-    T findByCategoryId(Long id);
+    T findById(Long id);
 
     T save(T toyModel);
 
