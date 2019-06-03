@@ -17,7 +17,11 @@ import java.util.List;
  */
 public class UserService implements IUserService<User> {
 
-    private UserDAO userDAO = new UserDAO();
+    private UserDAO userDAO;
+
+    UserService() {
+        userDAO = new UserDAO();
+    }
 
     @Override
     public User findByUserNameAndPasswordAndStatus(String userName, String password, Integer status) {

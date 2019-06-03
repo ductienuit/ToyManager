@@ -50,15 +50,25 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>1</td>
-                                                <td>${item.name}</td>
-                                                <td>${item.description}</td>
-                                                <td>${item.name}</td>
+                                                <td>${item.id}</td>
+                                                <td>${item.orderDate}</td>
+                                                <td>${item.orderDate}</td>
+                                                <td>${item.totalPrice}</td>
                                                 <td>
-                                                    <span class="label label-sm label-warning">Đang chờ</span>
-                                                    <span class="label label-sm label-warning">Đang giao</span>
-                                                    <span class="label label-sm label-success">Đã giao</span>
-                                                    <span class="label label-sm label-danger">Đã hủy</span>
+                                                    <c:choose>
+                                                        <c:when test="${item.equals(1)}">
+                                                            <span class="label label-sm label-warning">Đang chờ</span>
+                                                        </c:when>
+                                                        <c:when test="${item.equals(2)}">
+                                                            <span class="label label-sm label-warning">Đang giao</span>
+                                                        </c:when>
+                                                        <c:when test="${item.equals(3)}">
+                                                            <span class="label label-sm label-success">Đã giao</span>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <span class="label label-sm label-danger">Đã hủy</span>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </td>
                                                 <td>
                                                     <c:url var="detailURL" value="/admin-order">

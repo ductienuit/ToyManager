@@ -18,14 +18,11 @@ import java.util.List;
  */
 public class CategoryService implements ICategoryService<Category> {
 
-    //    private ICategoryDAO categoryDao;
-//
-//    public CategoryService() {
-//        categoryDao = new CategoryDAO();
-//          .......
-//    }
-    //@Inject   //Thay vì khai báo như phía trên, ta xài Inject thôi đủ rồi. Depenency Injection
     private CategoryDAO categoryDAO;
+
+    CategoryService() {
+        categoryDAO = new CategoryDAO();
+    }
 
     @Override
     public Category findById(Long categoryId) {

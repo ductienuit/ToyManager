@@ -4,6 +4,7 @@ import com.toymanager.constant.SystemConstant;
 import com.toymanager.paging.PageRequest;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IToyService;
+import com.toymanager.service.IUserService;
 import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
 import dto.Toy;
@@ -25,7 +26,7 @@ import java.io.IOException;
 public class AccountsControllerAdmin extends HttpServlet {
 
     @Inject
-    private IToyService toyService;
+    private IUserService userService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,8 +53,8 @@ public class AccountsControllerAdmin extends HttpServlet {
         Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
         Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
 
-        model.setListResult(toyService.findAll(pageble));
-        int totalItem = toyService.getTotalItem();
+        model.setListResult(userService.findAll(pageble));
+        int totalItem = userService.getTotalItem();
         model.setTotalItem(totalItem);
         model.setTotalPage((int) Math.ceil((double) totalItem / model.getMaxPageItem()));
         request.setAttribute(SystemConstant.MODEL, model);
