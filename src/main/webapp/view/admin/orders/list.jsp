@@ -52,17 +52,17 @@
                                             <tr>
                                                 <td>${item.id}</td>
                                                 <td>${item.orderDate}</td>
-                                                <td>${item.orderDate}</td>
+                                                <td>${item.user.username}</td>
                                                 <td>${item.totalPrice}</td>
                                                 <td>
                                                     <c:choose>
-                                                        <c:when test="${item.equals(1)}">
+                                                        <c:when test="${item.orderStatus.id == 1}">
                                                             <span class="label label-sm label-warning">Đang chờ</span>
                                                         </c:when>
-                                                        <c:when test="${item.equals(2)}">
+                                                        <c:when test="${item.orderStatus.id == 2}">
                                                             <span class="label label-sm label-warning">Đang giao</span>
                                                         </c:when>
-                                                        <c:when test="${item.equals(3)}">
+                                                        <c:when test="${item.orderStatus.id == 3}">
                                                             <span class="label label-sm label-success">Đã giao</span>
                                                         </c:when>
                                                         <c:otherwise>
