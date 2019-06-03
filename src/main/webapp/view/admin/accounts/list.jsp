@@ -55,7 +55,9 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Tên tài khoản</th>
+                                            <th>Họ và tên</th>
                                             <th>Phân quyền</th>
                                             <th>Thao tác</th>
                                         </tr>
@@ -63,11 +65,15 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>${item.name}</td>
-                                                <td>${item.description}</td>
+                                                <td>${item.id}</td>
+                                                <td>${item.username}</td>
+                                                <td>${item.fullName}</td>
                                                 <td>
                                                     <div>
-                                                        <select class="form-control" id="form-field-select-1" value="1">
+                                                        <select class="form-control"
+                                                                id="form-field-select-1"
+                                                                value="1"
+                                                                disabled>
                                                             <option value="1">Người dùng</option>
                                                             <option value="2">Quản trị viên</option>
                                                         </select>

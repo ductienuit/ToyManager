@@ -55,7 +55,9 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Tên bài viết</th>
+                                            <th>Id</th>
+                                            <th>Tên đồ chơi</th>
+                                            <th>Hình ảnh</th>
                                             <th>Mô tả ngắn</th>
                                             <th>Thao tác</th>
                                         </tr>
@@ -63,7 +65,9 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
+                                                <td>${item.id}</td>
                                                 <td>${item.name}</td>
+                                                <td>${item.imageUri}</td>
                                                 <td>${item.description}</td>
                                                 <td>
                                                     <c:url var="editURL" value="/admin-products">

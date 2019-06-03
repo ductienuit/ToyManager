@@ -37,17 +37,6 @@ public class ProductControllerAdmin extends HttpServlet {
             throws ServletException, IOException {
         //Thay vì dùng request.getParameter từng giá trị thì mình dùng
         //FormUtil để mapping với model của mình
-//        NewsModel model = FormUtil.toModel(NewsModel.class, request);
-//        Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
-//        Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
-//
-//        model.setListResult(toyService.findAll(pageble));
-//        model.setTotalItem(toyService.getTotalItem());
-//        model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
-//        request.setAttribute(SystemConstant.MODEL, model);
-//        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/products/list.jsp");
-//        rd.forward(request, response);
-
         Toy model = FormUtil.toModel(Toy.class, request);
         Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
         Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);

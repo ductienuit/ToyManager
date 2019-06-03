@@ -2,6 +2,7 @@ package dto;
 // Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
+import dto.common.Pagination;
 import org.hibernate.annotations.Proxy;
 
 import java.io.Serializable;
@@ -26,7 +27,7 @@ import javax.persistence.TemporalType;
 @Table(name = "user",
        catalog = "toymanager"
 )
-public class User implements Serializable, IDTO {
+public class User extends Pagination<User> implements Serializable, IDTO {
     private long id;
     private Role role;
     private Long roleId;
