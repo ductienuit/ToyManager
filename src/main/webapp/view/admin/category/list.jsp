@@ -98,6 +98,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Tên loại đồ chơi</th>
                                             <th>Code</th>
                                             <th>Thao tác</th>
@@ -106,8 +107,9 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
+                                                <td>${item.id}</td>
                                                 <td>${item.name}</td>
-                                                <td>${item.description}</td>
+                                                <td>${item.code}</td>
                                                 <td>
                                                     <c:url var="editURL" value="/admin-category">
                                                         <c:param name="type" value="edit"/>
