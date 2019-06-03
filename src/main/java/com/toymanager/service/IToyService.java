@@ -16,13 +16,13 @@ import java.util.List;
  */
 public interface IToyService {
 
-    List<Toy> findByCategoryId(Long categoryId);
+    Toy findByCategoryId(Long categoryId);
 
     Toy save(Toy toyModel);
 
-    public Toy update(Toy toyModel);
+    Toy update(Toy toyModel);
 
-    public void delete(long[] ids);
+    void delete(long[] ids);
 
     List<Toy> findAll(Pageble page);
 
