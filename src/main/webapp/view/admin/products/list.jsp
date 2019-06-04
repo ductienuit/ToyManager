@@ -18,11 +18,16 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Trang chủ</a>
+                        <a href="#">Danh sách đồ chơi</a>
                     </li>
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}" role="alert">
+                        ${message}
+                </div>
+            </c:if>
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">

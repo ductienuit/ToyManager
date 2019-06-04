@@ -104,7 +104,7 @@ public abstract class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
-    public Long insert(final T entity) {
+    public Long insert(T entity) {
         final ObjectWrapper<Long> idWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {

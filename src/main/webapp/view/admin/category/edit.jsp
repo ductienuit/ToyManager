@@ -148,14 +148,17 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" role="form" method="post">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên thể
                                     loại </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" placeholder="Thể loại đồ chơi"
-                                           class="col-xs-10 col-sm-5">
+                                    <input type="text" id="form-field-1"
+                                           placeholder="${model.name}"
+                                           class="col-xs-10 col-sm-5"
+                                           name="name"
+                                           required>
                                 </div>
                             </div>
 
@@ -164,8 +167,9 @@
                                     đồ chơi </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1-1" placeholder="Ví dụ: do-choi-nam"
-                                           class="col-xs-10 col-sm-5">
+                                    <input type="text" id="form-field-1-1" name="code"
+                                           class="col-xs-10 col-sm-5" placeholder="${model.code}" required>
+                                    <input type="hidden" name="command" value="edit">
                                 </div>
                             </div>
 
@@ -173,7 +177,7 @@
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" type="button">
+                                    <button class="btn btn-info" type="submit">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
                                         Submit
                                     </button>

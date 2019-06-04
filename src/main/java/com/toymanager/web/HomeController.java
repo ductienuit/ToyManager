@@ -5,14 +5,10 @@
  */
 package com.toymanager.web;
 
-import com.toymanager.model.UserModel;
-import com.toymanager.service.ICategoryService;
 import com.toymanager.service.IUserService;
 import com.toymanager.utils.FormUtil;
 import com.toymanager.utils.SessionUtil;
-import dao.CategoryDAO;
 import dto.User;
-import org.hibernate.Hibernate;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -89,21 +85,4 @@ public class HomeController extends HttpServlet {
             }
         }
     }
-//    void Old(HttpServletRequest request, HttpServletResponse response){
-//        String action = request.getParameter("action");
-//        if (action != null && action.equals("login")) {
-//            UserModel model = FormUtil.toModel(UserModel.class, request);
-//            model = userService.findByUserNameAndPasswordAndStatus(model.getUserName(), model.getPassword(), 1);
-//            if (model != null) {
-//                SessionUtil.getInstance().putValue(request, "USERMODEL", model);
-//                if (model.getRole().getCode().equals("USER")) {
-//                    response.sendRedirect(request.getContextPath() + "/trang-chu");
-//                } else if (model.getRole().getCode().equals("ADMIN")) {
-//                    response.sendRedirect(request.getContextPath() + "/admin-home");
-//                }
-//            } else {
-//                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=username_password_invalid&alert=danger");
-//            }
-//        }
-//    }
 }

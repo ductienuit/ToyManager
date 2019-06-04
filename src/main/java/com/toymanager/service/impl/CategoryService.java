@@ -39,6 +39,8 @@ public class CategoryService implements ICategoryService<Category> {
     @Override
     public Category update(Category model) {
         Category oldCategory = categoryDAO.findEntityById(model.getId());
+        oldCategory.setName(model.getName());
+        oldCategory.setCode(model.getCode());
         categoryDAO.update(oldCategory);
         return categoryDAO.findEntityById(model.getId());
     }

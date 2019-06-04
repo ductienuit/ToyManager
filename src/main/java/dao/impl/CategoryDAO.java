@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.impl;
 
 import dao.common.BasicDAO;
 import dto.Category;
 import dto.User;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import utils.HibernateUtil;
 import utils.ObjectWrapper;
@@ -23,6 +26,23 @@ public class CategoryDAO extends BasicDAO<Category> {
     }
 
     public void Test() {
+
+//        SessionFactory sessionFactory = HibernateUtil.getSESSION_FACTORY();
+//
+//        Session session = sessionFactory.openSession();
+//
+//        Category c7 = new Category();
+//        c7.setName("Category 1");
+//        c7.setCode("the-thao");
+//        session.beginTransaction();
+//        Long id = (Long) session.save(c7);
+//        session.getTransaction().commit();
+
+
+
+
+
+
         CategoryDAO dao = new CategoryDAO();
 
         // insert
@@ -35,7 +55,6 @@ public class CategoryDAO extends BasicDAO<Category> {
 
         // findEntityById
         System.out.println("2. Search");
-        c1.setId(1);
         Category c2 = dao.findEntityById(c1.getId());
         if (c2 != null) {
             System.out.println("Category [id = " + c2.getId() + ", name = " + c2

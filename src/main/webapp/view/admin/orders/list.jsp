@@ -30,6 +30,11 @@
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}" role="alert">
+                        ${message}
+                </div>
+            </c:if>
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">

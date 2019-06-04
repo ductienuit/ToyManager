@@ -18,7 +18,7 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-category?action=insert'/>" id="formSubmit" method="post">
+
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -30,6 +30,11 @@
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}" role="alert">
+                        ${message}
+                </div>
+            </c:if>
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -47,7 +52,8 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
-                                                <form id="insertCategoryForm" method="post" >
+                                                    <form id="insertCategoryForm" method="post"
+                                                          action="<c:url value='/admin-category'/>">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal">&times;
                                                         </button>
@@ -115,7 +121,6 @@
                                                         <c:param name="type" value="edit"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
-
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
                                                        title="Cập nhật loại đồ chơi" href='${editURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -128,18 +133,19 @@
                                                        title="Xóa thể loại" href='${deleteURL}'><i
                                                             class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
-
                                                 </td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
                                     </table>
-                                    <ul class="pagination" id="pagination"></ul>
+                                    <form action="<c:url value='/admin-category'/>" id="formSubmit" method="get">
+                                        <ul class="pagination" id="pagination"></ul>
                                     <input type="hidden" value="" id="page" name="page"/>
                                     <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
                                     <input type="hidden" value="" id="sortName" name="sortName"/>
                                     <input type="hidden" value="" id="sortBy" name="sortBy"/>
                                     <input type="hidden" value="" id="type" name="type"/>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +153,6 @@
                 </div>
             </div>
         </div>
-    </form>
 </div>
 <!-- /.main-content -->
 <script>
