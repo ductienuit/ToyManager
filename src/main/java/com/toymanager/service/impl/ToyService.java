@@ -5,16 +5,12 @@
  */
 package com.toymanager.service.impl;
 
-import com.toymanager.dao.INewDAO;
-import com.toymanager.model.NewsModel;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IToyService;
-import dao.impl.ToyDAO;
+import com.toymanager.dao.impl.ToyDAO;
 import dto.Toy;
 
-import java.sql.Timestamp;
 import java.util.List;
-import javax.inject.Inject;
 
 /**
  * @author DucTien

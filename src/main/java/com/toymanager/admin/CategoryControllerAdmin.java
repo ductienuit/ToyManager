@@ -1,14 +1,11 @@
 package com.toymanager.admin;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import com.toymanager.constant.SystemConstant;
-import com.toymanager.model.CategoryModel;
 import com.toymanager.paging.PageRequest;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.ICategoryService;
 import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
-import dao.impl.CategoryDAO;
 import dto.Category;
 
 import javax.inject.Inject;

@@ -7,10 +7,9 @@ package com.toymanager.service.impl;
 
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.ICategoryService;
-import dao.impl.CategoryDAO;
+import com.toymanager.dao.impl.CategoryDAO;
 import dto.Category;
 
-import javax.inject.Inject;
 import java.util.List;
 
 /**

@@ -5,38 +5,126 @@
  */
 package com.toymanager.dao.impl;
 
-import com.toymanager.dao.ICategoryDAO;
-import com.toymanager.mapper.CategoryMapper;
-import com.toymanager.model.CategoryModel;
+import com.toymanager.dao.common.BasicDAO;
+import dto.Category;
 
-import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+import utils.HibernateUtil;
+import utils.ObjectWrapper;
 
 /**
- * @author DucTien
+ * @author CMQ
  */
-public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategoryDAO {
-
-    @Override
-    public List<CategoryModel> findAll() {
-        List<CategoryModel> results = new ArrayList<>();
-        String sqlQuery = "select * from category";
-        //open connection
-        return this.query(sqlQuery, new CategoryMapper());
+public class CategoryDAO extends BasicDAO<Category> {
+    public CategoryDAO() {
+        super(Category.class);
     }
 
-    @Override
-    public void update(String sql, Object... parameters) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void Test() {
+
+//        SessionFactory sessionFactory = HibernateUtil.getSESSION_FACTORY();
+//
+//        Session session = sessionFactory.openSession();
+//
+//        Category c7 = new Category();
+//        c7.setName("Category 1");
+//        c7.setCode("the-thao");
+//        session.beginTransaction();
+//        Long id = (Long) session.save(c7);
+//        session.getTransaction().commit();
+
+
+
+
+
+
+        CategoryDAO dao = new CategoryDAO();
+
+        // insert
+        System.out.println("1. Insert");
+        Category c1 = new Category();
+        c1.setName("Category 1");
+        c1.setCode("the-thao");
+        dao.insert(c1);
+        System.out.println("Success!");
+
+        // findEntityById
+        System.out.println("2. Search");
+        Category c2 = dao.findEntityById(c1.getId());
+        if (c2 != null) {
+            System.out.println("Category [id = " + c2.getId() + ", name = " + c2
+                .getName() + "]");
+        }
+        System.out.println("Success!");
+
+        // update
+        System.out.println("3. Update");
+        Category c3 = c2;
+        c3.setName("Category 2");
+        dao.update(c3);
+        Category c4 = dao.findEntityById(c3.getId());
+        System.out.println("Category [id = " + c4.getId() + ", name = " + c4
+            .getName() + "]");
+        System.out.println("Success!");
+
+        // count
+        Long count = dao.count();
+        System.out.println("4. Count");
+        System.out.println("Category has " + count + " record(s).");
+        System.out.println("Success!");
+
+        // hasany
+        Boolean hasany = dao.hasAny();
+        System.out.println("5. HasAny");
+        System.out.println("Category has at least 1 record: " + hasany);
+        System.out.println("Success!");
+
+        // delete
+        System.out.println("6. Delete");
+        dao.delete(c4);
+        Category c5 = dao.findEntityById(c4.getId());
+        if (c5 == null) {
+            System.out.println("Attempt to find Category [id = " + c4.getId()
+                                   + "]: null");
+        }
+        System.out.println("Success!");
     }
 
-    @Override
-    public Long insert(String sql, Object... parameters) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Category getCategoryByCode(final String code) {
+        final ObjectWrapper<Category> categoryWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            Criteria criteria = session
+                .createCriteria(Category.class)
+                .add(Restrictions.eq("code",
+                                     code));
+
+            List result = criteria.list();
+            if (!result.isEmpty()) {
+                categoryWrapper.setObject((Category) result.get(0));
+            }
+        });
+
+        return categoryWrapper.getObject();
     }
 
-    @Override
-    public int count(String sql, Object... parameters) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Category getCategoryByName(final String name) {
+        final ObjectWrapper<Category> categoryWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            Criteria criteria = session
+                .createCriteria(Category.class)
+                .add(Restrictions.eq("name",
+                                     name));
+
+            List result = criteria.list();
+            if (!result.isEmpty()) {
+                categoryWrapper.setObject((Category) result.get(0));
+            }
+        });
+
+        return categoryWrapper.getObject();
     }
 }

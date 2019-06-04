@@ -7,7 +7,7 @@ package com.toymanager.service.impl;
 
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IUserService;
-import dao.impl.UserDAO;
+import com.toymanager.dao.impl.UserDAO;
 import dto.User;
 
 import java.util.List;
