@@ -5,12 +5,10 @@
  */
 package com.toymanager.web;
 
-import com.toymanager.model.UserModel;
-import com.toymanager.service.ICategoryService;
-import com.toymanager.service.INewService;
 import com.toymanager.service.IUserService;
 import com.toymanager.utils.FormUtil;
 import com.toymanager.utils.SessionUtil;
+import dto.User;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -30,11 +28,7 @@ import java.util.ResourceBundle;
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
 public class HomeController extends HttpServlet {
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
-    @Inject
-    private ICategoryService categoryService;
 
-    @Inject
-    private INewService newsService;
 
     @Inject
     private IUserService userService;
@@ -46,9 +40,13 @@ public class HomeController extends HttpServlet {
 //        TEST
 //        RequestDispatcher xxx = request.getRequestDispatcher("/view/web/home.jsp");
 //        xxx.forward(request, response);
+        String message = request.getParameter("message");
+//        if (message != null) {
+//            CategoryDAO categoryDAO = new CategoryDAO();
+//            categoryDAO.Test();
+//        }
 
         if (action != null && action.equals("login")) {
-            String message = request.getParameter("message");
             String alert = request.getParameter("alert");
 
             if (message != null && alert != null) {
@@ -72,13 +70,14 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action != null && action.equals("login")) {
-            UserModel model = FormUtil.toModel(UserModel.class, request);
-            model = userService.findByUserNameAndPasswordAndStatus(model.getUserName(), model.getPassword(), 1);
+            User model = FormUtil.toModel(User.class, request);
+            model = userService.findByUserNameAndPasswordAndStatus(model.getUsername(), model.getPassword());
             if (model != null) {
                 SessionUtil.getInstance().putValue(request, "USERMODEL", model);
-                if (model.getRole().getCode().equals("USER")) {
+                int priority = model.getRole().getPriority();
+                if (priority<1) {
                     response.sendRedirect(request.getContextPath() + "/trang-chu");
-                } else if (model.getRole().getCode().equals("ADMIN")) {
+                } else if (model.getRole().getPriority()>=1) {
                     response.sendRedirect(request.getContextPath() + "/admin-home");
                 }
             } else {

@@ -18,7 +18,7 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-accounts'/>" id="formSubmit" method="get">
+    <form action="<c:url value='/admin-accounts'/>" id="formSubmit" method="post">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -144,47 +144,57 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" role="form" id="addAccount" method="post">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tài
+                                <label class="col-sm-3 control-label no-padding-right" for="username"> Tài
                                     khoản</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" placeholder="Username"
-                                           class="col-xs-10 col-sm-5">
+                                    <input type="text" name="username" placeholder="Username"
+                                           class="col-xs-10 col-sm-5" id="username" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Họ và
+                                <label class="col-sm-3 control-label no-padding-right" for="fullName"> Họ và
                                     tên </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-2" placeholder="Họ và tên"
-                                           class="form-control">
+                                    <input type="text" id="fullName" placeholder="Họ và tên" name="fullName"
+                                           class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Mật
+                                <label class="col-sm-3 control-label no-padding-right" for="password"> Mật
                                     khẩu </label>
 
                                 <div class="col-sm-9">
-                                    <input type="password" id="form-field-3" placeholder="Nhập mật khẩu"
-                                           class="col-xs-10 col-sm-5">
+                                    <input type="password" id="password" placeholder="Nhập mật khẩu" name="password"
+                                           class="col-xs-10 col-sm-5" required>
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Địa
+                                <label class="col-sm-3 control-label no-padding-right" for="address"> Địa
                                     chỉ </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-4" placeholder="Địa chỉ"
-                                           class="form-control">
+                                    <input type="text" id="address" placeholder="Địa chỉ" name="address"
+                                           class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="space-4"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="email"> Email </label>
+
+                                <div class="col-sm-9">
+                                    <input type="email" id="email" placeholder="Nhập email" name="email"
+                                           class="form-control" required>
                                 </div>
                             </div>
 
@@ -194,37 +204,30 @@
                                     Số điện thoại </label>
 
                                 <div class="col-sm-9">
-                                    <input type="email" id="form-field-5" placeholder="Nhập địa chỉ"
-                                           class="form-control">
+                                    <input type="number" id="form-field-5" placeholder="Nhập số điện thoại"
+                                           name="phoneNumber"
+                                           class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-5">
+                                <label class="col-sm-3 control-label no-padding-right" for="quyen">
                                     Phân quyền </label>
-                                <div class="col-sm-9"><select class="form-control" id="form-field-select-1">
-                                    <option value="1">Người dùng</option>
-                                    <option value="2">Quản trị viên</option>
-                                </select></div>
-                            </div>
-
-
-                            <div class="space-4"></div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-6">
-                                    Số điện thoại </label>
-
                                 <div class="col-sm-9">
-                                    <input type="email" id="form-field-6" placeholder="Nhập địa chỉ"
-                                           class="form-control">
+                                    <select class="form-control" id="quyen">
+                                        <option value="1">Người dùng</option>
+                                        <option value="2">Quản trị viên</option>
+                                    </select>
                                 </div>
                             </div>
+                            <input type="hidden" id="roleId" name="roleId">
+
                             <div class="space-4"></div>
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" type="button">
+                                    <button class="btn btn-info" type="button" onclick="submitInsertUser()">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
                                         Submit
                                     </button>
@@ -246,6 +249,29 @@
 </div>
 <!-- /.main-content -->
 
+<script type="text/javascript">
+
+    $("input#username").on({
+        keydown: function (e) {
+            if (e.which === 32)
+                return false;
+        },
+        change: function () {
+            this.value = this.value.replace(/\s/g, "");
+        }
+    });
+    var selectedCountry=1;
+    $("select.form-control").change(function(){
+
+        var selectedCountry = $(this).children("option:selected").val();
+    });
+
+    function submitInsertUser(){
+        $('#roleId').val(selectedCountry);
+        $('#addAccount').submit();
+    }
+
+</script>
 </body>
 
 </html>

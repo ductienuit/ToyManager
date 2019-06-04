@@ -5,14 +5,14 @@
  */
 package com.toymanager.service;
 
-import com.toymanager.model.CategoryModel;
+
+import dto.Category;
+import dto.common.IDTO;
 
 import java.util.List;
 
 /**
  * @author DucTien
  */
-public interface ICategoryService {
-
-    List<CategoryModel> findAll();
+public interface ICategoryService<T extends IDTO> extends IBaseService<T> {
 }

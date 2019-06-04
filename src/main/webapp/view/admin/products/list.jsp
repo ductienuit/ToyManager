@@ -18,11 +18,16 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Trang chủ</a>
+                        <a href="#">Danh sách đồ chơi</a>
                     </li>
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}" role="alert">
+                        ${message}
+                </div>
+            </c:if>
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -55,7 +60,9 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Tên bài viết</th>
+                                            <th>Id</th>
+                                            <th>Tên đồ chơi</th>
+                                            <th>Hình ảnh</th>
                                             <th>Mô tả ngắn</th>
                                             <th>Thao tác</th>
                                         </tr>
@@ -63,8 +70,10 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>${item.title}</td>
-                                                <td>${item.shortDescriptions}</td>
+                                                <td>${item.id}</td>
+                                                <td>${item.name}</td>
+                                                <td>${item.imageUri}</td>
+                                                <td>${item.description}</td>
                                                 <td>
                                                     <c:url var="editURL" value="/admin-products">
                                                         <c:param name="type" value="edit"/>
@@ -72,6 +81,14 @@
                                                     </c:url>
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
                                                        title="Cập nhật bài viết" href='${editURL}'><i
+                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    </a>
+                                                    <c:url var="deleteURL" value="/admin-products">
+                                                        <c:param name="type" value="delete"/>
+                                                        <c:param name="id" value="${item.id}"/>
+                                                    </c:url>
+                                                    <a class="btn btn-sm btn-primary btn-remove" data-toggle="tooltip"
+                                                       title="Xóa bài viết" href='${deleteURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
                                                 </td>

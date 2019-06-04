@@ -193,7 +193,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> changeDAO
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -296,12 +300,19 @@
       <updated>1559113721321</updated>
       <workItem from="1559113724551" duration="6447000" />
       <workItem from="1559120587996" duration="170000" />
+<<<<<<< HEAD
       <workItem from="1559121104892" duration="39000" />
+=======
+>>>>>>> changeDAO
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="6656000" />
+=======
+    <option name="totallyTimeSpent" value="6617000" />
+>>>>>>> changeDAO
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -312,7 +323,11 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.27836612" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.27382752" />
+>>>>>>> changeDAO
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />

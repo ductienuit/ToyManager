@@ -18,7 +18,7 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-category'/>" id="formSubmit" method="get">
+
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -30,6 +30,11 @@
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}" role="alert">
+                        ${message}
+                </div>
+            </c:if>
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -46,54 +51,46 @@
                                         <div id="myModal" class="modal" tabindex="-1">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
+
+                                                    <form id="insertCategoryForm" method="post"
+                                                          action="<c:url value='/admin-category'/>">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal">&times;
                                                         </button>
                                                         <h4 class="blue bigger">Thêm loại đồ chơi</h4>
                                                     </div>
-
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-xs-12">
                                                                 <div class="form-group">
-                                                                    <label for="form-field-username">Tên loại đồ
+                                                                    <label >Tên loại đồ
                                                                         chơi</label>
-
                                                                     <div>
-                                                                        <input type="text" id="form-field-username"
-                                                                               placeholder="Tên loại đồ chơi"/>
+                                                                        <input type="text" name="name" required/>
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="space-4"></div>
-
                                                                 <div class="form-group">
-                                                                    <label for="form-field-first">Code</label>
-
+                                                                    <label >Code</label>
                                                                     <div>
-                                                                        <input type="text" id="form-field-first"
-                                                                               placeholder="Mã code loại đồ chơi"/>
+                                                                        <input type="text" name="code" id="macode" placeholder="Vi du: the-thao" required/>
+                                                                        <input type="hidden" name="command" value="insert">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="modal-footer">
+                                                        <button class="btn btn-sm btn-primary" onclick="addCategory()" >
+                                                            <i class="ace-icon fa fa-check"></i>
+                                                            Thêm
+                                                        </button>
                                                         <button class="btn btn-sm" data-dismiss="modal">
                                                             <i class="ace-icon fa fa-times"></i>
-                                                            Cancel
-                                                        </button>
-
-                                                        <button class="btn btn-sm btn-primary">
-                                                            <i class="ace-icon fa fa-check"></i>
-                                                            Save
-                                                        </button>
-                                                        <button class="btn btn-sm">
-                                                            <i class="ace-icon fa fa-times"></i>
-                                                            Cancel
+                                                            Hủy
                                                         </button>
                                                     </div>
+                                                </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,6 +104,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Tên loại đồ chơi</th>
                                             <th>Code</th>
                                             <th>Thao tác</th>
@@ -115,14 +113,14 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>${item.title}</td>
-                                                <td>${item.shortDescriptions}</td>
+                                                <td>${item.id}</td>
+                                                <td>${item.name}</td>
+                                                <td>${item.code}</td>
                                                 <td>
                                                     <c:url var="editURL" value="/admin-category">
                                                         <c:param name="type" value="edit"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
-
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
                                                        title="Cập nhật loại đồ chơi" href='${editURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -135,18 +133,19 @@
                                                        title="Xóa thể loại" href='${deleteURL}'><i
                                                             class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
-
                                                 </td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
                                     </table>
-                                    <ul class="pagination" id="pagination"></ul>
+                                    <form action="<c:url value='/admin-category'/>" id="formSubmit" method="get">
+                                        <ul class="pagination" id="pagination"></ul>
                                     <input type="hidden" value="" id="page" name="page"/>
                                     <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
                                     <input type="hidden" value="" id="sortName" name="sortName"/>
                                     <input type="hidden" value="" id="sortBy" name="sortBy"/>
                                     <input type="hidden" value="" id="type" name="type"/>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +153,6 @@
                 </div>
             </div>
         </div>
-    </form>
 </div>
 <!-- /.main-content -->
 <script>
@@ -179,6 +177,11 @@
             }
         });
     });
+
+    function addCategory() {
+        //insertCategoryForm
+        $('#insertCategoryForm').submit();
+    }
 </script>
 </body>
 

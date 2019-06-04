@@ -30,6 +30,11 @@
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}" role="alert">
+                        ${message}
+                </div>
+            </c:if>
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -50,15 +55,25 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>1</td>
-                                                <td>${item.title}</td>
-                                                <td>${item.shortDescriptions}</td>
-                                                <td>${item.title}</td>
+                                                <td>${item.id}</td>
+                                                <td>${item.orderDate}</td>
+                                                <td>${item.user.username}</td>
+                                                <td>${item.totalPrice}</td>
                                                 <td>
-                                                    <span class="label label-sm label-warning">Đang chờ</span>
-                                                    <span class="label label-sm label-warning">Đang giao</span>
-                                                    <span class="label label-sm label-success">Đã giao</span>
-                                                    <span class="label label-sm label-danger">Đã hủy</span>
+                                                    <c:choose>
+                                                        <c:when test="${item.orderStatus.id == 1}">
+                                                            <span class="label label-sm label-warning">Đang chờ</span>
+                                                        </c:when>
+                                                        <c:when test="${item.orderStatus.id == 2}">
+                                                            <span class="label label-sm label-warning">Đang giao</span>
+                                                        </c:when>
+                                                        <c:when test="${item.orderStatus.id == 3}">
+                                                            <span class="label label-sm label-success">Đã giao</span>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <span class="label label-sm label-danger">Đã hủy</span>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </td>
                                                 <td>
                                                     <c:url var="detailURL" value="/admin-order">

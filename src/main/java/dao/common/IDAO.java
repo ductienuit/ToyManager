@@ -5,31 +5,34 @@
  */
 package dao.common;
 
+import com.toymanager.paging.Pageble;
 import dto.common.IDTO;
+import java.util.List;
 
 /**
- *
- * @author CMQ
  * @param <T>
+ * @author CMQ
  */
 public interface IDAO<T extends IDTO> {
-    Long insert(T entity);
-
-    Iterable<Long> insert(Iterable<T> entities);
-
-    void update(T entity);
-
-    void update(Iterable<T> entities);
+    Long count();
 
     void delete(T entity);
 
     void delete(Iterable<T> entities);
 
-    Iterable<T> getAll();
+    List<T> findAll();
+
+    T findEntityById(Long id);
 
     boolean hasAny();
 
-    Long count();
+    Long insert(T entity);
 
-    T search(Long id);
+    List<Long> insert(Iterable<T> entities);
+
+    void update(T entity);
+
+    void update(Iterable<T> entities);
+
+    List<T> findAll(Pageble page);
 }

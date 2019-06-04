@@ -151,7 +151,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="text" id="form-field-1" placeholder="Nhập tên đồ chơi"
-                                           class="col-xs-10 col-sm-5">
+                                           class="col-xs-10 col-sm-5" value="${model.name}" readonly>
                                 </div>
                             </div>
 
@@ -170,25 +170,12 @@
 
                                 <div class="col-sm-9">
                                     <input type="text" id="form-field-3" placeholder="Đơn giá"
-                                           class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="space-4"></div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Giới
-                                    tính </label>
-
-                                <div class="col-sm-9">
-                                    <input type="password" id="form-field-4" placeholder="Giới tính của đồ chơi"
-                                           class="col-xs-10 col-sm-5">
+                                           class="form-control" value="${model.price}">
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
                             <div class="form-group">
-
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Tải lên ảnh
                                     miêu tả </label>
 
@@ -209,7 +196,7 @@
                                     Miêu tả ngắn</label>
 
                                 <div class="col-sm-9">
-                                    <input type="email" id="form-field-6" placeholder="Miêu tả đồ chơi"
+                                    <input type="text" id="form-field-6" placeholder="Miêu tả đồ chơi"  value="${model.description}"
                                            class="form-control">
                                 </div>
                             </div>

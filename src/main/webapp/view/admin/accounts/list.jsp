@@ -30,6 +30,11 @@
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}" role="alert">
+                        ${message}
+                </div>
+            </c:if>
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -55,7 +60,9 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Tên tài khoản</th>
+                                            <th>Họ và tên</th>
                                             <th>Phân quyền</th>
                                             <th>Thao tác</th>
                                         </tr>
@@ -63,10 +70,15 @@
                                         <tbody>
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
-                                                <td>${item.title}</td>
+                                                <td>${item.id}</td>
+                                                <td>${item.username}</td>
+                                                <td>${item.fullName}</td>
                                                 <td>
                                                     <div>
-                                                        <select class="form-control" id="form-field-select-1">
+                                                        <select class="form-control"
+                                                                id="form-field-select-1"
+                                                                value="1"
+                                                                disabled>
                                                             <option value="1">Người dùng</option>
                                                             <option value="2">Quản trị viên</option>
                                                         </select>
@@ -81,12 +93,12 @@
                                                        title="Cập nhật tài khoản" href='${editURL}'><i
                                                             class="fa fa-check-square-o" aria-hidden="true"></i>
                                                     </a>
-                                                    <c:url var="editURL" value="/admin-accounts">
+                                                    <c:url var="deleteURL" value="/admin-accounts">
                                                         <c:param name="type" value="delete"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
                                                     <a class="btn btn-sm btn-primary btn-remove" data-toggle="tooltip"
-                                                       title="Xóa tài khoản" href='${editURL}'><i
+                                                       title="Xóa tài khoản" href='${deleteURL}'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
                                                 </td>

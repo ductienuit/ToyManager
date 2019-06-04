@@ -21,9 +21,9 @@ import javax.persistence.Table;
        catalog = "toymanager"
 )
 public class UserStatus implements Serializable, IDTO, IName {
-    public static UserStatus ACTIVE = new UserStatus(0,
+    public static UserStatus ACTIVE = new UserStatus(1,
                                                      "Đang hoạt động");
-    public static UserStatus INACTIVE = new UserStatus(1,
+    public static UserStatus INACTIVE = new UserStatus(2,
                                                        "Không hoạt động");
     private long id;
     private String name;

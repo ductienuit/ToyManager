@@ -32,13 +32,13 @@
                     <div class="form-group">
 
                         <input type="text" class="form-control" id="inputEmail" placeholder="Tên đăng nhập"
-                               name="userName">
+                               name="username">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu"
                                name="password">
                     </div>
-                    <input type="hidden" value="login" name="userName"/>
+                    <input type="hidden" value="login" name="username"/>
                     <input type="hidden" value="" id="maxPageItem" name="password"/>
 
                     <button type="submit" class="btn btn-primary">Login</button>

@@ -4,6 +4,7 @@ package com.toymanager.filter;
 import com.toymanager.constant.SystemConstant;
 import com.toymanager.model.UserModel;
 import com.toymanager.utils.SessionUtil;
+import dto.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -24,12 +25,12 @@ public class AuthorizationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String url = request.getRequestURI();
         if (url.contains("/admin")) {
-            UserModel model = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+            User model = (User) SessionUtil.getInstance().getValue(request, "USERMODEL");
             if (model != null) {
-                if (model.getRole().getCode().equals(SystemConstant.ADMIN)) {
+                if (model.getRole().getPriority()>=1) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
-                if (model.getRole().getCode().equals(SystemConstant.USER)) {
+                if (model.getRole().getPriority()<1) {
                     filterChain.doFilter(servletRequest, servletResponse);
                     response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_permisstion&alert=danger");
                 }

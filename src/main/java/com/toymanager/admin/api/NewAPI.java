@@ -7,7 +7,7 @@ package com.toymanager.admin.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.toymanager.model.NewsModel;
-import com.toymanager.service.INewService;
+import com.toymanager.service.IToyService;
 import com.toymanager.utils.HttpUtils;
 
 import java.io.IOException;
@@ -25,20 +25,20 @@ import javax.servlet.http.HttpServletResponse;
 public class NewAPI extends HttpServlet {
 
     @Inject
-    private INewService newService;
+    private IToyService newService;
 
     //Add topic
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Request tieng viet
-        ObjectMapper mapper = new ObjectMapper();
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
-        NewsModel newsModel = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
-        newsModel = newService.save(newsModel);
-        System.out.print(newsModel);
-        mapper.writeValue(response.getOutputStream(), newsModel);
+//        ObjectMapper mapper = new ObjectMapper();
+//        request.setCharacterEncoding("UTF-8");
+//        response.setContentType("application/json");
+//        NewsModel newsModel = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
+//        newsModel = newService.save(newsModel);
+//        System.out.print(newsModel);
+//        mapper.writeValue(response.getOutputStream(), newsModel);
     }
 
     //Update database
@@ -46,23 +46,23 @@ public class NewAPI extends HttpServlet {
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Request tieng viet
-        ObjectMapper mapper = new ObjectMapper();
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
-        NewsModel updateModel = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
-        updateModel = newService.update(updateModel);
-        mapper.writeValue(response.getOutputStream(), updateModel);
+//        ObjectMapper mapper = new ObjectMapper();
+//        request.setCharacterEncoding("UTF-8");
+//        response.setContentType("application/json");
+//        NewsModel updateModel = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
+//        updateModel = newService.update(updateModel);
+//        mapper.writeValue(response.getOutputStream(), updateModel);
     }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Request tieng viet
-        ObjectMapper mapper = new ObjectMapper();
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
-        NewsModel deleteModels = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
-        newService.delete(deleteModels.getIds());
-        mapper.writeValue(response.getOutputStream(), "{}");
+//        ObjectMapper mapper = new ObjectMapper();
+//        request.setCharacterEncoding("UTF-8");
+//        response.setContentType("application/json");
+//        NewsModel deleteModels = HttpUtils.of(request.getReader()).toModel(NewsModel.class);
+//        newService.delete(deleteModels.getIds());
+//        mapper.writeValue(response.getOutputStream(), "{}");
     }
 }

@@ -30,6 +30,10 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>com.toymanager.web.HomeController</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/HomeController</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>NewAPI</servlet-name>
         <servlet-class>com.toymanager.admin.api.NewAPI</servlet-class>
@@ -39,9 +43,10 @@
         <servlet-class>com.toymanager.admin.ProductControllerAdmin</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>HomeController</servlet-name>
-        <url-pattern>/HomeController</url-pattern>
+        <servlet-name>NewsController</servlet-name>
+        <url-pattern>/NewsController</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>HomeControllerAdmin</servlet-name>
         <servlet-class>com.toymanager.admin.HomeControllerAdmin</servlet-class>
@@ -54,10 +59,15 @@
         <servlet-name>NewAPI</servlet-name>
         <url-pattern>/NewAPI</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CategoryControllerAdmin</servlet-name>
+        <servlet-class>com.toymanager.admin.CategoryControllerAdmin</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>NewsController</servlet-name>
-        <url-pattern>/NewsController</url-pattern>
+        <servlet-name>CategoryControllerAdmin</servlet-name>
+        <url-pattern>/CategoryControllerAdmin</url-pattern>
     </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

@@ -2,6 +2,9 @@ package dto;
 // Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
 import dto.common.IDTO;
+import dto.common.Pagination;
+import org.hibernate.annotations.Proxy;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -24,9 +27,10 @@ import javax.persistence.TemporalType;
 @Table(name = "user",
        catalog = "toymanager"
 )
-public class User implements Serializable, IDTO {
+public class User extends Pagination<User> implements Serializable, IDTO {
     private long id;
     private Role role;
+    private Long roleId;
     private UserStatus userStatus;
     private String username;
     private String password;
@@ -113,7 +117,7 @@ public class User implements Serializable, IDTO {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "RoleId",
                 nullable = false)
     public Role getRole() {
@@ -239,4 +243,14 @@ public class User implements Serializable, IDTO {
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
+
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
 }

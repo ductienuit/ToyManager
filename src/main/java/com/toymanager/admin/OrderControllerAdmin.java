@@ -1,12 +1,14 @@
 package com.toymanager.admin;
 
 import com.toymanager.constant.SystemConstant;
-import com.toymanager.model.NewsModel;
 import com.toymanager.paging.PageRequest;
 import com.toymanager.paging.Pageble;
-import com.toymanager.service.INewService;
+import com.toymanager.service.IOrderService;
+import com.toymanager.service.IToyService;
 import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
+import dto.Order;
+import dto.Toy;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -21,22 +23,23 @@ import java.io.IOException;
 public class OrderControllerAdmin extends HttpServlet {
 
     @Inject
-    private INewService newsService;
+    private IOrderService orderService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Thay vì dùng request.getParameter từng giá trị thì mình dùng
         //FormUtil để mapping với model của mình
-        NewsModel model = FormUtil.toModel(NewsModel.class, request);
+        Order model = FormUtil.toModel(Order.class, request);
         Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
         Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
 
-        model.setListResult(newsService.findAll(pageble));
-        model.setTotalItem(newsService.getTotalItem());
-        model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
+        model.setListResult(orderService.findAll(pageble));
+        int totalItem = orderService.getTotalItem();
+        model.setTotalItem(totalItem);
+        model.setTotalPage((int) Math.ceil((double) totalItem / model.getMaxPageItem()));
         request.setAttribute(SystemConstant.MODEL, model);
-        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/orders/detail.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/orders/list.jsp");
         rd.forward(request, response);
     }
 

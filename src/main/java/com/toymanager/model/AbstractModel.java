@@ -5,6 +5,8 @@
  */
 package com.toymanager.model;
 
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.List;
  */
 public class AbstractModel<T> {
 
-    private Long id;
+    protected Long id;
     //Dùng để xóa một lúc nhiều id
     private long[] ids;
     private Timestamp createdDate;

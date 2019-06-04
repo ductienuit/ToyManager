@@ -6,7 +6,7 @@
     <class name="dto.Toy" table="toy" catalog="toymanager" optimistic-lock="version">
         <id name="id" type="long">
             <column name="Id" />
-            <generator class="assigned" />
+            <generator class="increment"/>
         </id>
         <many-to-one name="category" class="dto.Category" fetch="select">
             <column name="CategoryId" not-null="true" />

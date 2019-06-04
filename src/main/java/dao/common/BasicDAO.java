@@ -5,34 +5,26 @@
  */
 package dao.common;
 
-import dao.common.IDAO;
+import com.toymanager.paging.Pageble;
 import dto.common.IDTO;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 import utils.HibernateUtil;
 import utils.ObjectWrapper;
 
 /**
- *
- * @author CMQ
  * @param <T>
+ * @author CMQ
  */
-public class BasicDAO<T extends IDTO> implements IDAO<T> {
+public abstract class BasicDAO<T extends IDTO> implements IDAO<T> {
     private final Class<T> type;
 
     public BasicDAO(Class<T> type) {
         this.type = type;
-    }
-
-    /**
-     * Get the value of type
-     *
-     * @return the value of type
-     */
-    public Class<T> getType() {
-        return type;
     }
 
     @Override
@@ -41,8 +33,8 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             Criteria criteria = session
-                .createCriteria(type)
-                .setProjection(Projections.rowCount());
+                    .createCriteria(type)
+                    .setProjection(Projections.rowCount());
 
             List result = criteria.list();
             if (!result.isEmpty()) {
@@ -65,7 +57,7 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     public void delete(final Iterable<T> entities) {
         HibernateUtil.beginTransaction((session, transaction) -> {
             for (T entity : entities) {
-                session.update(entity);
+                session.delete(entity);
             }
 
             transaction.commit();
@@ -73,20 +65,8 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
-    public T search(Long id) {
-        final ObjectWrapper<T> entityWrapper = new ObjectWrapper<>();
-
-        HibernateUtil.beginTransaction((session, transaction) -> {
-            entityWrapper.setObject((T) session.get(type,
-                                                    id));
-        });
-
-        return entityWrapper.getObject();
-    }
-
-    @Override
-    public Iterable<T> getAll() {
-        final ObjectWrapper<Iterable<T>> listWrapper = new ObjectWrapper<>();
+    public List<T> findAll() {
+        final ObjectWrapper<List<T>> listWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
             listWrapper.setObject(session
@@ -98,12 +78,33 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
+    public T findEntityById(Long id) {
+        final ObjectWrapper<T> entityWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            entityWrapper.setObject((T) session.get(type,
+                                                    id));
+        });
+
+        return entityWrapper.getObject();
+    }
+
+    /**
+     * Get the value of type
+     *
+     * @return the value of type
+     */
+    public Class<T> getType() {
+        return type;
+    }
+
+    @Override
     public boolean hasAny() {
         return count() > 0;
     }
 
     @Override
-    public Long insert(final T entity) {
+    public Long insert(T entity) {
         final ObjectWrapper<Long> idWrapper = new ObjectWrapper<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
@@ -115,7 +116,7 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
     }
 
     @Override
-    public Iterable<Long> insert(final Iterable<T> entities) {
+    public List<Long> insert(final Iterable<T> entities) {
         final ArrayList<Long> ids = new ArrayList<>();
 
         HibernateUtil.beginTransaction((session, transaction) -> {
@@ -146,5 +147,19 @@ public class BasicDAO<T extends IDTO> implements IDAO<T> {
 
             transaction.commit();
         });
+    }
+    @Override
+    public List<T> findAll(Pageble page){
+        final ObjectWrapper<List<T>> listWrapper = new ObjectWrapper<>();
+
+        HibernateUtil.beginTransaction((session, transaction) -> {
+            listWrapper.setObject(session
+                    .createCriteria(type)
+                    .setFirstResult(page.getOffset())
+                    .setMaxResults(page.getLimit())
+                    .list());
+        });
+
+        return listWrapper.getObject();
     }
 }

@@ -30,13 +30,13 @@ public class HibernateUtil {
                 StandardServiceRegistryBuilder serviceRegistryBuilder
                         = new StandardServiceRegistryBuilder();
                 serviceRegistryBuilder
-                        .applySettings(configuration
-                                .getProperties());
+                        .applySettings(configuration.getProperties());
 
                 ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
 
-                SESSION_FACTORY = (SessionFactory) configuration.buildSessionFactory(
-                        serviceRegistry);
+                SESSION_FACTORY = (SessionFactory) configuration
+                        .buildSessionFactory(
+                                serviceRegistry);
             } catch (HibernateException ex) {
                 // Log the exception.
                 System.err.println("Initial SessionFactory creation failed."
@@ -53,7 +53,8 @@ public class HibernateUtil {
             return;
         }
         //DT: getSession is null
-        Session session = getSESSION_FACTORY().openSession();
+        Session session = getSESSION_FACTORY()
+                .openSession();
 
         Transaction transaction = null;
 

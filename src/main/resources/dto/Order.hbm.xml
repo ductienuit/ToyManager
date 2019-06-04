@@ -6,12 +6,12 @@
     <class name="dto.Order" table="order" catalog="toymanager" optimistic-lock="version">
         <id name="id" type="long">
             <column name="Id" />
-            <generator class="assigned" />
+            <generator class="increment"/>
         </id>
-        <many-to-one name="orderStatus" class="dto.OrderStatus" fetch="select">
+        <many-to-one name="orderStatus" class="dto.OrderStatus" fetch="select" lazy="false">
             <column name="OrderStatusId" not-null="true" />
         </many-to-one>
-        <many-to-one name="user" class="dto.User" fetch="select">
+        <many-to-one name="user" class="dto.User" fetch="select" lazy="false">
             <column name="UserId" not-null="true" />
         </many-to-one>
         <property name="orderDate" type="timestamp">

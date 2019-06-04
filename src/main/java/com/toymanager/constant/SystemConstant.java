@@ -11,6 +11,6 @@ package com.toymanager.constant;
 public class SystemConstant {
 
     public static String MODEL = "model";
-    public static String ADMIN = "ADMIN";
-    public static String USER = "USER";
+    public static String ADMIN = "admin";
+    public static String USER = "user";
 }
