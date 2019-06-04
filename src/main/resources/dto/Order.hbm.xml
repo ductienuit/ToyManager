@@ -6,7 +6,7 @@
     <class name="dto.Order" table="order" catalog="toymanager" optimistic-lock="version">
         <id name="id" type="long">
             <column name="Id" />
-            <generator class="assigned" />
+            <generator class="increment"/>
         </id>
         <many-to-one name="orderStatus" class="dto.OrderStatus" fetch="select" lazy="false">
             <column name="OrderStatusId" not-null="true" />

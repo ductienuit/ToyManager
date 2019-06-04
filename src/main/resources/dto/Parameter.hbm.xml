@@ -6,7 +6,7 @@
     <class name="dto.Parameter" table="parameter" catalog="toymanager" optimistic-lock="version">
         <id name="id" type="long">
             <column name="Id" />
-            <generator class="assigned" />
+            <generator class="increment"/>
         </id>
         <property name="shopName" type="string">
             <column name="ShopName" not-null="true" />
