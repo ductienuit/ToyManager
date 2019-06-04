@@ -61,6 +61,7 @@ public class CategoryControllerAdmin extends HttpServlet {
                     } else {
                         redirect.append("&message=fail_process&alert=danger");
                     }
+                    response.sendRedirect(redirect.toString());
                     break;
                 }
                 default: {
