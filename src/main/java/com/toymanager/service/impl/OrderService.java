@@ -3,6 +3,7 @@ package com.toymanager.service.impl;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IOrderService;
 import dao.impl.OrderDAO;
+import dto.Category;
 import dto.Order;
 
 import java.util.List;
@@ -40,6 +41,12 @@ public class OrderService implements IOrderService<Order> {
             temp = orderDAO.findEntityById(i);
             orderDAO.delete(temp);
         }
+    }
+
+    @Override
+    public void delete(long id) {
+        Order temp = orderDAO.findEntityById(id);
+        orderDAO.delete(temp);
     }
 
     @Override

@@ -59,6 +59,13 @@ public class ToyService implements IToyService<Toy> {
     }
 
     @Override
+    public void delete(long id) {
+        Toy temp;
+        temp = toyDAO.findEntityById(id);
+        toyDAO.delete(temp);
+    }
+
+    @Override
     public List<Toy> findAll(Pageble page) {
         return toyDAO.findAll(page);
     }

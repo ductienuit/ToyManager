@@ -7,7 +7,7 @@ package com.toymanager.service.impl;
 
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.ICategoryService;
-import dao.CategoryDAO;
+import dao.impl.CategoryDAO;
 import dto.Category;
 
 import javax.inject.Inject;
@@ -50,6 +50,12 @@ public class CategoryService implements ICategoryService<Category> {
             temp = categoryDAO.findEntityById(i);
             categoryDAO.delete(temp);
         }
+    }
+
+    @Override
+    public void delete(long id) {
+        Category temp = categoryDAO.findEntityById(id);
+        categoryDAO.delete(temp);
     }
 
     @Override

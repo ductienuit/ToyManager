@@ -62,6 +62,13 @@ public class UserService implements IUserService<User> {
     }
 
     @Override
+    public void delete(long id) {
+        User temp;
+        temp = userDAO.findEntityById(id);
+        userDAO.delete(temp);
+    }
+
+    @Override
     public List<User> findAll(Pageble page) {
         return userDAO.findAll(page);
     }

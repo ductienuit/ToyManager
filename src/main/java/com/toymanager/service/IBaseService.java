@@ -15,6 +15,8 @@ public interface IBaseService<T extends IDTO> {
 
     void delete(long[] ids);
 
+    void delete(long id);
+
     List<T> findAll(Pageble page);
 
     int getTotalItem();
