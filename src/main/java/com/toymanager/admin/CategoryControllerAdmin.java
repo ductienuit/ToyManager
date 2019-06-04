@@ -41,48 +41,57 @@ public class CategoryControllerAdmin extends HttpServlet {
         //FormUtil để mapping với model của mình
         String action = request.getParameter("type");
         Category model = FormUtil.toModel(Category.class, request);
-        switch (action) {
-            case "edit": {
-                model = (Category) categoryService.findById(model.getId());
-                request.setAttribute(SystemConstant.MODEL, model);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/admin/category/edit.jsp");
-                rd.forward(request, response);
-                break;
-            }
-            case "delete": {
-                categoryService.delete(model.getId());
-                model = (Category) categoryService.findById(model.getId());
-                StringBuilder redirect = new StringBuilder(request.getContextPath());
-                redirect.append("/admin-category?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc");
-
-                if (model == null) {
-                    redirect.append("&message=delete_sucess&alert=success");
-                } else {
-                    redirect.append("&message=fail_process&alert=danger");
+        if (action != null) {
+            switch (action) {
+                case "edit": {
+                    model = (Category) categoryService.findById(model.getId());
+                    request.setAttribute(SystemConstant.MODEL, model);
+                    RequestDispatcher rd = request.getRequestDispatcher("/view/admin/category/edit.jsp");
+                    rd.forward(request, response);
+                    break;
                 }
-                break;
-            }
-            default: {
-                String message = request.getParameter("message");
-                String alert = request.getParameter("alert");
+                case "delete": {
+                    categoryService.delete(model.getId());
+                    model = (Category) categoryService.findById(model.getId());
+                    StringBuilder redirect = new StringBuilder(request.getContextPath());
+                    redirect.append("/admin-category?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc");
 
-                if (message != null && alert != null) {
-                    request.setAttribute("message", resourceBundle.getString(message));
-                    request.setAttribute("alert", alert);
+                    if (model == null) {
+                        redirect.append("&message=delete_sucess&alert=success");
+                    } else {
+                        redirect.append("&message=fail_process&alert=danger");
+                    }
+                    break;
                 }
-
-                Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
-                Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
-
-                model.setListResult(categoryService.findAll(pageble));
-                int totalItem = categoryService.getTotalItem();
-                model.setTotalItem(totalItem);
-                model.setTotalPage((int) Math.ceil((double) totalItem / model.getMaxPageItem()));
-                request.setAttribute(SystemConstant.MODEL, model);
-                RequestDispatcher rd = request.getRequestDispatcher("/view/admin/category/list.jsp");
-                rd.forward(request, response);
+                default: {
+                    directList(request, response, model);
+                }
             }
+        } else {
+            directList(request, response, model);
         }
+
+    }
+
+    private void directList(HttpServletRequest request, HttpServletResponse response, Category model) throws ServletException, IOException {
+        String message = request.getParameter("message");
+        String alert = request.getParameter("alert");
+
+        if (message != null && alert != null) {
+            request.setAttribute("message", resourceBundle.getString(message));
+            request.setAttribute("alert", alert);
+        }
+
+        Sorter sort = new Sorter(model.getSortName(), model.getSortBy());
+        Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), sort);
+
+        model.setListResult(categoryService.findAll(pageble));
+        int totalItem = categoryService.getTotalItem();
+        model.setTotalItem(totalItem);
+        model.setTotalPage((int) Math.ceil((double) totalItem / model.getMaxPageItem()));
+        request.setAttribute(SystemConstant.MODEL, model);
+        RequestDispatcher rd = request.getRequestDispatcher("/view/admin/category/list.jsp");
+        rd.forward(request, response);
     }
 
     @Override
