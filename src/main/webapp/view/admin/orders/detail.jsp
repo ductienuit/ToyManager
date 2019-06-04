@@ -18,14 +18,13 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-order'/>" id="formSubmit" method="get">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Đơn hàng ABCXYZ</a>
+                        <a href="#">Đơn hàng ${model.id}</a>
                     </li>
                 </ul>
                 <!-- /.breadcrumb -->
@@ -39,7 +38,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Mã đơn hàng</th>
+                                            <th>Mã đồ chơi</th>
                                             <th>Ngày đặt hàng</th>
                                             <th>Tên đồ chơi</th>
                                             <th>Đơn giá</th>
@@ -48,44 +47,66 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="item" items="${model.listResult}">
+                                        <c:forEach var="item" items="${model.orderDetails}">
                                             <tr>
-                                                <td>1</td>
-                                                <td>${item.title}</td>
-                                                <td>${item.shortDescriptions}</td>
-                                                <td>${item.title}</td>
-                                                <td>
-                                                    <span class="label label-sm label-warning">Đang chờ</span>
-                                                    <span class="label label-sm label-warning">Đang giao</span>
-                                                    <span class="label label-sm label-success">Đã giao</span>
-                                                    <span class="label label-sm label-danger">Đã hủy</span>
-                                                </td>
-                                                <td>${item.title}</td>
+                                                <td>${item.toy.id}</td>
+                                                <td>${model.orderDate}</td>
+                                                <td>${item.toy.name}</td>
+                                                <td>${item.toy.price}</td>
+                                                <td>${item.quantity}</td>
+                                                <td>${item.totalPrice}</td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
                                     </table>
-                                    <ul class="pagination" id="pagination"></ul>
+
+                                    <form action="<c:url value='/admin-order'/>" id="formSubmit" method="post">
                                     <input type="hidden" value="" id="page" name="page"/>
                                     <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
                                     <input type="hidden" value="" id="sortName" name="sortName"/>
                                     <input type="hidden" value="" id="sortBy" name="sortBy"/>
                                     <input type="hidden" value="" id="type" name="type"/>
-                                    <h1>Tổng hóa đơn: 199$</h1>
+                                    <input type="hidden" value="edit" id="command" name="command"/>
+                                        <input type="hidden" value="${model.id}" id="id" name="id"/>
+                                        <input type="hidden" value="" id="idOrderStatus" name="idOrderStatus"/>
+
+                                    <h1>Tổng hóa đơn: ${model.totalPrice} VND</h1>
                                     <hr>
                                     <div>
                                         <label for="form-field-select-1">Tình trạng đơn hàng hiện tại</label>
-
                                         <select class="form-control" id="form-field-select-1">
-                                            <option value="1">Đang chờ</option>
-                                            <option value="2">Đang giao</option>
-                                            <option value="3">Đã giao</option>
-                                            <option value="4">Hủy đơn hàng</option>
+                                            <c:choose>
+                                                <c:when test = "${model.orderStatus.id == 1}">
+                                                    <option value="1" selected="selected">Đang chờ</option>
+                                                    <option value="2">Đang giao</option>
+                                                    <option value="3">Đã giao</option>
+                                                    <option value="4">Hủy đơn hàng</option>
+                                                </c:when>
+                                                <c:when test = "${model.orderStatus.id == 2}">
+                                                    <option value="1" >Đang chờ</option>
+                                                    <option value="2" selected="selected">Đang giao</option>
+                                                    <option value="3">Đã giao</option>
+                                                    <option value="4">Hủy đơn hàng</option>
+                                                </c:when>
+                                                <c:when test = "${model.orderStatus.id == 3}">
+                                                    <option value="1" >Đang chờ</option>
+                                                    <option value="2">Đang giao</option>
+                                                    <option value="3" selected="selected">Đã giao</option>
+                                                    <option value="4">Hủy đơn hàng</option>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="1">Đang chờ</option>
+                                                    <option value="2">Đang giao</option>
+                                                    <option value="3">Đã giao</option>
+                                                    <option value="4" selected="selected">Hủy đơn hàng</option>
+                                                </c:otherwise>
+                                            </c:choose>
+
                                         </select>
                                     </div>
                                     <div class="clearfix form-actions">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button class="btn btn-info" type="button">
+                                            <button class="btn btn-info" onclick="submitEdit()">
                                                 <i class="ace-icon fa fa-check bigger-110"></i>
                                                 Xác nhận
                                             </button>
@@ -97,6 +118,7 @@
                                             </button>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -104,31 +126,20 @@
                 </div>
             </div>
         </div>
-    </form>
 </div>
 <!-- /.main-content -->
 <script>
-    var totalPages = ${model.totalPage};
-    var currentPage = ${model.page};
-    var visiblePages = 3; //Số phân trang
-    var limit = 4;
-    $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: totalPages,
-            visiblePages: visiblePages,
-            startPage: currentPage,
-            onPageClick: function (event, page) {
-                if (currentPage != page) {
-                    $('#maxPageItem').val(limit);
-                    $('#page').val(page);
-                    $('#sortName').val('title');
-                    $('#sortBy').val('desc');
-                    $('#type').val('list');
-                    $('#formSubmit').submit();
-                }
-            }
-        });
+    var selectedCountry = ${model.orderStatus.id};
+    $("select.form-control").change(function () {
+        selectedCountry = $(this).children("option:selected").val();
+        console.log(selectedCountry);
     });
+
+    function submitEdit() {
+        $('#idOrderStatus').val(selectedCountry);
+
+        $('#formSubmit').submit();
+    }
 </script>
 </body>
 

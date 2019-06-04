@@ -269,7 +269,7 @@
     var selectedCountry = 1;
     $("select.form-control").change(function () {
 
-        var selectedCountry = $(this).children("option:selected").val();
+        selectedCountry = $(this).children("option:selected").val();
     });
 
     function submitEditUser() {

@@ -1,17 +1,21 @@
 package com.toymanager.service.impl;
 
+import com.toymanager.dao.impl.OrderStatusDAO;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IOrderService;
 import com.toymanager.dao.impl.OrderDAO;
 import dto.Order;
+import dto.OrderStatus;
 
 import java.util.List;
 
 public class OrderService implements IOrderService<Order> {
     OrderDAO orderDAO;
+    OrderStatusDAO orderStatusDAO;
 
     OrderService() {
         orderDAO = new OrderDAO();
+        orderStatusDAO =  new OrderStatusDAO();
     }
 
     @Override
@@ -28,8 +32,12 @@ public class OrderService implements IOrderService<Order> {
 
     @Override
     public Order update(Order model) {
-        Order oldOrder = orderDAO.findEntityById(model.getId());
-        orderDAO.update(oldOrder);
+        Order updateOrder = orderDAO.findEntityById(model.getId());
+
+        OrderStatus status = orderStatusDAO.findEntityById(model.getIdOrderStatus());
+        updateOrder.setOrderStatus(status);
+
+        orderDAO.update(updateOrder);
         return orderDAO.findEntityById(model.getId());
     }
 

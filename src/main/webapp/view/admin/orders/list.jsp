@@ -77,7 +77,7 @@
                                                 </td>
                                                 <td>
                                                     <c:url var="detailURL" value="/admin-order">
-                                                        <c:param name="type" value="edit"/>
+                                                        <c:param name="type" value="detail"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
 

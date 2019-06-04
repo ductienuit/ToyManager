@@ -29,6 +29,7 @@ import javax.persistence.TemporalType;
 public class Order extends Pagination<Order> implements Serializable, IDTO {
     private long id;
     private OrderStatus orderStatus;
+    private long idOrderStatus;
     private User user;
     private Date orderDate;
     private Date paymentDate;
@@ -165,5 +166,14 @@ public class Order extends Pagination<Order> implements Serializable, IDTO {
 
     public void setOrderDetails(Set<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+
+    public long getIdOrderStatus() {
+        return idOrderStatus;
+    }
+
+    public void setIdOrderStatus(long idOrderStatus) {
+        this.idOrderStatus = idOrderStatus;
     }
 }

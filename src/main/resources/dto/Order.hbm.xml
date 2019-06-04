@@ -26,7 +26,7 @@
         <property name="totalPrice" type="long">
             <column name="TotalPrice" precision="10" scale="0" not-null="true" />
         </property>
-        <set name="orderDetails" table="order_detail" inverse="true" lazy="true" fetch="select">
+        <set name="orderDetails" table="order_detail" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="OrderId" not-null="true" />
             </key>
