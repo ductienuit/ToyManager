@@ -18,8 +18,6 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-accounts'/>" id="formSubmit" method="get">
-
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
@@ -45,7 +43,7 @@
                                         <a flag="info"
                                            class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
                                            data-toggle="tooltip"
-                                           title='Thêm tài khoảns' href='<c:url value="/admin-accounts?type=add"/>'>
+                                           title='Thêm tài khoảns' href='<c:url value="/admin-accounts?type=insert"/>'>
                                                     <span>
                                                         <i class="fa fa-plus-circle bigger-110 purple"></i>
                                                     </span>
@@ -77,10 +75,19 @@
                                                     <div>
                                                         <select class="form-control"
                                                                 id="form-field-select-1"
-                                                                value="1"
+                                                                value="2"
                                                                 disabled>
-                                                            <option value="1">Người dùng</option>
-                                                            <option value="2">Quản trị viên</option>
+                                                            <c:choose>
+
+                                                                <c:when test = "${item.role.priority > 1}">
+                                                                    <option value="1">Người dùng</option>
+                                                                    <option value="2" selected="selected">Quản trị viên</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="1" selected="selected">Người dùng</option>
+                                                                    <option value="2">Quản trị viên</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                         </select>
                                                     </div>
                                                 </td>
@@ -89,7 +96,7 @@
                                                         <c:param name="type" value="edit"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
-                                                    <a class="btn btn-sm btn-success" data-toggle="tooltip"
+                                                    <a class="btn btn-sm btn-primary" data-toggle="tooltip"
                                                        title="Cập nhật tài khoản" href='${editURL}'><i
                                                             class="fa fa-check-square-o" aria-hidden="true"></i>
                                                     </a>
@@ -97,9 +104,9 @@
                                                         <c:param name="type" value="delete"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
-                                                    <a class="btn btn-sm btn-primary btn-remove" data-toggle="tooltip"
-                                                       title="Xóa tài khoản" href='${deleteURL}'><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    <a class="btn btn-sm btn-danger btn-edit" data-toggle="tooltip"
+                                                       title="Xóa tài khoản" href='${deleteURL}'>
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -107,12 +114,13 @@
                                         </tbody>
                                     </table>
                                     <ul class="pagination" id="pagination"></ul>
+                                    <form action="<c:url value='/admin-accounts'/>" id="formSubmit" method="get">
                                     <input type="hidden" value="" id="page" name="page"/>
                                     <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
                                     <input type="hidden" value="" id="sortName" name="sortName"/>
                                     <input type="hidden" value="" id="sortBy" name="sortBy"/>
                                     <input type="hidden" value="" id="type" name="type"/>
-
+                                    </form>
 
                                     <!-- PAGE CONTENT ENDS -->
                                 </div>
@@ -122,7 +130,6 @@
                 </div>
             </div>
         </div>
-    </form>
 </div>
 <!-- /.main-content -->
 <script>

@@ -5,22 +5,34 @@
  */
 package com.toymanager.service.impl;
 
+import com.toymanager.dao.impl.RoleDAO;
+import com.toymanager.dao.impl.UserStatusDAO;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IUserService;
 import com.toymanager.dao.impl.UserDAO;
+import dto.Role;
 import dto.User;
+import dto.UserStatus;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 /**
  * @author DucTien
  */
 public class UserService implements IUserService<User> {
-
     private UserDAO userDAO;
+
+    RoleDAO roleDAO;
+    UserStatusDAO userStatusDAO;
 
     UserService() {
         userDAO = new UserDAO();
+        roleDAO= new RoleDAO();
+        userStatusDAO = new UserStatusDAO();
     }
 
     @Override
@@ -40,6 +52,17 @@ public class UserService implements IUserService<User> {
 
     @Override
     public User save(User model) {
+        Role role = roleDAO.findEntityById(model.getRoleId());
+        model.setRole(role);
+
+        UserStatus userStatus = userStatusDAO.findEntityById((long) 1);
+        model.setUserStatus(userStatus);
+
+        Calendar cal = Calendar.getInstance();
+        model.setCreatedDate(cal.getTime());
+
+        model.setLastModifiedDate(cal.getTime());
+
         Long id = userDAO.insert(model);
         System.out.print(id);
         return userDAO.findEntityById(id);
@@ -48,6 +71,15 @@ public class UserService implements IUserService<User> {
     @Override
     public User update(User model) {
         User oldUser = userDAO.findEntityById(model.getId());
+        oldUser.setAddress(model.getAddress());
+        oldUser.setEmail(model.getEmail());
+        oldUser.setFullName(model.getFullName());
+        oldUser.setPassword(model.getPassword());
+        oldUser.setPhoneNumber(model.getPhoneNumber());
+
+        Role role = roleDAO.findEntityById(model.getRoleId());
+        oldUser.setRole(role);
+
         userDAO.update(oldUser);
         return userDAO.findEntityById(model.getId());
     }

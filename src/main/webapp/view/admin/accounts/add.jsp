@@ -223,12 +223,13 @@
                                 </div>
                             </div>
                             <input type="hidden" id="roleId" name="roleId">
+                            <input type="hidden" name="command" value="insert">
 
                             <div class="space-4"></div>
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
                                     <button class="btn btn-info" type="button" onclick="submitInsertUser()">
-                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                        <i class="ace-icon fa fa-check bigger-110" ></i>
                                         Submit
                                     </button>
 
@@ -263,7 +264,8 @@
     var selectedCountry=1;
     $("select.form-control").change(function(){
 
-        var selectedCountry = $(this).children("option:selected").val();
+        selectedCountry = $(this).children("option:selected").val();
+        console.log(selectedCountry);
     });
 
     function submitInsertUser(){
