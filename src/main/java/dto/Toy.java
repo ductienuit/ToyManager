@@ -28,7 +28,9 @@ import javax.persistence.Table;
 public class Toy extends Pagination<Toy> implements Serializable, IDTO, IName{
     private long id;
     private Category category;
+    private long idCategory;
     private ToyStatus toyStatus;
+    private long idToyStatus;
     private String name;
     private long price;
     private boolean gender;
@@ -179,4 +181,22 @@ public class Toy extends Pagination<Toy> implements Serializable, IDTO, IName{
     public void setOrderDetails(Set<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
+
+
+    public long getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(long idCategory) {
+        this.idCategory = idCategory;
+    }
+
+    public long getIdToyStatus() {
+        return idToyStatus;
+    }
+
+    public void setIdToyStatus(long idToyStatus) {
+        this.idToyStatus = idToyStatus;
+    }
+
 }

@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <!--     Site Mesh
     -->
+
     <filter>
         <filter-name>sitemesh</filter-name>
         <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
@@ -55,6 +56,22 @@
         <servlet-name>HomeControllerAdmin</servlet-name>
         <url-pattern>/HomeControllerAdmin</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductControllerAdmin</servlet-name>
+        <servlet-class>com.toymanager.admin.ProductControllerAdmin</servlet-class>
+        <multipart-config>
+            <!-- 50MB max -->
+            <max-file-size>314572800</max-file-size>
+            <max-request-size>314572800</max-request-size>
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductControllerAdmin</servlet-name>
+        <url-pattern>/ProductControllerAdmin</url-pattern>
+    </servlet-mapping>
+
+
     <servlet-mapping>
         <servlet-name>NewAPI</servlet-name>
         <url-pattern>/NewAPI</url-pattern>

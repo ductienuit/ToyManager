@@ -5,10 +5,14 @@
  */
 package com.toymanager.service.impl;
 
+import com.toymanager.dao.impl.CategoryDAO;
+import com.toymanager.dao.impl.ToyStatusDAO;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IToyService;
 import com.toymanager.dao.impl.ToyDAO;
+import dto.Category;
 import dto.Toy;
+import dto.ToyStatus;
 
 import java.util.List;
 
@@ -21,9 +25,13 @@ public class ToyService implements IToyService<Toy> {
 //    private INewDAO newsDao;
 
     private ToyDAO toyDAO;
+    private CategoryDAO categoryDAO;
+    private ToyStatusDAO toyStatusDAO;
 
     ToyService(){
         toyDAO = new ToyDAO();
+        categoryDAO = new CategoryDAO();
+        toyStatusDAO = new ToyStatusDAO();
     }
 
     @Override
@@ -33,6 +41,15 @@ public class ToyService implements IToyService<Toy> {
 
     @Override
     public Toy save(Toy toyModel) {
+        ToyStatus toyStatus;
+
+        toyStatus=toyStatusDAO.findEntityById(toyModel.getIdToyStatus());
+        toyModel.setToyStatus(toyStatus);
+
+        Category category;
+        category=categoryDAO.findEntityById(toyModel.getIdCategory());
+        toyModel.setCategory(category);
+
         Long id = toyDAO.insert(toyModel);
         System.out.print(id);
         return toyDAO.findEntityById(id);
@@ -40,8 +57,16 @@ public class ToyService implements IToyService<Toy> {
 
     @Override
     public Toy update(Toy toyModel) {
-        Toy oldToy = toyDAO.findEntityById(toyModel.getId());
-        toyDAO.update(oldToy);
+        ToyStatus toyStatus;
+
+        toyStatus=toyStatusDAO.findEntityById(toyModel.getIdToyStatus());
+        toyModel.setToyStatus(toyStatus);
+
+        Category category;
+        category=categoryDAO.findEntityById(toyModel.getIdCategory());
+        toyModel.setCategory(category);
+
+        toyDAO.update(toyModel);
         return toyDAO.findEntityById(toyModel.getId());
     }
 

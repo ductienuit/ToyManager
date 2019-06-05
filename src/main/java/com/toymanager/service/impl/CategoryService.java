@@ -68,4 +68,9 @@ public class CategoryService implements ICategoryService<Category> {
     public int getTotalItem() {
         return Math.toIntExact(categoryDAO.count());
     }
+
+    @Override
+    public List<Category> findAll() {
+        return categoryDAO.findAll();
+    }
 }

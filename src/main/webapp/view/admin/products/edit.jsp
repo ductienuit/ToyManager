@@ -144,24 +144,39 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal"
+                              action="<c:url value='/admin-products'/>"
+                              id="formProduct"
+                              method="post"
+                              enctype="multipart/form-data">
+
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên đồ
                                     chơi</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" placeholder="Nhập tên đồ chơi"
-                                           class="col-xs-10 col-sm-5" value="${model.name}" readonly>
+                                    <input type="text" id="form-field-1" value="${model.name}"
+                                           class="col-xs-10 col-sm-5" name="name">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-2">
                                     Loại đồ chơi </label>
-                                <div class="col-sm-9"><select class="form-control" id="form-field-2">
-                                    <option value="1">Đồ chơi loại A</option>
-                                    <option value="2">Đồ chơi loại B</option>
-                                </select></div>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="form-field-2" name="idCategory">
+                                        <c:forEach var="item" items="${list}">
+                                            <c:choose>
+                                                <c:when test="${item.id == model.category.id}">
+                                                    <option selected="selected" value="${item.id}">${item.name}</option>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="${item.id}">${item.name}</option>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -169,13 +184,14 @@
                                     giá</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-3" placeholder="Đơn giá"
-                                           class="form-control" value="${model.price}">
+                                    <input type="text" id="form-field-3" placeholder="Đơn giá" value="${model.price}"
+                                           class="form-control" name="price">
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
                             <div class="form-group">
+
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Tải lên ảnh
                                     miêu tả </label>
 
@@ -183,7 +199,8 @@
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="form-field-5"
-                                                   aria-describedby="inputGroupFileAddon01">
+                                                   aria-describedby="inputGroupFileAddon01" name="imageUri"
+                                                  >
                                         </div>
                                     </div>
                                 </div>
@@ -196,26 +213,38 @@
                                     Miêu tả ngắn</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-6" placeholder="Miêu tả đồ chơi"  value="${model.description}"
-                                           class="form-control">
+                                    <input type="text" id="form-field-6" placeholder="Miêu tả đồ chơi"
+                                           class="form-control" name="description"  value="${model.description}">
                                 </div>
                             </div>
 
                             <div class="space-4"></div>
-
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-7">
                                     Trạng thái hàng </label>
-                                <div class="col-sm-9"><select class="form-control" id="form-field-7">
-                                    <option value="1">Còn hàng</option>
-                                    <option value="2">Hết hàng</option>
+                                <div class="col-sm-9"><select class="form-control" id="form-field-7" name="idToyStatus">
+                                    <c:choose>
+                                        <c:when test="${model.toyStatus.id==1}">
+                                            <option selected="selected" value="1">Còn hàng</option>
+                                            <option value="2">Hết hàng</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="1">Còn hàng</option>
+                                            <option selected="selected"  value="2">Hết hàng</option>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </select></div>
                             </div>
 
+                            <input type="hidden" value="edit" name="command">
+                            <input type="hidden" value="${model.id}" name="id">
+
                             <div class="space-4"></div>
+
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" type="button">
+                                    <button class="btn btn-info" type="button" onclick="submitInsertProduct()">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
                                         Sửa đồ chơi
                                     </button>
@@ -236,7 +265,13 @@
     </form>
 </div>
 <!-- /.main-content -->
+<script type="text/javascript">
 
+    function submitInsertProduct() {
+        $('#formProduct').submit();
+    }
+
+</script>
 </body>
 
 </html>

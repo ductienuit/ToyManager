@@ -5,12 +5,19 @@
  */
 package com.toymanager.constant;
 
+import java.io.File;
+
 /**
  * @author DucTien
  */
 public class SystemConstant {
 
     public static String MODEL = "model";
+    public static String LIST = "list";
     public static String ADMIN = "admin";
     public static String USER = "user";
+    public static String UPLOAD_DIRECTORY = "template"+File.separator+"web"+File.separator+"img";
+    public static final int MEMORY_THRESHOLD = 1024 * 1024;
+    public static final int MAX_FILE_SIZE = 1024 * 1024 * 5;
+    public static final int MAX_REQUEST_SIZE = 1024 * 1024 * 5 * 5;
 }

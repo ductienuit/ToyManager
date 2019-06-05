@@ -6,113 +6,109 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Danh sách bài viết</title>
+    <title>Danh sách đồ chơi</title>
 </head>
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/admin-products'/>" id="formSubmit" method="get">
 
-        <div class="main-content-inner">
-            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Danh sách đồ chơi</a>
-                    </li>
-                </ul>
-                <!-- /.breadcrumb -->
+
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Danh sách đồ chơi</a>
+                </li>
+            </ul>
+            <!-- /.breadcrumb -->
+        </div>
+        <c:if test="${not empty message}">
+            <div class="alert alert-${alert}" role="alert">
+                    ${message}
             </div>
-            <c:if test="${not empty message}">
-                <div class="alert alert-${alert}" role="alert">
-                        ${message}
-                </div>
-            </c:if>
-            <div class="page-content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="widget-box table-filter">
-                            <div class="table-btn-controls">
-                                <div class="pull-right tableTools-container">
-                                    <div class="dt-buttons btn-overlap btn-group">
-                                        <a flag="info"
-                                           class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                                           data-toggle="tooltip"
-                                           title='Thêm bài viết' href='<c:url value="/admin-products?type=edit"/>'>
+        </c:if>
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="widget-box table-filter">
+                        <div class="table-btn-controls">
+                            <div class="pull-right tableTools-container">
+                                <div class="dt-buttons btn-overlap btn-group">
+                                    <a flag="info"
+                                       class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
+                                       data-toggle="tooltip"
+                                       title='Thêm bài viết' href='<c:url value="/admin-products?type=insert"/>'>
                                                     <span>
                                                         <i class="fa fa-plus-circle bigger-110 purple"></i>
                                                     </span>
-                                        </a>
-                                        <button id="btnDelete" type="button"
-                                                class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title='Xóa bài viết'>
-                                                    <span>
-                                                        <i class="fa fa-trash-o bigger-110 pink"></i>
-                                                    </span>
-                                        </button>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered data">
+                                    <thead>
+                                    <tr>
+                                        <th class="data">Id</th>
+                                        <th class="data">Tên đồ chơi</th>
+                                        <th class="data">Hình ảnh</th>
+                                        <th class="data">Mô tả ngắn</th>
+                                        <th class="data">Thao tác</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach var="item" items="${model.listResult}">
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Tên đồ chơi</th>
-                                            <th>Hình ảnh</th>
-                                            <th>Mô tả ngắn</th>
-                                            <th>Thao tác</th>
+                                            <td class="data">${item.id}</td>
+                                            <td class="data">${item.name}</td>
+                                            <td class="data">
+                                                <img style="float: left; width: 24%;"
+                                                     src="<c:url value="/template/web/img/${item.imageUri}"></c:url>"/>
+                                            </td>
+                                            <td class="data">${item.description}</td>
+                                            <td class="data">
+                                                <c:url var="editURL" value="/admin-products">
+                                                    <c:param name="type" value="edit"/>
+                                                    <c:param name="id" value="${item.id}"/>
+                                                </c:url>
+                                                <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
+                                                   title="Cập nhật bài viết" href='${editURL}'><i
+                                                        class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                </a>
+                                                <c:url var="deleteURL" value="/admin-products">
+                                                    <c:param name="type" value="delete"/>
+                                                    <c:param name="id" value="${item.id}"/>
+                                                </c:url>
+                                                <a class="btn btn-sm btn-danger btn-edit" data-toggle="tooltip"
+                                                   title="Xóa đồ chơi" href='${deleteURL}'>
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach var="item" items="${model.listResult}">
-                                            <tr>
-                                                <td>${item.id}</td>
-                                                <td>${item.name}</td>
-                                                <td>${item.imageUri}</td>
-                                                <td>${item.description}</td>
-                                                <td>
-                                                    <c:url var="editURL" value="/admin-products">
-                                                        <c:param name="type" value="edit"/>
-                                                        <c:param name="id" value="${item.id}"/>
-                                                    </c:url>
-                                                    <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                       title="Cập nhật bài viết" href='${editURL}'><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                    </a>
-                                                    <c:url var="deleteURL" value="/admin-products">
-                                                        <c:param name="type" value="delete"/>
-                                                        <c:param name="id" value="${item.id}"/>
-                                                    </c:url>
-                                                    <a class="btn btn-sm btn-primary btn-remove" data-toggle="tooltip"
-                                                       title="Xóa bài viết" href='${deleteURL}'><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                    <ul class="pagination" id="pagination"></ul>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                                <ul class="pagination" id="pagination"></ul>
+                                <form action="<c:url value='/admin-products'/>" id="formSubmit" method="get">
                                     <input type="hidden" value="" id="page" name="page"/>
                                     <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
                                     <input type="hidden" value="" id="sortName" name="sortName"/>
                                     <input type="hidden" value="" id="sortBy" name="sortBy"/>
                                     <input type="hidden" value="" id="type" name="type"/>
+                                </form>
 
-
-                                    <!-- PAGE CONTENT ENDS -->
-                                </div>
+                                <!-- PAGE CONTENT ENDS -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <!-- /.main-content -->
 <script>

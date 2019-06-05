@@ -6,6 +6,7 @@
 package com.toymanager.service;
 
 
+import com.toymanager.paging.Pageble;
 import dto.Category;
 import dto.common.IDTO;
 
@@ -15,4 +16,5 @@ import java.util.List;
  * @author DucTien
  */
 public interface ICategoryService<T extends IDTO> extends IBaseService<T> {
+    List<T> findAll();
 }
