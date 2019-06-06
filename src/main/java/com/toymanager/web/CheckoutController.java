@@ -1,5 +1,9 @@
 package com.toymanager.web;
 
+import com.toymanager.constant.SystemConstant;
+import com.toymanager.utils.SessionUtil;
+import dto.Cart;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +27,10 @@ public class CheckoutController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
+        Cart cart = (Cart) SessionUtil.getInstance().getValue(request, SystemConstant.CART);
+        if(cart!=null){
+            request.setAttribute(SystemConstant.CART, cart);
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/view/web/checkout.jsp");
         rd.forward(request, response);
     }
@@ -30,5 +38,6 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Check out
     }
 }

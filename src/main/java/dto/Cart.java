@@ -5,81 +5,104 @@ import java.util.Map;
 
 public class Cart {
 
-    private HashMap<Long, OrderDetail> cartOrderDetails;
+    private HashMap<Long, Item> cartItems;
+
+    private int totalPrice;
+
+    private int count=0;
 
     public Cart() {
-        cartOrderDetails = new HashMap<>();
+        cartItems = new HashMap<>();
     }
 
-    public Cart(HashMap<Long, OrderDetail> cartOrderDetails) {
-        this.cartOrderDetails = cartOrderDetails;
+    public Cart(HashMap<Long, Item> cartItems) {
+        this.cartItems = cartItems;
     }
 
-    public HashMap<Long, OrderDetail> getCartOrderDetails() {
-        return cartOrderDetails;
+    public HashMap<Long, Item> getCartItems() {
+        return cartItems;
     }
 
-    public void setCartOrderDetails(HashMap<Long, OrderDetail> cartOrderDetails) {
-        this.cartOrderDetails = cartOrderDetails;
+    public void setCartItems(HashMap<Long, Item> cartItems) {
+        this.cartItems = cartItems;
     }
 
-    public void insertToCart(Long key, OrderDetail item) {
-        boolean bln = cartOrderDetails.containsKey(key);
+    public void insertToCart(Long key, Item item) {
+        boolean bln = cartItems.containsKey(key);
         if (bln) {
             int quantity_old = item.getQuantity();
             item.setQuantity(quantity_old + 1);
-            cartOrderDetails.put(item.getToy().getId(), item);
+            cartItems.put(item.getToy().getId(), item);
         } else {
-            cartOrderDetails.put(item.getToy().getId(), item);
+            cartItems.put(item.getToy().getId(), item);
         }
+        totalCart();
     }
 
-    public void plusToCart(Long key, OrderDetail item) {
-        boolean check = cartOrderDetails.containsKey(key);
+    public void plusToCart(Long key, Item item) {
+        boolean check = cartItems.containsKey(key);
         if (check) {
             int quantity_old = item.getQuantity();
             item.setQuantity(quantity_old + 1);
-            cartOrderDetails.put(key, item);
+            cartItems.put(key, item);
         } else {
-            cartOrderDetails.put(key, item);
+            cartItems.put(key, item);
         }
+        totalCart();
     }
 
     // sub to cart
-    public void subToCart(Long key, OrderDetail item) {
-        boolean check = cartOrderDetails.containsKey(key);
+    public void subToCart(Long key, Item item) {
+        boolean check = cartItems.containsKey(key);
         if (check) {
             int quantity_old = item.getQuantity();
             if (quantity_old <= 1) {
-                cartOrderDetails.remove(key);
+                cartItems.remove(key);
             } else {
                 item.setQuantity(quantity_old - 1);
-                cartOrderDetails.put(key, item);
+                cartItems.put(key, item);
             }
         }
+        totalCart();
     }
 
     // remove to cart
     public void removeToCart(Long key) {
-        boolean check = cartOrderDetails.containsKey(key);
+        boolean check = cartItems.containsKey(key);
         if (check) {
-            cartOrderDetails.remove(key);
+            cartItems.remove(key);
         }
+        totalCart();
     }
 
     // count item
-    public int countOrderDetail() {
-        return cartOrderDetails.size();
+    public int countItem() {
+        return cartItems.size();
     }
 
     // sum total
-    public long totalCart() {
-        long count = 0;
+    public void totalCart() {
+        this.totalPrice = 0;
         // count = price * quantity
-        for (Map.Entry<Long, OrderDetail> list : cartOrderDetails.entrySet()) {
-            count += list.getValue().getToy().getPrice() * list.getValue().getQuantity();
+        for (Map.Entry<Long, Item> list : cartItems.entrySet()) {
+            totalPrice += list.getValue().getToy().getPrice() * list.getValue().getQuantity();
         }
+        this.count= countItem();
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getCount() {
         return count;
     }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

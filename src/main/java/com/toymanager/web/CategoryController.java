@@ -32,9 +32,6 @@ public class CategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-//        TEST
-//        RequestDispatcher xxx = request.getRequestDispatcher("/view/web/home.jsp");
-//        xxx.forward(request, response);
         String message = request.getParameter("category");
         String alert = request.getParameter("alert");
         String productid = request.getParameter("sanpham");

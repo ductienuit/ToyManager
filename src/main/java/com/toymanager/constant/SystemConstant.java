@@ -16,6 +16,7 @@ public class SystemConstant {
     public static String MODEL_NEW_TOYS = "newToys";
     public static String MODEL_SELLER_TOYS = "sellerToys";
     public static String MODEL_3SELLER_TOYS = "threeSellerToys";
+    public static String CART = "cart";
     public static String LIST = "list";
     public static String ADMIN = "admin";
     public static String USER = "user";
