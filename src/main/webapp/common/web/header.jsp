@@ -4,9 +4,9 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +0988.546.255</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> toymanager@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 269 Điện Biên Phủ, Q. Bình Thạnh, TP Hồ Chí Minh</a>
+                <li><a href="<c:url value="/"/>"><i class="fa fa-phone"></i> +0988.546.255</a></li>
+                <li><a href="<c:url value="/"/>"><i class="fa fa-envelope-o"></i> toymanager@email.com</a></li>
+                <li><a href="<c:url value="/"/>"><i class="fa fa-map-marker"></i> 269 Điện Biên Phủ, Q. Bình Thạnh, TP Hồ Chí Minh</a>
                 </li>
             </ul>
             <c:if test="${not empty USERMODEL}">
@@ -33,9 +33,9 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <a href="#" class="logo">
+                        <a href="<c:url value="/"/>" class="logo">
                             <%--                            <img src="<c:url value='/template/web/img/logo.png'/>" alt="">--%>
-                            <h1 style="margin-top: 15px; color:white" href="#">Toy Toy</h1>
+                            <h1 style="margin-top: 15px; color:white" href="<c:url value="/"/>">Toy Toy</h1>
                         </a>
                     </div>
                 </div>
@@ -48,9 +48,9 @@
                             <select class="input-select">
                                 <option value="0">Danh mục</option>
                                 <option value="1">Đồ chơi nam</option>
-                                <option value="1">Đồ chơi nữ</option>
-                                <option value="1">Đồ chơi gỗ</option>
-                                <option value="1">Lego</option>
+                                <option value="2">Đồ chơi nữ</option>
+                                <option value="3">Đồ chơi gỗ</option>
+                                <option value="4">Lego</option>
                             </select>
                             <input class="input" placeholder="Nhập từ khóa">
                             <button class="search-btn">Tìm kiếm</button>
@@ -90,7 +90,7 @@
                                                         <img src="<c:url value='/template/web/img/${entry.value.toy.imageUri}'/>" alt="">
                                                     </div>
                                                     <div class="product-body">
-                                                        <h3 class="product-name"><a href="#">${entry.value.toy.name}</a></h3>
+                                                        <h3 class="product-name"><a href="<c:url value="/danh-muc?sanpham=${entry.value.toy.id}"/>">${entry.value.toy.name}</a></h3>
                                                         <h4 class="product-price"><span class="qty">${entry.value.quantity}x</span>${entry.value.toy.price}</h4>
                                                     </div>
                                                     <button class="delete"><i class="fa fa-close"></i></button>
@@ -144,7 +144,7 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="#">Trang chủ</a></li>
+                <li class="active"><a href="<c:url value="/"/>">Trang chủ</a></li>
                 <li><a href="#">Hot Deals</a></li>
                 <li><a href="#">Đồ chơi nam</a></li>
                 <li><a href="#">Đồ chơi nữ</a></li>

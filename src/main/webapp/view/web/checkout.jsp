@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <h3 class="breadcrumb-header">Giỏ hàng</h3>
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="<c:url value='/trang-chu'/>">Trang chủ</a></li>
                     <li class="active">Giỏ hàng</li>
                 </ul>
             </div>
@@ -49,12 +49,12 @@
                     <c:choose>
                         <c:when test="${empty USERMODEL.fullName}">
                             <div class="form-group">
-                                <input class="input" type="text" name="yourname" placeholder="Tên">
+                                <input class="input" type="text" name="yourname" placeholder="Tên" readonly>
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="form-group">
-                                <input class="input" type="text" value="${USERMODEL.fullName}" name="yourname" placeholder="Tên">
+                                <input readonly class="input" type="text" value="${USERMODEL.fullName}" name="yourname" placeholder="Tên">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -62,12 +62,12 @@
                     <c:choose>
                         <c:when test="${empty USERMODEL.email}">
                             <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
+                                <input readonly class="input" type="email" name="email" placeholder="Email">
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="form-group">
-                                <input class="input" type="email" value="${USERMODEL.email}" name="email" placeholder="Email">
+                                <input readonly class="input" type="email" value="${USERMODEL.email}" name="email" placeholder="Email">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -75,12 +75,12 @@
                     <c:choose>
                         <c:when test="${empty USERMODEL.address}">
                             <div class="form-group">
-                                <input class="input" type="text" name="address" placeholder="Địa chỉ">
+                                <input readonly class="input" type="text" name="address" placeholder="Địa chỉ">
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="form-group">
-                                <input class="input" type="text" value="${USERMODEL.address}" name="address" placeholder="Địa chỉ">
+                                <input readonly class="input" type="text" value="${USERMODEL.address}" name="address" placeholder="Địa chỉ">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -89,13 +89,13 @@
                         <c:when test="${empty USERMODEL.phoneNumber}">
 
                             <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Điện thoại">
+                                <input readonly class="input" type="tel" name="tel" placeholder="Điện thoại">
                             </div>
                         </c:when>
                         <c:otherwise>
 
                             <div class="form-group">
-                                <input class="input" type="tel" value="${USERMODEL.phoneNumber}" name="tel" placeholder="Điện thoại">
+                                <input readonly class="input" type="tel" value="${USERMODEL.phoneNumber}" name="tel" placeholder="Điện thoại">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -131,7 +131,9 @@
                                             <img src="<c:url value='/template/web/img/${entry.value.toy.imageUri}'/>" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${entry.value.toy.id}'/>">${entry.value.toy.name}</a></h3>
+                                            <h3 class="product-name">
+                                                <a href="<c:url value='/danh-muc?sanpham=${entry.value.toy.id}'/>">${entry.value.toy.name}</a>
+                                            </h3>
                                             <h4 class="product-price"><span class="qty">${entry.value.quantity}x</span>${entry.value.toy.price}</h4>
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
@@ -174,7 +176,7 @@
                 <form id="submit" name="submit" method="post">
                     <input type="hidden" name="checkout" value="checkout">
                 </form>
-                <a href="#" class="primary-btn order-submit" onclick="submitCheckout()">THANH TOÁN</a>
+                <a class="primary-btn order-submit" onclick="submitCheckout()">THANH TOÁN</a>
             </div>
             <!-- /Order Details -->
         </div>

@@ -1,21 +1,26 @@
 package com.toymanager.service.impl;
 
+import com.toymanager.dao.impl.OrderDetailDAO;
 import com.toymanager.dao.impl.OrderStatusDAO;
+import com.toymanager.dao.impl.UserDAO;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.IOrderService;
 import com.toymanager.dao.impl.OrderDAO;
-import dto.Order;
-import dto.OrderStatus;
+import dto.*;
+import org.w3c.dom.UserDataHandler;
 
-import java.util.List;
+import java.util.*;
 
 public class OrderService implements IOrderService<Order> {
     OrderDAO orderDAO;
     OrderStatusDAO orderStatusDAO;
 
+    OrderDetailDAO orderDetailDAO;
+
     OrderService() {
         orderDAO = new OrderDAO();
         orderStatusDAO =  new OrderStatusDAO();
+        orderDetailDAO = new OrderDetailDAO();
     }
 
     @Override
@@ -25,6 +30,13 @@ public class OrderService implements IOrderService<Order> {
 
     @Override
     public Order save(Order model) {
+        OrderStatus status = orderStatusDAO.findEntityById((long) 1);
+        model.setOrderStatus(status);
+
+        Date date = new Date(System.currentTimeMillis());
+        model.setOrderDate(date);
+        model.setLastModifiedDate(date);
+
         Long id = orderDAO.insert(model);
         System.out.print(id);
         return orderDAO.findEntityById(id);
@@ -36,6 +48,9 @@ public class OrderService implements IOrderService<Order> {
 
         OrderStatus status = orderStatusDAO.findEntityById(model.getIdOrderStatus());
         updateOrder.setOrderStatus(status);
+        Date date = new Date(System.currentTimeMillis());
+        updateOrder.setOrderDate(date);
+        updateOrder.setLastModifiedDate(date);
 
         orderDAO.update(updateOrder);
         return orderDAO.findEntityById(model.getId());
@@ -64,5 +79,31 @@ public class OrderService implements IOrderService<Order> {
     @Override
     public int getTotalItem() {
         return Math.toIntExact(orderDAO.count());
+    }
+
+    @Override
+    public Boolean save(User user, Cart cart) {
+        try {
+            Order order = new Order();
+            UserDAO userDAO = new UserDAO();
+            order.setUser(user);
+            order.setTotalPrice(cart.getTotalPrice());
+
+            Order result = this.save(order);
+
+            for (Map.Entry<Long, Item> entry:cart.getCartItems().entrySet()){
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.setToy(entry.getValue().getToy());
+                orderDetail.setOrder(result);
+                orderDetail.setQuantity(entry.getValue().getQuantity());
+                orderDetail.setTotalPrice(entry.getValue().getTotalPrice());
+                orderDetailDAO.insert(orderDetail);
+            }
+        }catch (Exception e){
+            System.out.println(e.toString());
+            return false;
+        }
+
+        return true;
     }
 }

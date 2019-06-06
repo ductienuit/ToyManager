@@ -163,9 +163,10 @@ public class HomeController extends HttpServlet {
             if (model != null) {
                 SessionUtil.getInstance().putValue(request, "USERMODEL", model);
                 int priority = model.getRole().getPriority();
-                if (priority < 1) {
+                if (priority == 1) {
                     response.sendRedirect(request.getContextPath() + "/trang-chu");
-                } else if (model.getRole().getPriority() >= 1) {
+                } else
+                    if (model.getRole().getPriority() > 1) {
                     response.sendRedirect(request.getContextPath() + "/admin-home");
                 }
             } else {

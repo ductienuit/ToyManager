@@ -23,4 +23,8 @@ public class Item {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public long getTotalPrice(){
+        return quantity*toy.getPrice();
+    }
 }
