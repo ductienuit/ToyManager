@@ -83,17 +83,24 @@ public class HomeController extends HttpServlet {
     private void directHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //New toys
         Toy newToys = new Toy();
-        Sorter sort = new Sorter("Name", "desc");
+        Sorter sort = new Sorter("name", "desc");
         Pageble pageble = new PageRequest(1 , 5, sort);
         newToys.setListResult(toyService.findAll(pageble));
         request.setAttribute(SystemConstant.MODEL_NEW_TOYS, newToys);
 
         //Top seller
         Toy sellerToys = new Toy();
-        sort = new Sorter("Price", "desc");
+        sort = new Sorter("price", "desc");
         pageble = new PageRequest(1 , 5, sort);
         sellerToys.setListResult(toyService.findAll(pageble));
         request.setAttribute(SystemConstant.MODEL_SELLER_TOYS, sellerToys);
+
+        //Top seller
+        Toy seller3Toy = new Toy();
+        sort = new Sorter("price", "desc");
+        pageble = new PageRequest(1 , 3, sort);
+        seller3Toy.setListResult(toyService.findAll(pageble));
+        request.setAttribute(SystemConstant.MODEL_3SELLER_TOYS, seller3Toy);
 
         RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
         rd.forward(request, response);
