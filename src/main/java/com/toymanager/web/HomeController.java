@@ -92,7 +92,7 @@ public class HomeController extends HttpServlet {
                     }
                     break;
                 }
-                case "removeCart": {
+                case "removecart": {
                     try {
                         Long id = Long.parseLong(request.getParameter("id"));
                         Cart cart = (Cart) SessionUtil.getInstance().getValue(request, SystemConstant.CART);
@@ -104,10 +104,10 @@ public class HomeController extends HttpServlet {
                         }
                         SessionUtil.getInstance().putValue(request, SystemConstant.CART, cart);
 
-                        response.sendRedirect(request.getContextPath() + "/checkout");
+                        response.sendRedirect(request.getContextPath() + "/trang-chu");
                     } catch (Exception e) {
                         System.out.println(e.toString());
-                        response.sendRedirect(request.getContextPath() + "/checkout");
+                        response.sendRedirect(request.getContextPath() + "/trang-chu");
                     }
                     break;
                 }
@@ -173,6 +173,6 @@ public class HomeController extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=username_password_invalid&alert=danger");
             }
         }
-    }
 
+    }
 }

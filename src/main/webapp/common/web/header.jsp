@@ -93,7 +93,7 @@
                                                         <h3 class="product-name"><a href="<c:url value="/danh-muc?sanpham=${entry.value.toy.id}"/>">${entry.value.toy.name}</a></h3>
                                                         <h4 class="product-price"><span class="qty">${entry.value.quantity}x</span>${entry.value.toy.price}</h4>
                                                     </div>
-                                                    <button class="delete"><i class="fa fa-close"></i></button>
+                                                    <a class="delete" href="<c:url value='/trang-chu?action=removecart&id=${entry.value.toy.id}'/>"><i class="fa fa-close"></i></a>
                                                 </div>
                                             </c:forEach>
                                         </c:otherwise>
@@ -146,8 +146,6 @@
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="<c:url value="/"/>">Trang chủ</a></li>
                 <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Đồ chơi nam</a></li>
-                <li><a href="#">Đồ chơi nữ</a></li>
                 <li><a href="#">Đồ chơi gỗ</a></li>
                 <li><a href="#">Đồ chơi búp bê</a></li>
                 <li><a href="#">Lego</a></li>

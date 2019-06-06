@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${item.category.name}</p>
-                                            <h3 class="product-name"><a href="<c:url value="/danh-muc?sanpham=${entry.value.toy.id}"/>">${item.name}</a></h3>
+                                            <h3 class="product-name"><a href="<c:url value="/danh-muc?sanpham=${item.id}"/>">${item.name}</a></h3>
                                             <h4 class="product-price">${item.price}VND
                                             </h4>
                                             <div class="product-rating">
