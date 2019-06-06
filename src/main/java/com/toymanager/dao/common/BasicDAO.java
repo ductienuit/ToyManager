@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import utils.HibernateUtil;
 import utils.ObjectWrapper;
@@ -157,6 +158,7 @@ public abstract class BasicDAO<T extends IDTO> implements IDAO<T> {
                     .createCriteria(type)
                     .setFirstResult(page.getOffset())
                     .setMaxResults(page.getLimit())
+                    .addOrder(Order.desc(page.getSort().getSortName()))
                     .list());
         });
 

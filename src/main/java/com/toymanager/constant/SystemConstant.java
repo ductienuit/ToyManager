@@ -13,6 +13,8 @@ import java.io.File;
 public class SystemConstant {
 
     public static String MODEL = "model";
+    public static String MODEL_NEW_TOYS = "newToys";
+    public static String MODEL_SELLER_TOYS = "sellerToys";
     public static String LIST = "list";
     public static String ADMIN = "admin";
     public static String USER = "user";

@@ -5,9 +5,15 @@
  */
 package com.toymanager.web;
 
+import com.toymanager.constant.SystemConstant;
+import com.toymanager.paging.PageRequest;
+import com.toymanager.paging.Pageble;
+import com.toymanager.service.IToyService;
 import com.toymanager.service.IUserService;
+import com.toymanager.sort.Sorter;
 import com.toymanager.utils.FormUtil;
 import com.toymanager.utils.SessionUtil;
+import dto.Toy;
 import dto.User;
 
 import javax.inject.Inject;
@@ -33,36 +39,64 @@ public class HomeController extends HttpServlet {
     @Inject
     private IUserService userService;
 
+    @Inject
+    private IToyService toyService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-//        TEST
-//        RequestDispatcher xxx = request.getRequestDispatcher("/view/web/home.jsp");
-//        xxx.forward(request, response);
         String message = request.getParameter("message");
-//        if (message != null) {
-//            CategoryDAO categoryDAO = new CategoryDAO();
-//            categoryDAO.Test();
-//        }
 
-        if (action != null && action.equals("login")) {
-            String alert = request.getParameter("alert");
+        if (action != null) {
+            switch (action) {
+                case "login": {
+                    String alert = request.getParameter("alert");
 
-            if (message != null && alert != null) {
-                request.setAttribute("message", resourceBundle.getString(message));
-                request.setAttribute("alert", alert);
+                    if (message != null && alert != null) {
+                        request.setAttribute("message", resourceBundle.getString(message));
+                        request.setAttribute("alert", alert);
+                    }
+
+                    RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+                case "logout": {
+                    SessionUtil.getInstance().removeValue(request, "USERMODEL");
+                    response.sendRedirect(request.getContextPath() + "/trang-chu");
+                    break;
+                }
+                default:{
+                    //Trang chu ....
+
+                    RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
+                    rd.forward(request, response);
+                }
             }
-
-            RequestDispatcher rd = request.getRequestDispatcher("/view/login.jsp");
-            rd.forward(request, response);
-        } else if (action != null && action.equals("logout")) {
-            SessionUtil.getInstance().removeValue(request, "USERMODEL");
-            response.sendRedirect(request.getContextPath() + "/trang-chu");
         } else {
-            RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
-            rd.forward(request, response);
+            directHomePage(request,response);
         }
+
+    }
+
+    private void directHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //New toys
+        Toy newToys = new Toy();
+        Sorter sort = new Sorter("Name", "desc");
+        Pageble pageble = new PageRequest(1 , 5, sort);
+        newToys.setListResult(toyService.findAll(pageble));
+        request.setAttribute(SystemConstant.MODEL_NEW_TOYS, newToys);
+
+        //Top seller
+        Toy sellerToys = new Toy();
+        sort = new Sorter("Price", "desc");
+        pageble = new PageRequest(1 , 5, sort);
+        sellerToys.setListResult(toyService.findAll(pageble));
+        request.setAttribute(SystemConstant.MODEL_SELLER_TOYS, sellerToys);
+
+        RequestDispatcher rd = request.getRequestDispatcher("/view/web/home.jsp");
+        rd.forward(request, response);
     }
 
     @Override
@@ -75,9 +109,9 @@ public class HomeController extends HttpServlet {
             if (model != null) {
                 SessionUtil.getInstance().putValue(request, "USERMODEL", model);
                 int priority = model.getRole().getPriority();
-                if (priority<1) {
+                if (priority < 1) {
                     response.sendRedirect(request.getContextPath() + "/trang-chu");
-                } else if (model.getRole().getPriority()>=1) {
+                } else if (model.getRole().getPriority() >= 1) {
                     response.sendRedirect(request.getContextPath() + "/admin-home");
                 }
             } else {
@@ -85,4 +119,5 @@ public class HomeController extends HttpServlet {
             }
         }
     }
+
 }

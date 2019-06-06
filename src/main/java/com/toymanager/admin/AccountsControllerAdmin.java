@@ -57,7 +57,7 @@ public class AccountsControllerAdmin extends HttpServlet {
                     userService.delete(model.getId());
                     model = (User) userService.findById(model.getId());
                     StringBuilder redirect = new StringBuilder(request.getContextPath());
-                    redirect.append("/admin-accounts?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc");
+                    redirect.append("/admin-accounts?type=list&page=1&maxPageItem=4&sortName=id&sortBy=asc");
 
                     if (model == null) {
                         redirect.append("&message=delete_sucess&alert=success");
@@ -104,7 +104,7 @@ public class AccountsControllerAdmin extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         StringBuilder redirect = new StringBuilder(request.getContextPath());
-        redirect.append("/admin-accounts?type=list&page=1&maxPageItem=4&sortName=title&sortBy=asc");
+        redirect.append("/admin-accounts?type=list&page=1&maxPageItem=4&sortName=id&sortBy=asc");
         String action = request.getParameter("command");
         switch (action) {
             case "insert": {
