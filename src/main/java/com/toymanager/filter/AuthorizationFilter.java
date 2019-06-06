@@ -27,10 +27,10 @@ public class AuthorizationFilter implements Filter {
         if (url.contains("/admin")) {
             User model = (User) SessionUtil.getInstance().getValue(request, "USERMODEL");
             if (model != null) {
-                if (model.getRole().getPriority()>=1) {
+                if (model.getRole().getPriority()>1) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
-                if (model.getRole().getPriority()<1) {
+                if (model.getRole().getPriority()==1) {
                     filterChain.doFilter(servletRequest, servletResponse);
                     response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_permisstion&alert=danger");
                 }
@@ -39,6 +39,15 @@ public class AuthorizationFilter implements Filter {
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
+        }
+
+        if (url.contains("/checkout")) {
+            User model = (User) SessionUtil.getInstance().getValue(request, "USERMODEL");
+            if (model != null) {
+                    filterChain.doFilter(servletRequest, servletResponse);
+            } else {
+                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=register&alert=warning");
+            }
         }
     }
 

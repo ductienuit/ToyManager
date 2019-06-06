@@ -114,8 +114,8 @@
                                         </div>
                                         <div class="add-to-cart">
                                             <button class="add-to-cart-btn"/>
-                                            <a href="<c:url value='/trang-chu?command=addcart&id=${item.id}'/>" >
-                                                Thêm vào giỏ hàng
+                                            <a href="<c:url value='/trang-chu?action=addcart&id=${item.id}'/>" >
+                                                <i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng
                                             </a>
                                             </button>
                                         </div>
@@ -171,7 +171,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${item.category.name}</p>
-                                            <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                            <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${item.id}'/>">${item.name}</a></h3>
                                             <h4 class="product-price">${item.price}VND
                                             </h4>
                                             <div class="product-rating">
@@ -192,7 +192,7 @@
                                         </div>
                                         <div class="add-to-cart">
                                             <button class="add-to-cart-btn">
-                                                <a href="<c:url value='/trang-chu?command=addcart&id=${item.id}'/>" >
+                                                <a href="<c:url value='/trang-chu?action=addcart&id=${item.id}'/>" >
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Thêm vào giỏ hàng</a>
                                             </button>
@@ -239,7 +239,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${item.category.name}</p>
-                                    <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                    <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${item.id}'/>">${item.name}</a></h3>
                                     <h4 class="product-price">${item.price}VND
                                     </h4>
                                 </div>
@@ -257,7 +257,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${item.category.name}</p>
-                                    <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                    <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${item.id}'/>">${item.name}</a></h3>
                                     <h4 class="product-price">${item.price}VND
                                     </h4>
                                 </div>
@@ -286,7 +286,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${item.category.name}</p>
-                                    <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                    <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${item.id}'/>">${item.name}</a></h3>
                                     <h4 class="product-price">${item.price}VND
                                     </h4>
                                 </div>
@@ -304,7 +304,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${item.category.name}</p>
-                                    <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                    <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${item.id}'/>">${item.name}</a></h3>
                                     <h4 class="product-price">${item.price}VND
                                     </h4>
                                 </div>
@@ -335,7 +335,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${item.category.name}</p>
-                                    <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                    <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${item.id}'/>">${item.name}</a></h3>
                                     <h4 class="product-price">${item.price}VND
                                     </h4>
                                 </div>
@@ -353,7 +353,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${item.category.name}</p>
-                                    <h3 class="product-name"><a href="#">${item.name}</a></h3>
+                                    <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${item.id}'/>">${item.name}</a></h3>
                                     <h4 class="product-price">${item.price}VND
                                     </h4>
                                 </div>

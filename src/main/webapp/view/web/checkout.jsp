@@ -46,46 +46,61 @@
                     <div class="section-title">
                         <h3 class="title">Thông tin địa chỉ giao hàng</h3>
                     </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="yourname" placeholder="Tên">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Địa chỉ">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Điện thoại">
-                    </div>
-                </div>
-                <!-- /Billing Details -->
-
-                <!-- Shiping Details -->
-                <div class="shiping-details">
-                    <div class="section-title">
-                        <h3 class="title">Địa chỉ giao hàng</h3>
-                    </div>
-                    <div class="input-checkbox">
-                        <input type="checkbox" id="shiping-address">
-                        <label for="shiping-address">
-                            <span></span>
-                            Giao ở địa chỉ khác ?
-                        </label>
-                        <div class="caption">
+                    <c:choose>
+                        <c:when test="${empty USERMODEL.fullName}">
                             <div class="form-group">
-                                <input class="input" type="text" name="your-name-change" placeholder="Họ và tên">
+                                <input class="input" type="text" name="yourname" placeholder="Tên">
                             </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="form-group">
+                                <input class="input" type="text" value="${USERMODEL.fullName}" name="yourname" placeholder="Tên">
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${empty USERMODEL.email}">
+                            <div class="form-group">
+                                <input class="input" type="email" name="email" placeholder="Email">
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="form-group">
+                                <input class="input" type="email" value="${USERMODEL.email}" name="email" placeholder="Email">
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${empty USERMODEL.address}">
                             <div class="form-group">
                                 <input class="input" type="text" name="address" placeholder="Địa chỉ">
                             </div>
+                        </c:when>
+                        <c:otherwise>
                             <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Số điện thoại">
+                                <input class="input" type="text" value="${USERMODEL.address}" name="address" placeholder="Địa chỉ">
                             </div>
-                        </div>
-                    </div>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${empty USERMODEL.phoneNumber}">
+
+                            <div class="form-group">
+                                <input class="input" type="tel" name="tel" placeholder="Điện thoại">
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+
+                            <div class="form-group">
+                                <input class="input" type="tel" value="${USERMODEL.phoneNumber}" name="tel" placeholder="Điện thoại">
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-                <!-- /Shiping Details -->
+                <!-- /Billing Details -->
 
                 <!-- Order notes -->
                 <div class="order-notes">
@@ -105,14 +120,30 @@
                         <div><strong>THÀNH TIỀN</strong></div>
                     </div>
                     <div class="order-products">
-                        <div class="order-col">
-                            <div>1x Product Name Goes Here</div>
-                            <div>$980.00</div>
-                        </div>
-                        <div class="order-col">
-                            <div>2x Product Name Goes Here</div>
-                            <div>$980.00</div>
-                        </div>
+                        <c:choose>
+                            <c:when test="${empty cart}">
+
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="entry" items="${cart.cartItems}">
+                                    <div class="product-widget">
+                                        <div class="product-img">
+                                            <img src="<c:url value='/template/web/img/${entry.value.toy.imageUri}'/>" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <h3 class="product-name"><a href="<c:url value='/danh-muc?sanpham=${entry.value.toy.id}'/>">${entry.value.toy.name}</a></h3>
+                                            <h4 class="product-price"><span class="qty">${entry.value.quantity}x</span>${entry.value.toy.price}</h4>
+                                        </div>
+                                        <button class="delete"><i class="fa fa-close"></i></button>
+                                    </div>
+
+                                    <div class="order-col">
+                                        <div>${entry.value.quantity}x ${entry.value.toy.name}</div>
+                                        <div>${entry.value.toy.price} VND</div>
+                                    </div>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="order-col">
                         <div>Phí ship</div>
@@ -120,20 +151,18 @@
                     </div>
                     <div class="order-col">
                         <div><strong>TỔNG ĐƠN HÀNG</strong></div>
-                        <div><strong class="order-total">$2940.00</strong></div>
+                        <c:choose>
+                            <c:when test="${empty cart}">
+                                <div><strong class="order-total">0</strong></div>
+                            </c:when>
+                            <c:otherwise>
+                                <div><strong class="order-total"> ${cart.totalPrice} VND</strong></div>
+                            </c:otherwise>
+                        </c:choose>
+
                     </div>
                 </div>
                 <div class="payment-method">
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-1">
-                        <label for="payment-1">
-                            <span></span>
-                            Chuyển khoản ngân hàng
-                        </label>
-                        <div class="caption">
-                            <p>Ngân hàng ACB chi nhánh Thủ Đức 236898199</p>
-                        </div>
-                    </div>
                     <div class="input-radio">
                         <input type="radio" name="payment" id="payment-2">
                         <label for="payment-2">
@@ -142,8 +171,10 @@
                         </label>
                     </div>
                 </div>
-
-                <a href="#" class="primary-btn order-submit">THANH TOÁN</a>
+                <form id="submit" name="submit" method="post">
+                    <input type="hidden" name="checkout" value="checkout">
+                </form>
+                <a href="#" class="primary-btn order-submit" onclick="submitCheckout()">THANH TOÁN</a>
             </div>
             <!-- /Order Details -->
         </div>
@@ -152,6 +183,11 @@
     <!-- /container -->
 </div>
 <!-- /SECTION -->
+<script>
+    function submitCheckout() {
+        $('#submit').submit();
+    }
+</script>
 </body>
 </html>
 

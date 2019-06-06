@@ -67,39 +67,52 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Giỏ hàng</span>
-                                <div class="qty">3</div>
+                                <c:choose>
+                                    <c:when test="${empty cart}">
+                                        <div class="qty">0</div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="qty">${cart.count}</div>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="<c:url value='/template/web/img/product01.png'/>" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
+                                    <c:choose>
+                                        <c:when test="${empty cart}">
 
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="<c:url value='/template/web/img/product02.png'/>" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach var="entry" items="${cart.cartItems}">
+                                                <div class="product-widget">
+                                                    <div class="product-img">
+                                                        <img src="<c:url value='/template/web/img/${entry.value.toy.imageUri}'/>" alt="">
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <h3 class="product-name"><a href="#">${entry.value.toy.name}</a></h3>
+                                                        <h4 class="product-price"><span class="qty">${entry.value.quantity}x</span>${entry.value.toy.price}</h4>
+                                                    </div>
+                                                    <button class="delete"><i class="fa fa-close"></i></button>
+                                                </div>
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </div>
                                 <div class="cart-summary">
-                                    <small>3 sản phẩm</small>
-                                    <h5>Tổng: $2940.00</h5>
+                                    <c:choose>
+                                        <c:when test="${empty cart}">
+                                            <h5>Tổng: 0 Đồng </h5>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h5>Tổng: ${cart.totalPrice} Đồng</h5>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">Giỏ hàng</a>
-                                    <a href="#">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="<c:url value="/checkout"></c:url>">Giỏ hàng</a>
+                                    <a href="<c:url value="/checkout"></c:url>">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
