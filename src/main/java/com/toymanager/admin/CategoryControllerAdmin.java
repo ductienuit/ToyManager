@@ -51,7 +51,7 @@ public class CategoryControllerAdmin extends HttpServlet {
                     categoryService.delete(model.getId());
                     model = (Category) categoryService.findById(model.getId());
                     StringBuilder redirect = new StringBuilder(request.getContextPath());
-                    redirect.append("/admin-category?type=list&page=1&maxPageItem=4&sortName=id&sortBy=asc");
+                    redirect.append("/admin-category?type=list&page=1&maxPageItem=10&sortName=id&sortBy=asc");
 
                     if (model == null) {
                         redirect.append("&message=delete_sucess&alert=success");
@@ -98,7 +98,7 @@ public class CategoryControllerAdmin extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         StringBuilder redirect = new StringBuilder(request.getContextPath());
-        redirect.append("/admin-category?type=list&page=1&maxPageItem=4&sortName=id&sortBy=asc");
+        redirect.append("/admin-category?type=list&page=1&maxPageItem=10&sortName=id&sortBy=asc");
         String action = request.getParameter("command");
         switch (action) {
             case "insert": {

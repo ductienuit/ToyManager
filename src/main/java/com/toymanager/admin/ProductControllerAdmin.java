@@ -78,7 +78,7 @@ public class ProductControllerAdmin extends HttpServlet {
                     toyService.delete(model.getId());
                     model = (Toy) toyService.findById(model.getId());
                     StringBuilder redirect = new StringBuilder(request.getContextPath());
-                    redirect.append("/admin-products?type=list&page=1&maxPageItem=4&sortName=id&sortBy=asc");
+                    redirect.append("/admin-products?type=list&page=1&maxPageItem=10&sortName=id&sortBy=asc");
 
                     if (model == null) {
                         redirect.append("&message=delete_sucess&alert=success");
@@ -125,7 +125,7 @@ public class ProductControllerAdmin extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         StringBuilder redirect = new StringBuilder(request.getContextPath());
-        redirect.append("/admin-products?type=list&page=1&maxPageItem=4&sortName=id&sortBy=asc");
+        redirect.append("/admin-products?type=list&page=1&maxPageItem=10&sortName=id&sortBy=asc");
         String action = "insert";//request.getParameter("command");
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 

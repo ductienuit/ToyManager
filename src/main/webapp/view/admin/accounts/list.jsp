@@ -136,7 +136,7 @@
     var totalPages = ${model.totalPage};
     var currentPage = ${model.page};
     var visiblePages = 3; //Số phân trang
-    var limit = 4;
+    var limit = 10;
     $(function () {
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: totalPages,

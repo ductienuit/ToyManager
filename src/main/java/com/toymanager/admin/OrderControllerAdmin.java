@@ -86,7 +86,7 @@ public class OrderControllerAdmin extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         StringBuilder redirect = new StringBuilder(request.getContextPath());
-        redirect.append("/admin-order?type=list&page=1&maxPageItem=4&sortName=orderDate&sortBy=asc");
+        redirect.append("/admin-order?type=list&page=1&maxPageItem=10&sortName=orderDate&sortBy=asc");
         String action = request.getParameter("command");
         switch (action) {
             case "insert": {

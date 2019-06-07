@@ -86,6 +86,14 @@ public class AccountController extends HttpServlet {
                 model.setOrderStatus(OrderStatus.CANCELLED);
                 Order result = (Order) orderService.update(model);
                 if (result != null) {
+                    //Cap nhat session
+                    user = (User) userService.findById(user.getId());
+
+                    List<Order> list = new ArrayList<Order>(user.getOrders());
+                    list.sort((d1,d2)->d2.getOrderDate().compareTo(d1.getOrderDate()));
+
+                    SessionUtil.getInstance().putValue(request, SystemConstant.ORDERLIST,list);
+
                     User newUser = (User) userService.findById(user.getId());
                     SessionUtil.getInstance().putValue(request,SystemConstant.USERMODEL,newUser);
                     redirect.append("&message=edit_sucess&alert=success");
