@@ -123,6 +123,7 @@ public class ProductControllerAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         StringBuilder redirect = new StringBuilder(request.getContextPath());
         redirect.append("/admin-products?type=list&page=1&maxPageItem=4&sortName=id&sortBy=asc");
         String action = "insert";//request.getParameter("command");

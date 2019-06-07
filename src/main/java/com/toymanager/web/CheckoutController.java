@@ -2,6 +2,7 @@ package com.toymanager.web;
 
 import com.toymanager.constant.SystemConstant;
 import com.toymanager.service.IOrderService;
+import com.toymanager.service.IUserService;
 import com.toymanager.utils.SessionUtil;
 import dto.*;
 
@@ -31,6 +32,9 @@ public class CheckoutController extends HttpServlet {
     @Inject
     private IOrderService orderService;
 
+    @Inject
+    private IUserService userService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -54,6 +58,9 @@ public class CheckoutController extends HttpServlet {
             if (cart != null && user != null && cart.getCartItems().size()>0) {
                 Boolean isDone = orderService.save(user, cart);
                 if (isDone) {
+                    user = (User) userService.findById(user.getId());
+                    SessionUtil.getInstance().removeValue(request,SystemConstant.USERMODEL);
+                    SessionUtil.getInstance().putValue(request,SystemConstant.USERMODEL,user);
                     cart.getCartItems().clear();
                     SessionUtil.getInstance().removeValue(request,SystemConstant.CART);
                 }

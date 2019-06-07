@@ -125,7 +125,7 @@
                 if (currentPage != page) {
                     $('#maxPageItem').val(limit);
                     $('#page').val(page);
-                    $('#sortName').val('Name');
+                    $('#sortName').val('id');
                     $('#sortBy').val('desc');
                     $('#type').val('list');
                     $('#formSubmit').submit();

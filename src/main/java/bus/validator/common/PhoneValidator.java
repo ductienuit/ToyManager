@@ -5,8 +5,6 @@
  */
 package bus.validator.common;
 
-import bus.validator.common.ValidationResult;
-
 /**
  *
  * @author CMQ
@@ -29,7 +27,7 @@ public class PhoneValidator extends StringValidator {
     public ValidationResult validateType(String value) {
         ValidationResult result = super.validateType(value);
 
-        if (result.isIsValid()) {
+        if (result.isValid()) {
             try {
                 Integer phone = Integer.parseUnsignedInt(value);
             } catch (NumberFormatException e) {

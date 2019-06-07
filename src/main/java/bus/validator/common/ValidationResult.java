@@ -75,7 +75,7 @@ public class ValidationResult {
      *
      * @return the value of isValid
      */
-    public Boolean isIsValid() {
+    public Boolean isValid() {
         return isValid;
     }
 

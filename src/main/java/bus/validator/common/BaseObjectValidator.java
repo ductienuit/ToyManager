@@ -42,7 +42,7 @@ public abstract class BaseObjectValidator<T> extends NonNullValidator {
     public ValidationResult validateObject(Object value) {
         ValidationResult result = super.validateObject(value);
 
-        if (result.isIsValid()) {
+        if (result.isValid()) {
             if (getType()
                 .isInstance(value)) {
                 return validateObject((T) value);
@@ -53,7 +53,7 @@ public abstract class BaseObjectValidator<T> extends NonNullValidator {
                              convertedValue);
 
             if (convertedValue.getObject() != null) {
-                return result.isIsValid()
+                return result.isValid()
                        ? validateObject(convertedValue.getObject())
                        : result;
             }

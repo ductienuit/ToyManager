@@ -41,7 +41,7 @@
         <property name="lastModifiedDate" type="timestamp">
             <column name="LastModifiedDate" length="26" not-null="true" />
         </property>
-        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+        <set name="orders" table="order" inverse="true"  fetch="select" lazy="false">
             <key>
                 <column name="UserId" not-null="true" />
             </key>

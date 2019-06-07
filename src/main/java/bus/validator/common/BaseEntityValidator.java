@@ -45,9 +45,9 @@ public abstract class BaseEntityValidator<T extends IDTO> extends BaseObjectVali
         ValidationResult result = ValidationResult.VALID_RESULT;
 
         // If ID is invalid, it's not an object so we can skip validating
-        if (value.getId() < 1) {
-            return result;
-        }
+//        if (value.getId() < 1) {
+//            return result;
+//        }
 
         return GetValidators(value)
             .getValidationResult();

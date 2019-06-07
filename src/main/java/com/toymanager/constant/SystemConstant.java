@@ -5,6 +5,7 @@
  */
 package com.toymanager.constant;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 /**
@@ -13,6 +14,7 @@ import java.io.File;
 public class SystemConstant {
 
     public static final String USERMODEL = "USERMODEL";
+    public static final String ORDERLIST = "orderList" ;
     public static String MODEL = "model";
     public static String MODEL_NEW_TOYS = "newToys";
     public static String MODEL_CATEGORY = "categoryList";

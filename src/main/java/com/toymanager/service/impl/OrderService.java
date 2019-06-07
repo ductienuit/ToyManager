@@ -47,6 +47,10 @@ public class OrderService implements IOrderService<Order> {
         Order updateOrder = orderDAO.findEntityById(model.getId());
 
         OrderStatus status = orderStatusDAO.findEntityById(model.getIdOrderStatus());
+        if(status==null){
+            status=orderStatusDAO.findEntityById(model.getOrderStatus().getId());
+        }
+
         updateOrder.setOrderStatus(status);
         Date date = new Date(System.currentTimeMillis());
         updateOrder.setOrderDate(date);

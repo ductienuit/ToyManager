@@ -76,8 +76,15 @@ public class UserService implements IUserService<User> {
         oldUser.setFullName(model.getFullName());
         oldUser.setPassword(model.getPassword());
         oldUser.setPhoneNumber(model.getPhoneNumber());
+        Long id = model.getRoleId();
+        Role role;
+        if(id==null){
+            role = model.getRole();
+        }
+        else{
+            role = roleDAO.findEntityById(id);
+        }
 
-        Role role = roleDAO.findEntityById(model.getRoleId());
         oldUser.setRole(role);
 
         userDAO.update(oldUser);

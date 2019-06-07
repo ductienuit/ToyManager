@@ -40,7 +40,7 @@ public class ValidationPairs extends ArrayList<ValidationPair> {
 
         for (ValidationPair pair : this) {
             result = pair.getValidationResult();
-            if (!result.isIsValid()) {
+            if (!result.isValid()) {
                 return result;
             }
         }

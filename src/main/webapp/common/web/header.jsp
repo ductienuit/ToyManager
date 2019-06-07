@@ -12,6 +12,7 @@
             <c:if test="${not empty USERMODEL}">
                 <ul class="header-links pull-right">
                     <li><a href="<c:url value="/tai-khoan?id=1"/>"><i class="fa fa-user-o"></i> Tài khoản</a></li>
+                    <li><a href="<c:url value="/thoat?action=logout"/>"> Thoát </a></li>
                 </ul>
             </c:if>
             <c:if test="${empty USERMODEL}">

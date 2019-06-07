@@ -5,6 +5,8 @@
  */
 package com.toymanager.service.impl;
 
+import bus.validator.CategoryValidator;
+import bus.validator.common.ValidationResult;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.ICategoryService;
 import com.toymanager.dao.impl.CategoryDAO;
@@ -30,9 +32,14 @@ public class CategoryService implements ICategoryService<Category> {
 
     @Override
     public Category save(Category model) {
-        Long id = categoryDAO.insert(model);
-        System.out.print(id);
-        return categoryDAO.findEntityById(id);
+        CategoryValidator categoryValidator = new CategoryValidator();
+        ValidationResult result =  categoryValidator.validateType(model);
+        if(result.isValid()){
+            Long id = categoryDAO.insert(model);
+            System.out.print(id);
+            return categoryDAO.findEntityById(id);
+        }
+        return null;
     }
 
     @Override

@@ -46,18 +46,6 @@
 
             </div>
             <div class="row">
-                <div class="col-sm-3">
-                    <!--left col-->
-
-                    <div class="text-center">
-                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                             class="avatar img-circle img-thumbnail" alt="avatar">
-                        <h6>Tải lên ảnh đại diện</h6>
-                        <input type="file" class="text-center center-block file-upload">
-                    </div>
-                    </hr><br>
-
-                </div>
                 <!--/col-3-->
                 <div class="col-sm-9">
                     <ul class="nav nav-tabs">
@@ -68,15 +56,15 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
                             <hr>
-                            <form class="form" action="##" method="post" id="registrationForm">
+                            <form class="form" action="<c:url value='/tai-khoan?action=edit_account'/>" method="post" id="registrationForm">
                                 <div class="form-group">
 
                                     <div class="col-xs-6">
-                                        <label for="username">
+                                        <label for="first_name">
                                             <h4>Họ và tên</h4>
                                         </label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name"
-                                               placeholder="Họ và tên">
+                                        <input type="text" class="form-control" name="fullName" id="first_name"
+                                               placeholder="Họ và tên" value="${USERMODEL.fullName}">
                                     </div>
                                 </div>
 
@@ -86,8 +74,8 @@
                                         <label for="phone">
                                             <h4>Số điện thoại</h4>
                                         </label>
-                                        <input type="text" class="form-control" name="phone" id="phone"
-                                               placeholder="Nhập số điện thoại">
+                                        <input type="number" class="form-control" name="phoneNumber" id="phone"
+                                               placeholder="Nhập số điện thoại" value="${USERMODEL.phoneNumber}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -97,7 +85,7 @@
                                             <h4>Email</h4>
                                         </label>
                                         <input type="email" class="form-control" name="email" id="email"
-                                               placeholder="you@email.com">
+                                               placeholder="you@email.com" value="${USERMODEL.email}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -106,8 +94,8 @@
                                         <label for="email">
                                             <h4>Địa chỉ</h4>
                                         </label>
-                                        <input type="email" class="form-control" id="location"
-                                               placeholder="Nhập địa chỉ giao hàng">
+                                        <input type="text" class="form-control" id="location" name="address"
+                                               placeholder="Nhập địa chỉ giao hàng" value="${USERMODEL.address}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -116,8 +104,8 @@
                                         <label for="password">
                                             <h4>Mật khẩu mới</h4>
                                         </label>
-                                        <input type="password" class="form-control" name="password" id="password"
-                                               placeholder="Mật khẩu mới" title="Nhập mật khẩu mới">
+                                        <input value="${USERMODEL.password}" type="password" class="form-control" name="password" id="password"
+                                               placeholder="Mật khẩu mới" name="password" title="Nhập mật khẩu mới">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -147,102 +135,61 @@
                                 <thead>
                                 <tr>
                                     <th>Ngày mua</th>
-                                    <th>Sản phẩm</th>
+                                    <th>Mã đơn hàng</th>
                                     <th>Tổng tiền</th>
                                     <th>Trạng thái</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                <tr>
-                                    <td>Feb 12</td>
-                                    <td>
-                                        <a href="#">Đồ chơi búp bê siêu tốc</a>
-                                    </td>
-                                    <td>$45</td>
 
-                                    <td class="hidden-480">
-                                        <!-- <span class="label label-sm label-warning">Expiring</span> -->
-                                        <!-- <span class="label label-sm label-success">Registered</span> -->
-                                        <span class="label label-sm label-danger">Important</span>
-                                    </td>
+                                    <c:forEach var="item" items="${orderList}">
+                                    <tr>
+                                        <td>${item.orderDate}</td>
+                                        <td>
+                                            <a>${item.id}</a>
+                                        </td>
+                                        <td>${item.totalPrice}VND</td>
 
-                                    <td>
-                                        <div class="hidden-sm hidden-xs btn-group">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="ace-icon fa fa-check bigger-120"></i>
-                                            </button>
+                                        <td class="hidden-480">
+                                                <c:choose>
+                                                    <c:when test="${item.orderStatus.id == 1}">
+                                                        <span class="label label-sm label-warning">Đang chờ</span>
+                                                    </c:when>
+                                                    <c:when test="${item.orderStatus.id == 2}">
+                                                        <span class="label label-sm label-warning">Đang giao</span>
+                                                    </c:when>
+                                                    <c:when test="${item.orderStatus.id == 3}">
+                                                        <span class="label label-sm label-success">Đã giao</span>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <span class="label label-sm label-danger">Đã hủy</span>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                        </td>
 
-                                            <button class="btn btn-xs btn-info">
-                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                            </button>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${item.orderStatus.id == 1}">
+                                                    <div class="hidden-sm hidden-xs btn-group">
+                                                        <form action="<c:url value="/tai-khoan"></c:url>" method="post">
+                                                            <button class="btn btn-xs btn-danger" type="submit">
+                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                            </button>
+                                                            <input type="hidden" value="deleteOrder" name="action">
+                                                            <input type="hidden" value="${item.id}" name="id">
+                                                        </form>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                </c:otherwise>
+                                            </c:choose>
 
-                                            <button class="btn btn-xs btn-danger">
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
 
-                                <tr>
-                                    <td>Feb 12</td>
-                                    <td>
-                                        <a href="#">Đồ chơi búp bê siêu tốc</a>
-                                    </td>
-                                    <td>$45</td>
 
-                                    <td class="hidden-480">
-                                        <!-- <span class="label label-sm label-warning">Expiring</span> -->
-                                        <!-- <span class="label label-sm label-success">Registered</span> -->
-                                        <span class="label label-sm label-danger">Important</span>
-                                    </td>
-
-                                    <td>
-                                        <div class="hidden-sm hidden-xs btn-group">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="ace-icon fa fa-check bigger-120"></i>
-                                            </button>
-
-                                            <button class="btn btn-xs btn-info">
-                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                            </button>
-
-                                            <button class="btn btn-xs btn-danger">
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Feb 12</td>
-                                    <td>
-                                        <a href="#">Đồ chơi búp bê siêu tốc</a>
-                                    </td>
-                                    <td>$45</td>
-
-                                    <td class="hidden-480">
-                                        <!-- <span class="label label-sm label-warning">Expiring</span> -->
-                                        <!-- <span class="label label-sm label-success">Registered</span> -->
-                                        <span class="label label-sm label-danger">Important</span>
-                                    </td>
-
-                                    <td>
-                                        <div class="hidden-sm hidden-xs btn-group">
-                                            <button class="btn btn-xs btn-success">
-                                                <i class="ace-icon fa fa-check bigger-120"></i>
-                                            </button>
-
-                                            <button class="btn btn-xs btn-info">
-                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                            </button>
-
-                                            <button class="btn btn-xs btn-danger">
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
 

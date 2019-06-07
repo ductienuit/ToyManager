@@ -160,12 +160,10 @@ public class CategoryController extends HttpServlet {
         Toy model = (Toy) toyService.findById(id);
         request.setAttribute(SystemConstant.MODEL, model);
 
-
         Cart cart = (Cart) SessionUtil.getInstance().getValue(request, SystemConstant.CART);
         if(cart!=null){
             request.setAttribute(SystemConstant.CART, cart);
         }
-
     }
 
 }
