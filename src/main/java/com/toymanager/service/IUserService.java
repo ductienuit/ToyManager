@@ -15,4 +15,5 @@ public interface IUserService<T extends IDTO> extends IBaseService<T> {
 
     User findByUserNameAndPasswordAndStatus(String userName, String password, Integer status);
     User findByUserNameAndPasswordAndStatus(String userName, String password);
+    boolean hasUser(String userName);
 }

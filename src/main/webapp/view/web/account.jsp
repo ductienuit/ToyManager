@@ -41,7 +41,7 @@
         <div class="row">
             <div class="row">
                 <div class="col-sm-10">
-                    <h1>Lê Đức Tiến</h1>
+                    <h1>${USERMODEL.name}</h1>
                 </div>
 
             </div>

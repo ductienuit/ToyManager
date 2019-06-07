@@ -36,6 +36,8 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         User user = (User) SessionUtil.getInstance().getValue(request, "USERMODEL");
         user = (User) userService.findById(user.getId());
 
@@ -84,6 +86,8 @@ public class AccountController extends HttpServlet {
                 model.setOrderStatus(OrderStatus.CANCELLED);
                 Order result = (Order) orderService.update(model);
                 if (result != null) {
+                    User newUser = (User) userService.findById(user.getId());
+                    SessionUtil.getInstance().putValue(request,SystemConstant.USERMODEL,newUser);
                     redirect.append("&message=edit_sucess&alert=success");
                 } else {
                     redirect.append("&message=fail_process&alert=danger");

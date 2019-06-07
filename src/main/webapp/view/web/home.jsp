@@ -30,7 +30,7 @@
                         <!-- tab -->
                         <div id="tab1" class="tab-pane active">
                             <div class="products-slick" data-nav="#slick-nav-1">
-                                <c:forEach var="item" items="${newToys.listResult}">
+                                <c:forEach var="item" items="${listResult}">
                                     <!-- product -->
                                     <div class="product">
                                         <div class="product-img">

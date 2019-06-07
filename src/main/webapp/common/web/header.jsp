@@ -146,10 +146,7 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="<c:url value="/"/>">Trang chủ</a></li>
-                <li><a href="#">Hot Deals</a></li>
-                <li><a href="#">Đồ chơi gỗ</a></li>
-                <li><a href="#">Đồ chơi búp bê</a></li>
-                <li><a href="#">Lego</a></li>
+                <li><a  href="<c:url value="/danh-muc"/>">Danh mục</a></li>
             </ul>
             <!-- /NAV -->
         </div>

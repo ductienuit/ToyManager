@@ -48,6 +48,8 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String action = request.getParameter("action");
         String message = request.getParameter("message");
 
@@ -140,7 +142,7 @@ public class HomeController extends HttpServlet {
         Sorter sort = new Sorter("name", "desc");
         Pageble pageble = new PageRequest(1, 5, sort);
         newToys.setListResult(toyService.findAll(pageble));
-        request.setAttribute(SystemConstant.MODEL_NEW_TOYS, newToys);
+        request.setAttribute(SystemConstant.MODEL_NEW_TOYS, newToys.getListResult());
 
         //Top seller
         Toy sellerToys = new Toy();
@@ -168,6 +170,8 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String action = request.getParameter("action");
         if (action != null && action.equals("login")) {
             User model = FormUtil.toModel(User.class, request);
@@ -187,6 +191,10 @@ public class HomeController extends HttpServlet {
         }
         if(action!=null && action.equals("signup")){
                 User model = FormUtil.toModel(User.class, request);
+                if(userService.hasUser(model.getUsername())){
+                    response.sendRedirect(request.getContextPath() + "/dang-ky?action=signup&message=username_existed&alert=danger");
+                    return;
+                }
                 model.setRoleId((long) 1);
                 User result = (User) userService.save(model);
                 if (result != null) {

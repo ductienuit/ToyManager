@@ -48,7 +48,7 @@
                             <div class="input-checkbox">
                                 <label >
                                     <span></span>
-                                    ${item.name}
+                                    <a href="<c:url value="/danh-muc?category=${item.id}"/>">${item.name}</a>
                                 </label>
                             </div>
                         </c:forEach>
@@ -80,7 +80,7 @@
 
                 <!-- store products -->
                 <div class="row">
-                    <c:forEach var="item" items="${newToys.listResult}">
+                    <c:forEach var="item" items="${listResult}">
                     <!-- product -->
                     <div class="col-md-4 col-xs-6">
                         <!-- product -->

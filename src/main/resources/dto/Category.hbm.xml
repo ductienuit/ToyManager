@@ -14,7 +14,7 @@
         <property name="code" type="string">
             <column name="Code" not-null="true" />
         </property>
-        <set name="toys" table="toy" inverse="true" lazy="true" fetch="select">
+        <set name="toys" table="toy" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="CategoryId" not-null="true" />
             </key>

@@ -14,9 +14,6 @@ import dto.Role;
 import dto.User;
 import dto.UserStatus;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 
@@ -46,12 +43,18 @@ public class UserService implements IUserService<User> {
     }
 
     @Override
+    public boolean hasUser(String userName) {
+        return userDAO.hasUser(userName);
+    }
+
+    @Override
     public User findById(Long categoryId) {
         return userDAO.findEntityById(categoryId);
     }
 
     @Override
     public User save(User model) {
+        findByUserNameAndPasswordAndStatus(model.getUsername(),model.getPassword());
         Role role = roleDAO.findEntityById(model.getRoleId());
         model.setRole(role);
 

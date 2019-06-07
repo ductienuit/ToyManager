@@ -18,7 +18,7 @@ public class SystemConstant {
     public static final String ORDERDETAILLIST = "orderDetailList" ;
     public static final String ORDER = "order";
     public static String MODEL = "model";
-    public static String MODEL_NEW_TOYS = "newToys";
+    public static String MODEL_NEW_TOYS = "listResult";
     public static String MODEL_CATEGORY = "categoryList";
     public static String MODEL_SELLER_TOYS = "sellerToys";
     public static String MODEL_3SELLER_TOYS = "threeSellerToys";

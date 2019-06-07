@@ -5,6 +5,8 @@
  */
 package com.toymanager.web;
 
+import bus.validator.CategoryIdValidator;
+import com.mysql.cj.util.StringUtils;
 import com.toymanager.constant.SystemConstant;
 import com.toymanager.paging.PageRequest;
 import com.toymanager.paging.Pageble;
@@ -49,14 +51,10 @@ public class CategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        String message = request.getParameter("category");
         String alert = request.getParameter("alert");
         String productid = request.getParameter("sanpham");
         String quantity = request.getParameter("quantity");
 
-        if (message != null && alert != null) {
-            request.setAttribute("category", resourceBundle.getString(message));
-        }
 
         //Thêm xóa sửa giỏ hàng
         if(quantity != null){
@@ -131,20 +129,35 @@ public class CategoryController extends HttpServlet {
     }
 
     private void DirectCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //New toys
-        Toy newToys = new Toy();
-        Sorter sort = new Sorter("name", "desc");
-        Pageble pageble = new PageRequest(1, 10, sort);
-        newToys.setListResult(toyService.findAll(pageble));
-        request.setAttribute(SystemConstant.MODEL_NEW_TOYS, newToys);
+        String categoryId = request.getParameter("category");
+        CategoryIdValidator categoryIdValidator = new CategoryIdValidator();
+        if(categoryIdValidator.validateObject(categoryId).isValid()){//New toys
+            Category category = (Category) categoryService.findById(Long.parseLong(categoryId));
+            request.setAttribute(SystemConstant.MODEL_NEW_TOYS, category.getToys());
 
-        Category category = new Category();
-        category.setListResult(categoryService.findAll(pageble));
-        request.setAttribute(SystemConstant.MODEL_CATEGORY, category);
+            Sorter sort = new Sorter("id", "desc");
+            Pageble pageble = new PageRequest(1, 10, sort);
 
-        Cart cart = (Cart) SessionUtil.getInstance().getValue(request, SystemConstant.CART);
-        if(cart!=null){
-            request.setAttribute(SystemConstant.CART, cart);
+            category = new Category();
+            category.setListResult(categoryService.findAll(pageble));
+            request.setAttribute(SystemConstant.MODEL_CATEGORY, category);
+        }
+        else{
+            //New toys
+            Toy newToys = new Toy();
+            Sorter sort = new Sorter("name", "desc");
+            Pageble pageble = new PageRequest(1, 10, sort);
+            newToys.setListResult(toyService.findAll(pageble));
+            request.setAttribute(SystemConstant.MODEL_NEW_TOYS, newToys.getListResult());
+
+            Category category = new Category();
+            category.setListResult(categoryService.findAll(pageble));
+            request.setAttribute(SystemConstant.MODEL_CATEGORY, category);
+
+            Cart cart = (Cart) SessionUtil.getInstance().getValue(request, SystemConstant.CART);
+            if(cart!=null){
+                request.setAttribute(SystemConstant.CART, cart);
+            }
         }
     }
 

@@ -37,17 +37,17 @@ public class AuthorizationFilter implements Filter {
             } else {
                 response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_permisstion&alert=warning");
             }
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
         }
-
-        if (url.contains("/checkout")) {
+        else if (url.contains("/checkout") || url.contains("/tai-khoan")) {
             User model = (User) SessionUtil.getInstance().getValue(request, "USERMODEL");
             if (model != null) {
                     filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=register&alert=warning");
+                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_permisstion&alert=warning");
             }
+        }
+        else {
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 
