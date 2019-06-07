@@ -26,7 +26,7 @@ import java.util.*;
  * người dùng sẽ nhận (url nào) 2. Trả kết qu cho người dùng trong single pages
  * như kiểm tra tính đúng dữ liệu
  */
-@WebServlet(urlPatterns = {"/tai-khoan", "/dang-ky"})
+@WebServlet(urlPatterns = {"/tai-khoan"})
 public class AccountController extends HttpServlet {
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
     @Inject

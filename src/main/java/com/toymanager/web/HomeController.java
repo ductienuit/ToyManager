@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
  * người dùng sẽ nhận (url nào) 2. Trả kết qu cho người dùng trong single pages
  * như kiểm tra tính đúng dữ liệu
  */
-@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat", "/dang-ky"})
 public class HomeController extends HttpServlet {
     private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
@@ -53,6 +53,18 @@ public class HomeController extends HttpServlet {
 
         if (action != null) {
             switch (action) {
+                case "signup":{
+                    String alert = request.getParameter("alert");
+
+                    if (message != null && alert != null) {
+                        request.setAttribute("message", resourceBundle.getString(message));
+                        request.setAttribute("alert", alert);
+                    }
+
+                    RequestDispatcher rd = request.getRequestDispatcher("/view/web/signup.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
                 case "login": {
                     String alert = request.getParameter("alert");
 
@@ -172,6 +184,16 @@ public class HomeController extends HttpServlet {
             } else {
                 response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=username_password_invalid&alert=danger");
             }
+        }
+        if(action!=null && action.equals("signup")){
+                User model = FormUtil.toModel(User.class, request);
+                model.setRoleId((long) 1);
+                User result = (User) userService.save(model);
+                if (result != null) {
+                    response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=signup_success&alert=success");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/dang-ky?action=signup&message=wrong_infor&alert=danger");
+                }
         }
 
     }

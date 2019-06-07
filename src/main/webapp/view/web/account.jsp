@@ -147,7 +147,7 @@
                                     <tr>
                                         <td>${item.orderDate}</td>
                                         <td>
-                                            <a>${item.id}</a>
+                                            <a href="<c:url value="/checkout?id=${item.id}"></c:url> ">${item.id}</a>
                                         </td>
                                         <td>${item.totalPrice}VND</td>
 

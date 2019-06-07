@@ -45,7 +45,7 @@ public abstract class BaseObjectValidator<T> extends NonNullValidator {
         if (result.isValid()) {
             if (getType()
                 .isInstance(value)) {
-                return validateObject((T) value);
+                return validateType((T) value);
             }
 
             ObjectWrapper<T> convertedValue = new ObjectWrapper<>();
@@ -54,7 +54,7 @@ public abstract class BaseObjectValidator<T> extends NonNullValidator {
 
             if (convertedValue.getObject() != null) {
                 return result.isValid()
-                       ? validateObject(convertedValue.getObject())
+                       ? validateType(convertedValue.getObject())
                        : result;
             }
         }

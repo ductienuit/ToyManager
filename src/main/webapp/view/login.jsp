@@ -38,6 +38,9 @@
                         <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu"
                                name="password">
                     </div>
+                    <div class="forgot">
+                        <a href="<c:url value="/dang-ky?action=signup"></c:url>">Đăng ký</a>
+                    </div>
                     <input type="hidden" value="login" name="username"/>
                     <input type="hidden" value="" id="maxPageItem" name="password"/>
 

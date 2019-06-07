@@ -15,6 +15,8 @@ public class SystemConstant {
 
     public static final String USERMODEL = "USERMODEL";
     public static final String ORDERLIST = "orderList" ;
+    public static final String ORDERDETAILLIST = "orderDetailList" ;
+    public static final String ORDER = "order";
     public static String MODEL = "model";
     public static String MODEL_NEW_TOYS = "newToys";
     public static String MODEL_CATEGORY = "categoryList";

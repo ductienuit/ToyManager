@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 /**
@@ -38,13 +37,23 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        Cart cart = (Cart) SessionUtil.getInstance().getValue(request, SystemConstant.CART);
-        if (cart != null) {
-            request.setAttribute(SystemConstant.CART, cart);
+        String idCheckout = request.getParameter("id");
+        if(idCheckout!=null && idCheckout!=""){
+            //Luu y: url: /checkout?id=1
+            Order order = (Order) orderService.findById(Long.parseLong(idCheckout));
+            SessionUtil.getInstance().putValue(request, SystemConstant.ORDER,order);
+
+            RequestDispatcher rd = request.getRequestDispatcher("/view/web/detailorder.jsp");
+            rd.forward(request, response);
+        }else{
+            //Luu y: url: /checkout
+            Cart cart = (Cart) SessionUtil.getInstance().getValue(request, SystemConstant.CART);
+            if (cart != null) {
+                request.setAttribute(SystemConstant.CART, cart);
+            }
+            RequestDispatcher rd = request.getRequestDispatcher("/view/web/checkout.jsp");
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = request.getRequestDispatcher("/view/web/checkout.jsp");
-        rd.forward(request, response);
     }
 
     @Override

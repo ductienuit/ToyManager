@@ -128,27 +128,27 @@
                     </div>
                     <div class="order-products">
                         <c:choose>
-                            <c:when test="${empty cart}">
+                            <c:when test="${empty order}">
 
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="entry" items="${cart.cartItems}">
+                                <c:forEach var="entry" items="${order.orderDetails}">
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="<c:url value='/template/web/img/${entry.value.toy.imageUri}'/>" alt="">
+                                            <img src="<c:url value='/template/web/img/${entry.toy.imageUri}'/>" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name">
-                                                <a href="<c:url value='/danh-muc?sanpham=${entry.value.toy.id}'/>">${entry.value.toy.name}</a>
+                                                <a href="<c:url value='/danh-muc?sanpham=${entry.toy.id}'/>">${entry.toy.name}</a>
                                             </h3>
-                                            <h4 class="product-price"><span class="qty">${entry.value.quantity}x</span>${entry.value.toy.price}</h4>
+                                            <h4 class="product-price"><span class="qty">${entry.quantity}x</span>${entry.toy.price}</h4>
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
                                     </div>
 
                                     <div class="order-col">
-                                        <div>${entry.value.quantity}x ${entry.value.toy.name}</div>
-                                        <div>${entry.value.toy.price} VND</div>
+                                        <div>${entry.quantity}x ${entry.toy.name}</div>
+                                        <div>${entry.toy.price} VND</div>
                                     </div>
                                 </c:forEach>
                             </c:otherwise>
@@ -161,11 +161,11 @@
                     <div class="order-col">
                         <div><strong>TỔNG ĐƠN HÀNG</strong></div>
                         <c:choose>
-                            <c:when test="${empty cart}">
+                            <c:when test="${empty order}">
                                 <div><strong class="order-total">0</strong></div>
                             </c:when>
                             <c:otherwise>
-                                <div><strong class="order-total"> ${cart.totalPrice} VND</strong></div>
+                                <div><strong class="order-total"> ${order.totalPrice} VND</strong></div>
                             </c:otherwise>
                         </c:choose>
 
@@ -180,10 +180,6 @@
                         </label>
                     </div>
                 </div>
-                <form id="submit" name="submit" method="post">
-                    <input type="hidden" name="checkout" value="checkout">
-                </form>
-                <a class="primary-btn order-submit" onclick="submitCheckout()">THANH TOÁN</a>
             </div>
             <!-- /Order Details -->
         </div>
@@ -193,9 +189,6 @@
 </div>
 <!-- /SECTION -->
 <script>
-    function submitCheckout() {
-        $('#submit').submit();
-    }
 </script>
 </body>
 </html>
