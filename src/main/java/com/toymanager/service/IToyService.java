@@ -5,12 +5,7 @@
  */
 package com.toymanager.service;
 
-import com.toymanager.model.NewsModel;
-import com.toymanager.paging.Pageble;
-import dto.Toy;
 import dto.common.IDTO;
-
-import java.util.List;
 
 /**
  * @author DucTien

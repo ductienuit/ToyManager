@@ -1,7 +1,6 @@
 package dto;
 // Generated May 22, 2019 4:10:30 PM by Hibernate Tools 4.3.1
 
-import com.toymanager.model.AbstractModel;
 import dto.common.IDTO;
 import dto.common.IName;
 import dto.common.Pagination;

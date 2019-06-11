@@ -123,7 +123,7 @@ public class ProductControllerAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=UTF-8");
         StringBuilder redirect = new StringBuilder(request.getContextPath());
         redirect.append("/admin-products?type=list&page=1&maxPageItem=10&sortName=id&sortBy=asc");
         String action = "insert";//request.getParameter("command");
@@ -153,7 +153,8 @@ public class ProductControllerAdmin extends HttpServlet {
             }
 
         }
-        response.sendRedirect(redirect.toString());
+        if(!response.isCommitted())
+            response.sendRedirect(redirect.toString());
     }
 
     private Toy parseModel(HttpServletRequest request, HttpServletResponse response, StringBuilder redirect) throws IOException {
@@ -184,7 +185,7 @@ public class ProductControllerAdmin extends HttpServlet {
                                 break;
                             }
                             case "name":{
-                                model.setName(item.getString());
+                                model.setName(item.getString("UTF-8"));
                                 break;
                             }
                             case "idCategory":{
@@ -196,7 +197,7 @@ public class ProductControllerAdmin extends HttpServlet {
                                 break;
                             }
                             case "description":{
-                                model.setDescription(item.getString());
+                                model.setDescription(item.getString("UTF-8"));
                                 break;
                             }
                             case "idToyStatus":{

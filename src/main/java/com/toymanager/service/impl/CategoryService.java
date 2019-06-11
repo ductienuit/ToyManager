@@ -7,9 +7,9 @@ package com.toymanager.service.impl;
 
 import bus.validator.CategoryValidator;
 import bus.validator.common.ValidationResult;
+import com.toymanager.dao.impl.CategoryDAO;
 import com.toymanager.paging.Pageble;
 import com.toymanager.service.ICategoryService;
-import com.toymanager.dao.impl.CategoryDAO;
 import dto.Category;
 
 import java.util.List;

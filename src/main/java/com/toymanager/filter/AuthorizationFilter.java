@@ -1,8 +1,6 @@
 package com.toymanager.filter;
 
 
-import com.toymanager.constant.SystemConstant;
-import com.toymanager.model.UserModel;
 import com.toymanager.utils.SessionUtil;
 import dto.User;
 
